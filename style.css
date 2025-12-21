@@ -1,48 +1,64 @@
+/* ---------------------------
+   COLOR SYSTEM (ACADEMIC)
+---------------------------- */
 :root {
-  --bg: #fbf7ef;          /* cream white */
-  --text: #111111;        /* black */
-  --muted: #333333;
-  --accent: #b00020;      /* red */
-  --line: rgba(17, 17, 17, 0.25);
-  --max: 860px;
+  --bg: #fbf7ef;       /* cream paper */
+  --text: #111111;     /* near-black */
+  --muted: #2f2f2f;
+  --accent: #8b0000;   /* academic red */
+  --rule: rgba(0, 0, 0, 0.25);
+  --max-width: 820px;
 }
 
-/* Base */
-* { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; }
+/* ---------------------------
+   BASE RESET
+---------------------------- */
+* {
+  box-sizing: border-box;
+}
 
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+/* ---------------------------
+   BODY TYPOGRAPHY
+---------------------------- */
 body {
   background: var(--bg);
   color: var(--text);
-  line-height: 1.6;
-  font-size: 18px;
 
-  /* Academic-ish serif body */
-  font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
+  /* Adobe Caslon Pro */
+  font-family: "adobe-caslon-pro", "Caslon", "Garamond", serif;
+
+  font-size: 19px;
+  line-height: 1.65;
 }
 
+/* ---------------------------
+   LAYOUT
+---------------------------- */
 main {
-  max-width: var(--max);
-  margin: 42px auto;
-  padding: 0 18px 40px;
+  max-width: var(--max-width);
+  margin: 48px auto 64px;
+  padding: 0 20px;
 }
 
-/* Top nav */
+/* ---------------------------
+   NAVIGATION
+---------------------------- */
 .nav {
   display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-  align-items: baseline;
-
-  /* Simple UI font for navigation */
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  gap: 18px;
+  font-family: "futura-pt", system-ui, sans-serif;
   font-size: 15px;
+  letter-spacing: 0.04em;
 }
 
 .nav a {
   color: var(--accent);
   text-decoration: none;
-  padding: 2px 0;
   border-bottom: 1px solid transparent;
 }
 
@@ -52,78 +68,102 @@ main {
 
 .nav a.active {
   border-bottom-color: var(--accent);
-  font-weight: 600;
 }
 
-/* Thin line */
+/* ---------------------------
+   RULE
+---------------------------- */
 .rule {
-  border: 0;
-  border-top: 1px solid var(--line);
-  margin: 12px 0 22px;
+  border: none;
+  border-top: 1px solid var(--rule);
+  margin: 14px 0 28px;
 }
 
-/* Header */
-h1 {
+/* ---------------------------
+   HEADER
+---------------------------- */
+.header h1 {
   margin: 0;
-  font-size: 44px;
-  letter-spacing: -0.01em;
-  font-weight: 700;
+  font-family: "futura-pt", system-ui, sans-serif;
+  font-size: 52px;
+  letter-spacing: 0.14em;
+  font-weight: 400;
 }
 
-.subtitle {
-  margin: 10px 0 0;
-  color: var(--muted);
+.email {
+  margin: 12px 0 0;
+  font-size: 20px;
 }
 
-/* Sections */
-h2 {
-  margin: 22px 0 8px;
-  font-size: 22px;
-}
-
-p { margin: 10px 0; }
-
-a {
+.email a {
   color: var(--accent);
   text-decoration: none;
 }
 
-a:hover { text-decoration: underline; }
-
-.list {
-  padding-left: 20px;
-  margin: 10px 0 0;
+.email a:hover {
+  text-decoration: underline;
 }
 
-.item {
-  margin: 14px 0 18px;
+/* ---------------------------
+   SECTION HEADINGS
+---------------------------- */
+h2 {
+  margin: 36px 0 10px;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 24px;
 }
 
-.item-title {
-  margin: 0;
-  font-size: 18px;
-  font-weight: 700;
+/* ---------------------------
+   PARAGRAPHS & LISTS
+---------------------------- */
+p {
+  margin: 10px 0;
+  max-width: 70ch;
 }
 
-.item-meta {
-  margin: 6px 0 0;
-  color: var(--muted);
-  font-size: 15px;
-
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+ul {
+  margin: 8px 0 0;
+  padding-left: 22px;
 }
 
-.footer {
-  margin-top: 34px;
-  padding-top: 14px;
-  border-top: 1px solid var(--line);
-  color: var(--muted);
+li {
+  margin: 6px 0;
+}
+
+/* ---------------------------
+   LINKS (BODY)
+---------------------------- */
+a {
+  color: var(--accent);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ---------------------------
+   FOOTER
+---------------------------- */
+footer {
+  margin-top: 48px;
+  padding-top: 16px;
+  border-top: 1px solid var(--rule);
   font-size: 14px;
-
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--muted);
+  font-family: "futura-pt", system-ui, sans-serif;
 }
 
+/* ---------------------------
+   MOBILE TUNING
+---------------------------- */
 @media (max-width: 640px) {
-  h1 { font-size: 36px; }
-  body { font-size: 17px; }
+  body {
+    font-size: 18px;
+  }
+
+  .header h1 {
+    font-size: 40px;
+    letter-spacing: 0.1em;
+  }
 }
