@@ -4,13 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Ruth Sharon</title>
-    <meta name="description" content="Ruth Sharon — resume homepage." />
-    <!-- cache-bust -->
-    <link rel="stylesheet" href="style.css?v=20251220-3" />
+
+    <!-- ADOBE FONTS: replace KIT_ID with your Adobe Fonts kit -->
+    <link rel="stylesheet" href="https://use.typekit.net/KIT_ID.css">
+
+    <link rel="stylesheet" href="style.css?v=20251220-4" />
   </head>
 
   <body>
     <main>
+      <!-- Top navigation -->
       <nav class="nav">
         <a class="active" href="index.html">Home</a>
         <a href="projects.html">Projects</a>
@@ -21,36 +24,39 @@
 
       <hr class="rule" />
 
-      <header>
-        <h1>Ruth Sharon</h1>
-        <p class="subtitle">
-          Data Science & Statistics · ML / Interpretability / NLP
+      <!-- Header -->
+      <header class="header">
+        <h1>RUTH SHARON</h1>
+        <p class="email">
+          <a href="mailto:your.email@example.com">your.email@example.com</a>
         </p>
       </header>
 
+      <!-- About -->
       <section>
         <h2>About me</h2>
         <p>
-          I build human-centered machine learning systems with a focus on interpretability and cognition-inspired evaluation.
-          I’m interested in research-leaning ML/data roles where I can ship real artifacts (code, analyses, and clear documentation).
+          I am a graduate student in Data Science & Statistics with interests in
+          machine learning interpretability, cognition-inspired evaluation, and
+          human-centered AI systems.
         </p>
         <p>
-          Email: <a href="mailto:your.email@example.com">your.email@example.com</a> ·
-          GitHub: <a href="https://github.com/YOURUSERNAME" target="_blank" rel="noopener">YOURUSERNAME</a> ·
-          LinkedIn: <a href="https://linkedin.com/in/YOURLINK" target="_blank" rel="noopener">profile</a>
+          I work on projects spanning LLM evaluation, multi-expert reasoning
+          architectures, and experimental tools for probing model behavior.
         </p>
       </section>
 
+      <!-- Current work -->
       <section>
-        <h2>Now</h2>
-        <ul class="list">
-          <li>Replicating MiCRo (Mixture of Cognitive Reasoners) + router experiments</li>
-          <li>Running Neuro-Heuristics bias probes (anchoring / satisficing / recency) with analysis-ready logs</li>
+        <h2>Current work</h2>
+        <ul>
+          <li>Replicating MiCRo (Mixture of Cognitive Reasoners)</li>
+          <li>Designing LLM bias probes (anchoring, satisficing, recency)</li>
           <li>Building an AI-augmented BCI simulator prototype</li>
         </ul>
       </section>
 
-      <footer class="footer">
+      <footer>
         © <span id="year"></span> Ruth Sharon
       </footer>
     </main>
