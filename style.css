@@ -1,6 +1,6 @@
-/* Minimal academic style */
+/* Minimal academic style (clean, not "vibe-coded") */
 
-:root{
+:root {
   --text: #111;
   --muted: #555;
   --link: #0b57d0;
@@ -9,48 +9,57 @@
 
 * { box-sizing: border-box; }
 
-html, body { margin: 0; padding: 0; }
+html, body {
+  margin: 0;
+  padding: 0;
+}
 
 body {
   background: #fff;
   color: var(--text);
   font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
-  line-height: 1.55;
   font-size: 18px;
+  line-height: 1.55;
 }
 
-.container{
+.container {
   max-width: var(--max);
   margin: 48px auto;
   padding: 0 18px;
 }
 
-a { color: var(--link); text-decoration: none; }
-a:hover { text-decoration: underline; }
-
-.header{
-  margin-bottom: 28px;
+a {
+  color: var(--link);
+  text-decoration: none;
 }
 
-.name{
+a:hover {
+  text-decoration: underline;
+}
+
+.header {
+  margin-bottom: 26px;
+}
+
+.name {
   margin: 0;
   font-size: 44px;
   font-weight: 700;
   letter-spacing: -0.01em;
 }
 
-.tagline{
-  margin: 8px 0 10px;
+.tagline {
+  margin: 10px 0 8px;
   color: var(--muted);
 }
 
-.meta{
-  margin: 0 0 10px;
+.meta {
+  margin: 0;
   color: var(--muted);
 }
 
-.nav{
-  margin-top: 10px;
+.nav {
+  margin-top: 12px;
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
@@ -58,46 +67,61 @@ a:hover { text-decoration: underline; }
   font-size: 15px;
 }
 
-.section{
+.section {
   margin-top: 22px;
 }
 
-.section h2{
-  margin: 0 0 8px;
+.section h2 {
+  margin: 0 0 10px;
   font-size: 20px;
   font-weight: 700;
 }
 
-.project{
-  margin: 10px 0 16px;
+.item {
+  margin: 12px 0 18px;
 }
 
-.project h3{
+.item h3 {
   margin: 0;
   font-size: 18px;
   font-weight: 700;
 }
 
-.project p{
+.sub {
   margin: 6px 0 6px;
-  color: var(--text);
-}
-
-.project .links{
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  font-size: 14px;
   color: var(--muted);
 }
 
-ul{
-  margin: 6px 0 0;
+.links {
+  margin: 0 0 8px;
+  color: var(--muted);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-size: 14px;
 }
 
-.footer{
-  margin-top: 40px;
+ul {
+  margin: 6px 0 0;
+  padding-left: 20px;
+}
+
+li {
+  margin: 6px 0;
+}
+
+.inline {
+  margin: 0;
+}
+
+.footer {
+  margin-top: 42px;
   padding-top: 18px;
   border-top: 1px solid #eee;
   color: var(--muted);
   font-size: 14px;
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+@media (max-width: 640px) {
+  body { font-size: 17px; }
+  .name { font-size: 38px; }
 }
