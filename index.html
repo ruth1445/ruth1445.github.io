@@ -1,59 +1,128 @@
-<header class="header">
-  <h1 class="name">Ruthie [Last Name]</h1>
-  <p class="tagline">Data Science & Statistics · ML / Interpretability / NLP</p>
-  <p class="meta">
-    New Brunswick, NJ · <a href="mailto:YOUR_EMAIL">YOUR_EMAIL</a>
-  </p>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ruthie</title>
 
-  <nav class="nav">
-    <a href="resume.pdf" target="_blank" rel="noopener">CV (PDF)</a>
-    <a href="https://github.com/YOURUSERNAME" target="_blank" rel="noopener">GitHub</a>
-    <a href="https://linkedin.com/in/YOURLINK" target="_blank" rel="noopener">LinkedIn</a>
-  </nav>
-</header>
+    <meta name="description" content="Ruthie — Data Science & Statistics. ML, interpretability, and NLP projects." />
 
-<section class="section">
-  <h2>About</h2>
-  <p>
-    2–3 sentence overview: what you work on, what roles you want, and your strongest proof (projects).
-  </p>
-</section>
+    <!-- IMPORTANT: cache-bust the stylesheet -->
+    <link rel="stylesheet" href="style.css?v=20251220-1" />
+  </head>
 
-<section class="section">
-  <h2>Selected Projects</h2>
+  <body>
+    <main class="container">
+      <header class="header">
+        <h1 class="name">Ruthie</h1>
 
-  <div class="project">
-    <h3>Neuro-Heuristics Toolkit</h3>
-    <div class="links">
-      <a href="https://github.com/YOURUSERNAME/neuro-heuristics" target="_blank" rel="noopener">code</a>
-      · <a href="YOUR_DEMO_OR_WRITEUP" target="_blank" rel="noopener">write-up</a>
-    </div>
-    <p>One sentence: what it is and why it matters.</p>
-    <ul>
-      <li>1 strong technical bullet (method/design).</li>
-      <li>1 strong “so what” bullet (insight/result).</li>
-    </ul>
-  </div>
+        <p class="tagline">
+          Data Science & Statistics · ML / Interpretability / NLP
+        </p>
 
-  <!-- Repeat for 2–4 projects -->
-</section>
+        <p class="meta">
+          New Brunswick, NJ ·
+          <a href="mailto:your.email@example.com">your.email@example.com</a>
+        </p>
 
-<section class="section">
-  <h2>Experience</h2>
-  <ul>
-    <li><strong>Role — Org</strong> (dates): one-line impact.</li>
-  </ul>
-</section>
+        <nav class="nav">
+          <a href="resume.pdf" target="_blank" rel="noopener">CV (PDF)</a>
+          <a href="https://github.com/YOURUSERNAME" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://linkedin.com/in/YOURLINK" target="_blank" rel="noopener">LinkedIn</a>
+        </nav>
+      </header>
 
-<section class="section">
-  <h2>Skills</h2>
-  <p>Python, R, PyTorch, Transformers, statistics, Streamlit, Git</p>
-</section>
+      <section class="section">
+        <h2>About</h2>
+        <p>
+          I build human-centered ML systems with a focus on interpretability and cognition-inspired evaluation.
+          I’m currently seeking research-leaning data science / ML roles and internships.
+        </p>
+      </section>
 
-<footer class="footer">
-  © <span id="year"></span> Ruthie · Built with GitHub Pages
-</footer>
+      <section class="section">
+        <h2>Selected Projects</h2>
 
-<script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-</script>
+        <div class="item">
+          <h3>Neuro-Heuristics Toolkit</h3>
+          <p class="sub">
+            Prompt-based experiments to test cognitive biases (anchoring, satisficing, recency) in LLM outputs.
+          </p>
+          <p class="links">
+            <a href="https://github.com/YOURUSERNAME/neuro-heuristics" target="_blank" rel="noopener">code</a>
+            · <a href="#" target="_blank" rel="noopener">write-up</a>
+          </p>
+          <ul>
+            <li>Designed bias manipulations + controls to isolate causal effects on responses.</li>
+            <li>Structured experiment runs and logging for analysis-ready datasets.</li>
+          </ul>
+        </div>
+
+        <div class="item">
+          <h3>MiCRo Replication (Mixture of Cognitive Reasoners)</h3>
+          <p class="sub">
+            Replication and extension of a multi-expert reasoning architecture with a learned router.
+          </p>
+          <p class="links">
+            <a href="https://github.com/YOURUSERNAME/microrep" target="_blank" rel="noopener">code</a>
+            · <a href="#" target="_blank" rel="noopener">notes</a>
+          </p>
+          <ul>
+            <li>Implemented training workflow and router experiments using embedding features.</li>
+            <li>Planned extension: controllable routing to probe “reasoning modes.”</li>
+          </ul>
+        </div>
+
+        <div class="item">
+          <h3>AI-Augmented BCI Simulator</h3>
+          <p class="sub">
+            Streamlit prototype combining motor-imagery classification with an LLM feedback layer.
+          </p>
+          <p class="links">
+            <a href="https://github.com/YOURUSERNAME/ai-bci" target="_blank" rel="noopener">code</a>
+            · <a href="#" target="_blank" rel="noopener">demo</a>
+          </p>
+          <ul>
+            <li>Connected classifier outputs to real-time UI feedback loops.</li>
+            <li>Designed interaction layer translating signals into actionable guidance.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Experience</h2>
+        <div class="item">
+          <h3>Research / Lab Experience</h3>
+          <p class="sub">2024–2025</p>
+          <ul>
+            <li>Built reproducible analysis pipelines and communicated findings via clear artifacts and documentation.</li>
+            <li>Applied statistical modeling and ML workflows to research problems.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Skills</h2>
+        <p class="inline">
+          Python · R · Pandas · PyTorch · Transformers · NLP · Model Evaluation · Statistics · Streamlit · Git/GitHub
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>Education</h2>
+        <div class="item">
+          <h3>M.S. Data Science & Statistics — Rutgers University</h3>
+          <p class="sub">Concentration: Statistics · Interests: interpretability, cognition-inspired ML, human-centered AI</p>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <span>© <span id="year"></span> Ruthie</span>
+      </footer>
+    </main>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
