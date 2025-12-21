@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ruthie — Resume</title>
+    <meta name="description" content="Ruthie — Data Science & Statistics (ML/Interpretability). Projects, experience, and contact." />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <main class="container">
+      <header class="header">
+        <div>
+          <h1 class="name">Ruthie</h1>
+          <p class="tagline">
+            Data Science & Statistics (ML, Interpretability, NLP). Building human-centered, cognition-inspired ML systems.
+          </p>
+          <p class="meta">
+            New Brunswick, NJ · Open to internships / new grad roles ·
+            <a href="mailto:your.email@example.com">your.email@example.com</a>
+          </p>
+        </div>
+
+        <div class="cta">
+          <a class="button" href="resume.pdf" target="_blank" rel="noopener">Download Resume (PDF)</a>
+          <div class="links">
+            <a href="https://github.com/YOURUSERNAME" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://linkedin.com/in/YOURLINK" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+        </div>
+      </header>
+
+      <section class="section">
+        <h2>Selected Projects</h2>
+
+        <div class="card">
+          <div class="card-head">
+            <h3>Neuro-Heuristics Toolkit</h3>
+            <div class="card-links">
+              <a href="https://github.com/YOURUSERNAME/neuro-heuristics" target="_blank" rel="noopener">Repo</a>
+            </div>
+          </div>
+          <p>
+            Prompt-based experiments to probe cognitive biases (anchoring, satisficing, recency) in LLM outputs; structured runs and analysis-ready logging.
+          </p>
+          <ul>
+            <li>Designed bias manipulations + controls to isolate causal effects on model responses.</li>
+            <li>Built reproducible experiment runners and result schemas for quant analysis.</li>
+          </ul>
+          <p class="stack"><span>Python</span><span>NLP</span><span>Evaluation</span></p>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <h3>MiCRo Replication (Mixture of Cognitive Reasoners)</h3>
+            <div class="card-links">
+              <a href="https://github.com/YOURUSERNAME/microrep" target="_blank" rel="noopener">Repo</a>
+            </div>
+          </div>
+          <p>
+            Replicating a multi-expert reasoning architecture with a learned router; focuses on training workflow, evaluation, and extensions for interpretability.
+          </p>
+          <ul>
+            <li>Implemented training pipeline and router experiments using embedding features.</li>
+            <li>Planned extension: controllable soft routing to test “reasoning modes.”</li>
+          </ul>
+          <p class="stack"><span>PyTorch</span><span>Transformers</span><span>Routing</span></p>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <h3>AI-Augmented BCI Simulator</h3>
+            <div class="card-links">
+              <a href="https://github.com/YOURUSERNAME/ai-bci" target="_blank" rel="noopener">Repo</a>
+            </div>
+          </div>
+          <p>
+            Streamlit prototype that simulates EEG motor-imagery classification (left/right) with LLM-driven coaching feedback loops.
+          </p>
+          <ul>
+            <li>Integrated classifier outputs with real-time UI feedback.</li>
+            <li>Designed interaction layer to translate signals into actionable guidance.</li>
+          </ul>
+          <p class="stack"><span>Python</span><span>Streamlit</span><span>ML</span></p>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Experience</h2>
+        <div class="card compact">
+          <div class="card-head">
+            <h3>Research / Lab Experience</h3>
+            <span class="muted">2024–2025</span>
+          </div>
+          <ul>
+            <li>Applied statistical modeling and ML workflows to research problems; shipped analysis artifacts and documentation.</li>
+            <li>Built reproducible pipelines, visualizations, and stakeholder-ready summaries.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Skills</h2>
+        <div class="skills">
+          <span>Python</span><span>R</span><span>Pandas</span><span>PyTorch</span><span>Transformers</span>
+          <span>NLP</span><span>Model Evaluation</span><span>Statistics</span><span>Streamlit</span><span>Git/GitHub</span>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Education</h2>
+        <div class="card compact">
+          <div class="card-head">
+            <h3>M.S. Data Science & Statistics</h3>
+            <span class="muted">Rutgers University</span>
+          </div>
+          <p class="muted">Concentration: Statistics · Interests: interpretability, cognition-inspired ML, human-centered AI</p>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <p class="muted">© <span id="year"></span> Ruthie · Built with GitHub Pages</p>
+      </footer>
+    </main>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
