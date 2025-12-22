@@ -7,6 +7,10 @@
   --muted: #2f2f2f;
   --accent: #8b0000;   /* academic red */
   --rule: rgba(0, 0, 0, 0.25);
+   .red {
+  color: var(--accent); /* your academic red */
+}
+
 
   --page-max: 1200px;   /* overall canvas */
   --content-max: 720px; /* text column width */
