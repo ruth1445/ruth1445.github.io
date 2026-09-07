@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ruth Sharon — Portfolio</title>
 <script src="./support.js"></script>
-<link rel="stylesheet" href="./about.css?v=11">
+<link rel="stylesheet" href="./about.css?v=12">
 <link rel="icon" href="data:,">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,10 +15,10 @@
 
 <style>
   html { scroll-behavior: smooth; }
-  html, body { margin: 0; padding: 0; background: #050505; }
+  html, body { margin: 0; padding: 0; background: #A9B7BE; }
   * { box-sizing: border-box; }
-  a { color: #F4EFE6; text-decoration: none; }
-  a:hover { color: #B8D8FF; }
+  a { color: #23201A; text-decoration: none; }
+  a:hover { color: #C4531F; }
   @keyframes riseIn { from { opacity: 0; transform: translateY(18px) scale(0.985); filter: blur(6px); } to { opacity: 1; transform: none; filter: blur(0); } }
   @media (max-width: 700px) {
     .home-card { transform: none !important; transform-origin: center !important; }
@@ -30,7 +30,7 @@
 <x-dc data-loading>
 
 
-<div class="site-shell" style="min-height: 100vh; background: #050505; color: #F4EFE6; font-family: 'Bricolage Grotesque', system-ui, sans-serif; display: flex; flex-direction: column; position: relative; overflow-x: hidden;">
+<div class="site-shell" style="min-height: 100vh; background: #A9B7BE; color: #23201A; font-family: 'Bricolage Grotesque', system-ui, sans-serif; display: flex; flex-direction: column; position: relative; overflow-x: hidden;">
 
   <div style="{{ bgStyle }}"></div>
 
@@ -39,7 +39,7 @@
     <div style="display: flex; align-items: baseline; gap: 18px;">
       <sc-if value="{{ isInner }}">
       <a href="#top" onClick="{{ goHome }}" aria-label="Back" style="display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; position: relative; top: 3px;">
-        <span style="display: block; width: 16px; height: 16px; border-left: 2.5px solid #F4EFE6; border-bottom: 2.5px solid #F4EFE6; transform: rotate(45deg);"></span>
+        <span style="display: block; width: 16px; height: 16px; border-left: 2.5px solid #23201A; border-bottom: 2.5px solid #23201A; transform: rotate(45deg);"></span>
       </a>
       </sc-if>
       <a href="#top" onClick="{{ goHome }}" style="font-size: 21px; letter-spacing: 0.16em; font-weight: 500; text-transform: uppercase; line-height: 1;">Ruth Sharon</a>
@@ -123,12 +123,12 @@
   </sc-if>
 
   <sc-if value="{{ isInterests }}">
-  <div style="position: relative; z-index: 2; height: calc(100vh - 78px); overflow-y: auto; padding: 24px 44px 70px; display: flex; flex-direction: column; align-items: center; gap: 30px; font-family: 'Ascender Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #E8E1D5;">
+  <div style="position: relative; z-index: 2; height: calc(100vh - 78px); overflow-y: auto; padding: 24px 44px 70px; display: flex; flex-direction: column; align-items: center; gap: 30px; font-family: 'Ascender Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #5C5C5C;">
     <h1 style="margin: 0; font-size: clamp(22px, 2.2vw, 30px); font-weight: 700;">interests</h1>
     <div class="interests-grid" style="width: min(100%, 1000px); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(14px, 1.8vw, 24px);">
       <sc-for list="{{ interests }}" as="it" hint-placeholder-count="6">
         <div style="min-width: 0; display: flex; flex-direction: column; gap: 10px;">
-          <span style="display: block; width: 100%; min-width: 0; min-height: 0; aspect-ratio: 4 / 3; overflow: hidden; background: rgba(255,255,255,.08); border: 2px solid rgba(244,239,230,.65);">
+          <span style="display: block; width: 100%; min-width: 0; min-height: 0; aspect-ratio: 4 / 3; overflow: hidden; background: #EFEFEF; border: 2px solid #111;">
             <image-slot id="{{ it.slotId }}" shape="rect" placeholder="{{ it.hint }}" style="width: 100%; height: 100%;"></image-slot>
           </span>
           <span style="font-size: 15px;">{{ it.label }}</span>
@@ -139,14 +139,14 @@
   </sc-if>
 
   <sc-if value="{{ isLab }}">
-  <div class="lab-page" data-lab-scroll="1" style="position: relative; z-index: 2; height: calc(100vh - 78px); overflow-y: auto; padding: 10px 44px 90px; display: flex; justify-content: center; gap: clamp(28px, 5vw, 76px); font-family: 'Ascender Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #D7D1C5;">
+  <div class="lab-page" data-lab-scroll="1" style="position: relative; z-index: 2; height: calc(100vh - 78px); overflow-y: auto; padding: 10px 44px 90px; display: flex; justify-content: center; gap: clamp(28px, 5vw, 76px); font-family: 'Ascender Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #6F6F6F;">
 
     <nav class="lab-nav" style="width: 188px; flex: 0 0 188px; align-self: flex-start; position: sticky; top: 0; display: flex; flex-direction: column; gap: 22px; padding-top: 6px;">
       <sc-for list="{{ labIndex }}" as="g" hint-placeholder-count="4">
         <span style="display: flex; flex-direction: column; gap: 5px;">
-          <a href="{{ g.href }}" style="font-size: 12.5px; font-weight: 700; color: #F2EDE1; text-decoration: none;" style-hover="opacity: 0.6;">{{ g.label }}</a>
+          <a href="{{ g.href }}" style="font-size: 12.5px; font-weight: 700; color: #4E4E4E; text-decoration: none;" style-hover="opacity: 0.6;">{{ g.label }}</a>
           <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="4">
-            <a href="{{ it.href }}" style="font-size: 12.5px; font-weight: 700; color: #AFA89B; text-decoration: none;" style-hover="color: #F2EDE1;">{{ it.title }}</a>
+            <a href="{{ it.href }}" style="font-size: 12.5px; font-weight: 700; color: #A2A2A2; text-decoration: none;" style-hover="color: #4E4E4E;">{{ it.title }}</a>
           </sc-for>
         </span>
       </sc-for>
@@ -155,7 +155,7 @@
     <div class="lab-content" style="flex: 1 1 auto; max-width: 780px; display: flex; flex-direction: column; gap: 54px;">
 
       <div class="lab-section" id="lab-projects" data-sec="lab-projects" style="scroll-margin-top: 10px; width: 100%; display: flex; flex-direction: column; gap: 20px;">
-        <h2 style="margin: 0; text-align: center; font-size: 15px; font-weight: 700; letter-spacing: 0.01em; color: #D7D1C5;">Projects</h2>
+        <h2 style="margin: 0; text-align: center; font-size: 15px; font-weight: 700; letter-spacing: 0.01em; color: #6F6F6F;">Projects</h2>
         <div class="lab-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 34px 24px;">
           <sc-for list="{{ projectCards }}" as="p" hint-placeholder-count="7">
             <a class="lab-project" id="{{ p.id }}" href="{{ p.href }}" style="{{ p.style }}" style-hover="opacity: 0.68;">
@@ -165,8 +165,8 @@
                 </sc-if>
               </span>
               <span style="display: flex; flex-direction: column; gap: 4px; padding: 11px 2px 0; text-align: center;">
-                <span style="font-size: 12.5px; font-weight: 700; color: #F2EDE1;">{{ p.title }}</span>
-                <span style="font-size: 11.5px; font-weight: 700; color: #AFA89B;">{{ p.tag }}</span>
+                <span style="font-size: 12.5px; font-weight: 700; color: #4E4E4E;">{{ p.title }}</span>
+                <span style="font-size: 11.5px; font-weight: 700; color: #A2A2A2;">{{ p.tag }}</span>
                 <span class="lab-project__blurb">{{ p.blurb }}</span>
               </span>
             </a>
@@ -175,7 +175,7 @@
       </div>
 
       <div class="lab-section" id="lab-passion" data-sec="lab-passion" style="scroll-margin-top: 10px; width: 100%; display: flex; flex-direction: column; gap: 20px;">
-        <h2 style="margin: 0; text-align: center; font-size: 15px; font-weight: 700; letter-spacing: 0.01em; color: #D7D1C5;">Passion Projects</h2>
+        <h2 style="margin: 0; text-align: center; font-size: 15px; font-weight: 700; letter-spacing: 0.01em; color: #6F6F6F;">Passion Projects</h2>
         <div class="lab-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 34px 24px;">
           <sc-for list="{{ passionProjects }}" as="p" hint-placeholder-count="2">
             <a class="lab-project" id="{{ p.id }}" href="{{ p.href }}" style="{{ p.style }}" style-hover="opacity: 0.68;">
@@ -185,8 +185,8 @@
                 </sc-if>
               </span>
               <span style="display: flex; flex-direction: column; gap: 4px; padding: 11px 2px 0; text-align: center;">
-                <span style="font-size: 12.5px; font-weight: 700; color: #F2EDE1;">{{ p.title }}</span>
-                <span style="font-size: 11.5px; font-weight: 700; color: #AFA89B;">{{ p.tag }}</span>
+                <span style="font-size: 12.5px; font-weight: 700; color: #4E4E4E;">{{ p.title }}</span>
+                <span style="font-size: 11.5px; font-weight: 700; color: #A2A2A2;">{{ p.tag }}</span>
                 <span class="lab-project__blurb">{{ p.blurb }}</span>
               </span>
             </a>
@@ -195,7 +195,7 @@
       </div>
 
       <div class="lab-section" id="lab-writing" data-sec="lab-writing" style="scroll-margin-top: 10px; width: 100%; display: flex; flex-direction: column; gap: 20px;">
-        <h2 style="margin: 0; text-align: center; font-size: 15px; font-weight: 700; letter-spacing: 0.01em; color: #D7D1C5;">Writing</h2>
+        <h2 style="margin: 0; text-align: center; font-size: 15px; font-weight: 700; letter-spacing: 0.01em; color: #6F6F6F;">Writing</h2>
         <div class="lab-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 34px 24px;">
           <sc-for list="{{ writingProjects }}" as="p" hint-placeholder-count="2">
             <a class="lab-project" id="{{ p.id }}" href="{{ p.href }}" style="{{ p.style }}" style-hover="opacity: 0.68;">
@@ -205,8 +205,8 @@
                 </sc-if>
               </span>
               <span style="display: flex; flex-direction: column; gap: 4px; padding: 11px 2px 0; text-align: center;">
-                <span style="font-size: 12.5px; font-weight: 700; color: #F2EDE1;">{{ p.title }}</span>
-                <span style="font-size: 11.5px; font-weight: 700; color: #AFA89B;">{{ p.tag }}</span>
+                <span style="font-size: 12.5px; font-weight: 700; color: #4E4E4E;">{{ p.title }}</span>
+                <span style="font-size: 11.5px; font-weight: 700; color: #A2A2A2;">{{ p.tag }}</span>
                 <span class="lab-project__blurb">{{ p.blurb }}</span>
               </span>
             </a>
@@ -219,22 +219,22 @@
 
   <sc-if value="{{ isContact }}">
   <div style="position: relative; z-index: 2; height: calc(100vh - 78px); overflow-y: auto; padding: 40px 44px 70px; display: flex; flex-direction: column; align-items: center; font-family: 'Neue Montreal', 'PP Neue Montreal', 'Neue Haas Grotesk Display Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;">
-  <div style="width: min(100%, 1180px); background: rgba(255,255,255,.08); border: 1px solid rgba(244,239,230,.34); backdrop-filter: blur(26px) saturate(1.35); -webkit-backdrop-filter: blur(26px) saturate(1.35); padding: clamp(36px, 4vw, 56px) clamp(28px, 3.4vw, 48px); font-family: 'Neue Montreal', 'PP Neue Montreal', 'Neue Haas Grotesk Display Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;">
-    <span style="font-family: 'Neue Montreal', 'PP Neue Montreal', 'Neue Haas Grotesk Display Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 12px; letter-spacing: 0.2em; color: #B8B0A2;">CONTACT</span>
+  <div style="width: min(100%, 1180px); background: #EDE7D6; padding: clamp(36px, 4vw, 56px) clamp(28px, 3.4vw, 48px); font-family: 'Neue Montreal', 'PP Neue Montreal', 'Neue Haas Grotesk Display Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;">
+    <span style="font-family: 'Neue Montreal', 'PP Neue Montreal', 'Neue Haas Grotesk Display Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 12px; letter-spacing: 0.2em; color: #6F6653;">CONTACT</span>
     <h1 style="margin: 14px 0 22px; font-size: clamp(38px, 6vw, 68px); line-height: 1; letter-spacing: -0.02em; font-weight: 700;">Say hello</h1>
-    <p style="margin: 0 0 40px; font-size: 18px; line-height: 1.75; color: #D7D1C5;">Placeholder — drop in your real email and links.</p>
+    <p style="margin: 0 0 40px; font-size: 18px; line-height: 1.75; color: #4A4438;">Placeholder — drop in your real email and links.</p>
     <div style="display: flex; flex-direction: column;">
-      <a href="mailto:hello@example.com" style="display: flex; align-items: baseline; justify-content: space-between; gap: 24px; padding: 20px 0; border-top: 1px solid rgba(244,239,230,.34);" style-hover="color: #B8D8FF;">
+      <a href="mailto:hello@example.com" style="display: flex; align-items: baseline; justify-content: space-between; gap: 24px; padding: 20px 0; border-top: 1px solid #CFC5AB;" style-hover="color: #C4531F;">
         <span style="font-size: 24px;">hello@example.com</span>
-        <span style="font-family: 'Neue Montreal', 'PP Neue Montreal', 'Neue Haas Grotesk Display Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 12px; color: #B8B0A2;">EMAIL</span>
+        <span style="font-family: 'Neue Montreal', 'PP Neue Montreal', 'Neue Haas Grotesk Display Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 12px; color: #6F6653;">EMAIL</span>
       </a>
-      <a href="#linkedin" style="display: flex; align-items: baseline; justify-content: space-between; gap: 24px; padding: 20px 0; border-top: 1px solid rgba(244,239,230,.34);" style-hover="color: #B8D8FF;">
+      <a href="#linkedin" style="display: flex; align-items: baseline; justify-content: space-between; gap: 24px; padding: 20px 0; border-top: 1px solid #CFC5AB;" style-hover="color: #C4531F;">
         <span style="font-size: 24px;">LinkedIn</span>
-        <span style="font-family: 'Neue Montreal', 'PP Neue Montreal', 'Neue Haas Grotesk Display Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 12px; color: #B8B0A2;">↗</span>
+        <span style="font-family: 'Neue Montreal', 'PP Neue Montreal', 'Neue Haas Grotesk Display Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 12px; color: #6F6653;">↗</span>
       </a>
-      <a href="#instagram" style="display: flex; align-items: baseline; justify-content: space-between; gap: 24px; padding: 20px 0; border-top: 1px solid rgba(244,239,230,.34); border-bottom: 1px solid rgba(244,239,230,.34);" style-hover="color: #B8D8FF;">
+      <a href="#instagram" style="display: flex; align-items: baseline; justify-content: space-between; gap: 24px; padding: 20px 0; border-top: 1px solid #CFC5AB; border-bottom: 1px solid #CFC5AB;" style-hover="color: #C4531F;">
         <span style="font-size: 24px;">Instagram</span>
-        <span style="font-family: 'Neue Montreal', 'PP Neue Montreal', 'Neue Haas Grotesk Display Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 12px; color: #B8B0A2;">↗</span>
+        <span style="font-family: 'Neue Montreal', 'PP Neue Montreal', 'Neue Haas Grotesk Display Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 12px; color: #6F6653;">↗</span>
       </a>
     </div>
   </div>
@@ -388,7 +388,7 @@ const LAB_CHARS = ['a','b','c','e','g','h','i','j','l','n','o','p','r','s','t','
 
 const THEMES = [
   { name: 'Mountains', page: '#FAF0E0', art: './assets/mountains.png', artSize: 'cover', artPos: 'center bottom',
-    cards: { about: { bg: '#DCE2E9', ink: '#F7F1E7' }, lab: { bg: '#66795D', ink: '#F7F1E7' }, contact: { bg: '#A7A87E', ink: '#F7F1E7' } } },
+    cards: { about: { bg: '#DCE2E9', ink: '#16150F' }, lab: { bg: '#66795D', ink: '#0F140C' }, contact: { bg: '#A7A87E', ink: '#16150F' } } },
 ];
 
 const COPY = 'I can read/write/speak English, Hindi, Malayalam, and Arabic. I understand Telugu and Tamil. I have ben trying to learn Indonesian and French for a year now.';
@@ -506,9 +506,9 @@ class Component extends DCLogic {
         key: c.key,
         href: '#' + c.key,
         caption: c.caption,
-        captionStyle: `position:absolute; left:50%; bottom:calc(100% + 14px); transform:translateX(-50%) translateY(${on ? '0' : '6px'}); opacity:${on ? 1 : 0}; pointer-events:none; white-space:nowrap; color:#F4EFE6; font-family:'Helvetica Neue',Helvetica,sans-serif; font-size:15px; font-weight:700; letter-spacing:-0.01em; text-transform:lowercase; transition:opacity 320ms ease, transform 320ms cubic-bezier(.2,.9,.2,1);`,
+        captionStyle: `position:absolute; left:50%; bottom:calc(100% + 14px); transform:translateX(-50%) translateY(${on ? '0' : '6px'}); opacity:${on ? 1 : 0}; pointer-events:none; white-space:nowrap; color:#23201A; font-family:'Helvetica Neue',Helvetica,sans-serif; font-size:15px; font-weight:700; letter-spacing:-0.01em; text-transform:lowercase; transition:opacity 320ms ease, transform 320ms cubic-bezier(.2,.9,.2,1);`,
         letters,
-        style: `position:relative; container-type:inline-size; display:block; width:clamp(210px,27vw,360px); aspect-ratio:1; border-radius:30px; background:${theme.boxesBehind ? 'transparent' : 'linear-gradient(135deg,rgba(255,255,255,.18),' + glass(t.bg, 0.10) + ' 58%,rgba(255,255,255,.06))'}; backdrop-filter:blur(28px) saturate(1.35); -webkit-backdrop-filter:blur(28px) saturate(1.35); border:1.5px solid rgba(244,239,230,.55); box-shadow:0 30px 70px -34px rgba(0,0,0,.88), inset 0 1px 0 rgba(255,255,255,.58), inset 1px 0 0 rgba(255,255,255,.22); color:${t.ink}; font-family:'Helvetica Neue',Helvetica,sans-serif; overflow:visible; transform-origin:${origin}; transition:transform 420ms cubic-bezier(.32,.72,0,1), background 500ms ease, box-shadow 420ms ease; transform:perspective(1000px) translateY(${on ? '-8px' : '0'}) rotateY(${lean.toFixed(2)}deg) scaleX(${stretch.toFixed(3)});`,
+        style: `position:relative; container-type:inline-size; display:block; width:clamp(210px,27vw,360px); aspect-ratio:1; border-radius:30px; background:${theme.boxesBehind ? 'transparent' : 'linear-gradient(135deg,rgba(255,255,255,.38),' + glass(t.bg, 0.12) + ' 58%,rgba(255,255,255,.16))'}; backdrop-filter:blur(28px) saturate(1.35); -webkit-backdrop-filter:blur(28px) saturate(1.35); border:1.5px solid rgba(21,24,23,.68); box-shadow:0 28px 54px -34px rgba(35,42,43,.38), inset 0 1px 0 rgba(255,255,255,.88), inset 1px 0 0 rgba(255,255,255,.38); color:${t.ink}; font-family:'Helvetica Neue',Helvetica,sans-serif; overflow:visible; transform-origin:${origin}; transition:transform 420ms cubic-bezier(.32,.72,0,1), background 500ms ease, box-shadow 420ms ease; transform:perspective(1000px) translateY(${on ? '-8px' : '0'}) rotateY(${lean.toFixed(2)}deg) scaleX(${stretch.toFixed(3)});`,
         onClick: (e) => { e.preventDefault(); this.set(c.key); },
         onEnter: () => this.setState({ hover: c.key }),
         onLeave: () => this.setState({ hover: null }),
@@ -553,7 +553,7 @@ class Component extends DCLogic {
     }));
     const dots = THEMES.map((t, i) => ({
       label: t.name,
-      style: `width:${i === idx ? 26 : 9}px; height:9px; border-radius:9px; border:none; padding:0; cursor:pointer; background:${i === idx ? '#F4EFE6' : 'rgba(244,239,230,.3)'}; transition:all 400ms ease;`,
+      style: `width:${i === idx ? 26 : 9}px; height:9px; border-radius:9px; border:none; padding:0; cursor:pointer; background:${i === idx ? '#23201A' : 'rgba(35,32,26,.3)'}; transition:all 400ms ease;`,
       onClick: () => this.setState({ slide: i, hover: null }),
     }));
 
@@ -581,23 +581,23 @@ class Component extends DCLogic {
         num: '0' + (i + 1),
         title: c.title,
         body: c.body,
-        style: `position:absolute; left:50%; bottom:16%; width:clamp(198px,24%,248px); height:clamp(292px,52%,318px); padding:22px 22px 24px; border-radius:0; transform-origin:50% 150%; transform:${t}; z-index:${on ? 30 : 10 + i}; cursor:default; display:flex; flex-direction:column; gap:10px; background:rgba(255,255,255,.08); border:1px solid rgba(244,239,230,.46); box-shadow:${on ? '0 18px 34px -22px rgba(0,0,0,0.76)' : '0 10px 24px -18px rgba(0,0,0,0.62)'}; border-top:3px solid ${on ? c.tint : 'rgba(244,239,230,.62)'}; opacity:${dim ? 0.7 : 1}; transition:transform 520ms ${E}, box-shadow 520ms ${E}, opacity 360ms ease, border-color 360ms ease;`,
+        style: `position:absolute; left:50%; bottom:16%; width:clamp(198px,24%,248px); height:clamp(292px,52%,318px); padding:22px 22px 24px; border-radius:0; transform-origin:50% 150%; transform:${t}; z-index:${on ? 30 : 10 + i}; cursor:default; display:flex; flex-direction:column; gap:10px; background:#F5F0E4; border:1px solid #23201A; box-shadow:${on ? '0 18px 34px -26px rgba(35,32,26,0.4)' : '0 10px 24px -22px rgba(35,32,26,0.3)'}; border-top:3px solid ${on ? c.tint : '#23201A'}; opacity:${dim ? 0.7 : 1}; transition:transform 520ms ${E}, box-shadow 520ms ${E}, opacity 360ms ease, border-color 360ms ease;`,
         numStyle: `font-family:'Space Mono',monospace; font-size:11px; letter-spacing:0.18em; color:${c.tint};`,
-        titleStyle: `margin:0; font-family:'Helvetica Neue',Helvetica,sans-serif; font-size:${on ? 19 : 17}px; font-weight:700; letter-spacing:-0.01em; color:#F4EFE6; transition:font-size 420ms ${E};`,
-        bodyStyle: `margin:0; font-family:Georgia,'Times New Roman',serif; font-size:13.5px; line-height:1.5; color:rgba(244,239,230,0.78); text-wrap:pretty; opacity:${on ? 1 : 0}; transform:translateY(${on ? '0' : '8px'}); transition:opacity 380ms ease ${on ? '120ms' : '0ms'}, transform 460ms ${E};`,
+        titleStyle: `margin:0; font-family:'Helvetica Neue',Helvetica,sans-serif; font-size:${on ? 19 : 17}px; font-weight:700; letter-spacing:-0.01em; color:#16150F; transition:font-size 420ms ${E};`,
+        bodyStyle: `margin:0; font-family:Georgia,'Times New Roman',serif; font-size:13.5px; line-height:1.5; color:rgba(22,21,15,0.78); text-wrap:pretty; opacity:${on ? 1 : 0}; transform:translateY(${on ? '0' : '8px'}); transition:opacity 380ms ease ${on ? '120ms' : '0ms'}, transform 460ms ${E};`,
         onEnter: () => this.setState({ card: c.key }),
         onLeave: () => this.setState({ card: null }),
       };
     });
 
-    const base = this.props.bgTone || '#050505';
-    const liquidBackdrop = 'radial-gradient(circle at 19% 24%,rgba(92,142,168,.30),transparent 29%),radial-gradient(circle at 78% 73%,rgba(51,255,68,.12),transparent 25%),radial-gradient(circle at 66% 16%,rgba(190,145,214,.18),transparent 23%),#050505';
-    const bgStyle = `position:fixed; inset:0; z-index:0; pointer-events:none; background:${p === 'home' || p === 'about' || p === 'lab' || p === 'interests' ? liquidBackdrop : base};`;
+    const base = this.props.bgTone || '#A9B7BE';
+    const liquidBackdrop = 'radial-gradient(circle at 19% 24%,rgba(150,201,229,.42),transparent 29%),radial-gradient(circle at 78% 73%,rgba(51,255,68,.17),transparent 25%),radial-gradient(circle at 66% 16%,rgba(224,191,234,.25),transparent 23%),#F7F0E2';
+    const bgStyle = `position:fixed; inset:0; z-index:0; pointer-events:none; background:${p === 'home' || p === 'about' || p === 'lab' ? liquidBackdrop : p === 'interests' ? '#FFFFFF' : base};`;
 
     const labChips = LAB_CATS.map((c) => ({
       label: c.label,
       href: '#lab-' + c.key,
-      style: `display:inline-block; font-size:13.5px; font-weight:500; letter-spacing:0.01em; color:#F4EFE6; transition:opacity 220ms ease;`,
+      style: `display:inline-block; font-size:13.5px; font-weight:500; letter-spacing:0.01em; color:#16150F; transition:opacity 220ms ease;`,
     }));
     const projList = (cat) => PROJECTS.filter((p) => p.cat === cat).map((p, j) => ({
       title: p.title,
@@ -608,7 +608,7 @@ class Component extends DCLogic {
       slotHint: 'screenshot for ' + p.title,
       style: 'display:flex; flex-direction:column; text-decoration:none; transition:opacity 240ms ease;',
       tag: p.tag || cat,
-      shotStyle: 'display:block; width:100%; aspect-ratio:4 / 3; background:rgba(255,255,255,.08);',
+      shotStyle: 'display:block; width:100%; aspect-ratio:4 / 3; background:#EFEFEF;',
       noImg: true,
     }));
     const labIndex = LAB_CATS.map((c) => ({
@@ -656,7 +656,7 @@ class Component extends DCLogic {
       aboutToggle: this.state.listMode ? 'take me back' : 'click here',
       toggleList: (e) => { e.preventDefault(); this.setState({ listMode: !this.state.listMode, card: null }); },
       fan,
-      fanHintStyle: `position:absolute; left:6px; bottom:10px; pointer-events:none; font-family:'Helvetica Neue',Helvetica,sans-serif; font-size:12px; letter-spacing:0.04em; color:rgba(244,239,230,0.5); opacity:${this.state.card ? 0 : 1}; transition:opacity 320ms ease;`,
+      fanHintStyle: `position:absolute; left:6px; bottom:10px; pointer-events:none; font-family:'Helvetica Neue',Helvetica,sans-serif; font-size:12px; letter-spacing:0.04em; color:rgba(28,26,20,0.5); opacity:${this.state.card ? 0 : 1}; transition:opacity 320ms ease;`,
       isLab: p === 'lab',
       isContact: p === 'contact',
       goHome: (e) => { e.preventDefault(); this.set('home'); },
