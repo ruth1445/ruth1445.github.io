@@ -649,7 +649,7 @@ class Component extends DCLogic {
       isAbout: p === 'about',
       isInterests: p === 'interests',
       goInterests: (e) => { e.preventDefault(); this.set('interests'); },
-      interests: ['film photography', 'running', 'cooking', 'reading', 'music', 'travel'].map((label, i) => ({ label, slotId: 'interest-' + i, hint: label + ' photo' })),
+      interests: ['Favourite Excerpts from Books', 'Film Photography', 'Language Learning', 'Food/Cooking', 'Music'].map((label, i) => ({ label, slotId: 'interest-' + i, hint: 'image for ' + label })),
       aboutList: this.state.listMode,
       aboutFan: !this.state.listMode,
       aboutPrompt: this.state.listMode ? 'want the cards back?' : 'want the info in list form?',
