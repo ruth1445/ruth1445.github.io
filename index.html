@@ -20,9 +20,225 @@
   a { color: #23201A; text-decoration: none; }
   a:hover { color: #C4531F; }
   @keyframes riseIn { from { opacity: 0; transform: translateY(18px) scale(0.985); filter: blur(6px); } to { opacity: 1; transform: none; filter: blur(0); } }
+  @keyframes pageFloatIn { from { opacity: 0; transform: translateY(28px) scale(.985); filter: blur(10px); } to { opacity: 1; transform: none; filter: blur(0); } }
+  @keyframes labCardReveal { from { opacity: .18; transform: translateY(72px) scale(.96); } to { opacity: 1; transform: none; } }
+  [data-page="lab"] .site-header a { color: #EAF4EF !important; text-shadow: 0 1px 18px rgba(179,236,209,.16); }
+  [data-page="lab"] .site-header a:hover { color: #F0A9B7 !important; }
+  .about-page { animation: pageFloatIn 720ms cubic-bezier(.2,.9,.2,1) both; }
   @media (max-width: 700px) {
     .home-card { transform: none !important; transform-origin: center !important; }
   }
+
+  /* Laboratory folder view */
+  .lab-night-page {
+    position: relative;
+    z-index: 2;
+    height: calc(100vh - 78px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 0 clamp(16px, 3vw, 46px) 96px;
+    color: #EAF4EF;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    scroll-behavior: smooth;
+    animation: pageFloatIn 760ms cubic-bezier(.2,.9,.2,1) both;
+  }
+  .lab-night-page::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      radial-gradient(circle at 72% 17%, rgba(228, 139, 170, .16), transparent 27%),
+      radial-gradient(circle at 20% 28%, rgba(101, 168, 190, .20), transparent 30%),
+      radial-gradient(circle at 78% 82%, rgba(105, 218, 121, .12), transparent 29%);
+    mix-blend-mode: screen;
+  }
+  .lab-hero {
+    min-height: calc(100vh - 78px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: min(100%, 1120px);
+    margin: 0 auto;
+    padding: clamp(64px, 10vh, 120px) 0 82px;
+  }
+  .lab-kicker {
+    margin: 0 0 18px;
+    font-size: clamp(13px, 1.2vw, 16px);
+    line-height: 1;
+    font-weight: 700;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: rgba(234,244,239,.66);
+  }
+  .lab-title {
+    margin: 0;
+    max-width: 880px;
+    font-size: clamp(48px, 9vw, 128px);
+    line-height: .88;
+    letter-spacing: -.055em;
+    font-weight: 700;
+    color: #F6EEE8;
+    text-wrap: balance;
+  }
+  .lab-blurb {
+    max-width: 680px;
+    margin: 28px 0 0;
+    font-size: clamp(17px, 1.65vw, 24px);
+    line-height: 1.42;
+    color: rgba(234,244,239,.76);
+    text-wrap: pretty;
+  }
+  .lab-jump-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 34px;
+  }
+  .lab-jump-row a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 128px;
+    padding: 12px 18px 13px;
+    border: 1px solid rgba(240,169,183,.52);
+    border-radius: 999px;
+    background: rgba(240,169,183,.13);
+    color: #F6D7DE;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .16em;
+    text-transform: lowercase;
+    transition: transform 220ms ease, background 220ms ease, border-color 220ms ease;
+  }
+  .lab-jump-row a:hover {
+    transform: translateY(-2px);
+    background: rgba(240,169,183,.22);
+    border-color: rgba(240,169,183,.74);
+    color: #FFE4EA;
+  }
+  .lab-section {
+    width: min(100%, 1260px);
+    margin: 0 auto;
+    padding: 44px 0 78px;
+  }
+  .lab-section-bar {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 0 0 12px;
+    margin-bottom: clamp(24px, 4vw, 42px);
+    border-bottom: 1px solid rgba(234,244,239,.38);
+    color: rgba(234,244,239,.86);
+    font-size: clamp(13px, 1.35vw, 17px);
+    font-weight: 700;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+  }
+  .lab-preview-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: clamp(18px, 2.3vw, 34px);
+  }
+  .lab-preview-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 0;
+    color: #EAF4EF;
+    text-decoration: none;
+    animation: labCardReveal both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 42%;
+  }
+  .lab-preview-surface {
+    position: relative;
+    aspect-ratio: 1 / 1.18;
+    border: 2px solid rgba(232, 126, 153, .72);
+    border-radius: 18px;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 38% 35%, rgba(131, 238, 137, .20), transparent 22%),
+      radial-gradient(circle at 66% 58%, rgba(122, 209, 141, .18), transparent 20%),
+      linear-gradient(145deg, rgba(91,98,85,.76), rgba(38,46,39,.86));
+    box-shadow:
+      0 30px 42px -34px rgba(0,0,0,.72),
+      inset 0 1px 0 rgba(255,255,255,.07);
+    transform: perspective(900px) rotateX(5deg) rotateY(-4deg);
+    transform-origin: center center;
+    transition: transform 360ms cubic-bezier(.32,.72,0,1), border-color 260ms ease, box-shadow 260ms ease;
+  }
+  .lab-preview-card:nth-child(4n + 2) .lab-preview-surface { transform: perspective(900px) rotateX(4deg) rotateY(3deg); border-color: rgba(205, 163, 223, .70); }
+  .lab-preview-card:nth-child(4n + 3) .lab-preview-surface { transform: perspective(900px) rotateX(6deg) rotateY(-2deg); border-color: rgba(128, 203, 205, .68); }
+  .lab-preview-card:nth-child(4n) .lab-preview-surface { transform: perspective(900px) rotateX(4deg) rotateY(4deg); border-color: rgba(222, 222, 142, .62); }
+  .lab-preview-card:hover .lab-preview-surface {
+    transform: perspective(900px) rotateX(0deg) rotateY(0deg) translateY(-8px) scale(1.015);
+    box-shadow: 0 38px 56px -34px rgba(0,0,0,.82), inset 0 1px 0 rgba(255,255,255,.10);
+  }
+  .lab-preview-surface::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 26% 42%, rgba(209,235,226,.16), transparent 17%),
+      radial-gradient(circle at 72% 28%, rgba(209,235,226,.10), transparent 16%),
+      radial-gradient(circle at 64% 74%, rgba(146,234,136,.12), transparent 18%);
+    opacity: .78;
+  }
+  .lab-preview-surface::after {
+    content: "";
+    position: absolute;
+    inset: 12px;
+    border-radius: 12px;
+    border: 1px solid rgba(234,244,239,.08);
+    background: rgba(234,244,239,.025);
+  }
+  .lab-preview-meta {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 14px;
+    color: rgba(234,244,239,.88);
+  }
+  .lab-preview-title {
+    min-width: 0;
+    font-size: clamp(14px, 1.25vw, 18px);
+    line-height: 1.08;
+    font-weight: 700;
+    letter-spacing: -.01em;
+  }
+  .lab-preview-tag {
+    flex: 0 0 auto;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: rgba(246,215,222,.58);
+  }
+  @supports not (animation-timeline: view()) {
+    .lab-preview-card {
+      animation: pageFloatIn 760ms cubic-bezier(.2,.9,.2,1) both;
+    }
+    .lab-preview-card:nth-child(2) { animation-delay: 80ms; }
+    .lab-preview-card:nth-child(3) { animation-delay: 140ms; }
+    .lab-preview-card:nth-child(4) { animation-delay: 200ms; }
+  }
+  @media (max-width: 980px) {
+    .lab-preview-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .lab-title { max-width: 760px; }
+  }
+  @media (max-width: 700px) {
+    .lab-night-page { height: calc(100vh - 78px); padding: 0 18px 72px; }
+    .lab-hero { min-height: calc(100vh - 78px); padding-top: 54px; }
+    .lab-preview-grid { grid-template-columns: 1fr; gap: 28px; }
+    .lab-preview-surface { aspect-ratio: 1.35 / 1; transform: none !important; }
+    .lab-section-bar { letter-spacing: .12em; }
+  }
+  /* End Laboratory folder view */
+
 </style>
 
 </head>
@@ -139,82 +355,63 @@
   </sc-if>
 
   <sc-if value="{{ isLab }}">
-  <div class="lab-page" data-lab-scroll="1" style="position: relative; z-index: 2; height: calc(100vh - 78px); overflow-y: auto; padding: 10px 44px 90px; display: flex; justify-content: center; gap: clamp(28px, 5vw, 76px); font-family: 'Ascender Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #6F6F6F;">
+  <main class="lab-night-page" aria-label="Laboratory" data-lab-scroll>
+    <section class="lab-hero" aria-label="Laboratory introduction">
+      <p class="lab-kicker">Laboratory</p>
+      <h1 class="lab-title">projects, experiments, and open threads.</h1>
+      <p class="lab-blurb">A working archive of the things I have built, replicated, tested, written, and kept thinking about. The thumbnails are intentionally blank for now so the right images can land here next.</p>
+      <nav class="lab-jump-row" aria-label="Laboratory sections">
+        <sc-for list="{{ labIndex }}" as="cat" hint-placeholder-count="3">
+          <a href="{{ cat.href }}">{{ cat.label }}</a>
+        </sc-for>
+      </nav>
+    </section>
 
-    <nav class="lab-nav" style="width: 188px; flex: 0 0 188px; align-self: flex-start; position: sticky; top: 0; display: flex; flex-direction: column; gap: 22px; padding-top: 6px;">
-      <sc-for list="{{ labIndex }}" as="g" hint-placeholder-count="4">
-        <span style="display: flex; flex-direction: column; gap: 5px;">
-          <a href="{{ g.href }}" style="font-size: 12.5px; font-weight: 700; color: #4E4E4E; text-decoration: none;" style-hover="opacity: 0.6;">{{ g.label }}</a>
-          <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="4">
-            <a href="{{ it.href }}" style="font-size: 12.5px; font-weight: 700; color: #A2A2A2; text-decoration: none;" style-hover="color: #4E4E4E;">{{ it.title }}</a>
-          </sc-for>
-        </span>
-      </sc-for>
-    </nav>
-
-    <div class="lab-content" style="flex: 1 1 auto; max-width: 780px; display: flex; flex-direction: column; gap: 54px;">
-
-      <div class="lab-section" id="lab-projects" data-sec="lab-projects" style="scroll-margin-top: 10px; width: 100%; display: flex; flex-direction: column; gap: 20px;">
-        <h2 style="margin: 0; text-align: center; font-size: 15px; font-weight: 700; letter-spacing: 0.01em; color: #6F6F6F;">Projects</h2>
-        <div class="lab-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 34px 24px;">
-          <sc-for list="{{ projectCards }}" as="p" hint-placeholder-count="7">
-            <a class="lab-project" id="{{ p.id }}" href="{{ p.href }}" style="{{ p.style }}" style-hover="opacity: 0.68;">
-              <span style="{{ p.shotStyle }}">
-                <sc-if value="{{ p.noImg }}">
-                  <image-slot id="{{ p.slotId }}" shape="rect" placeholder="{{ p.slotHint }}" style="width: 100%; height: 100%;"></image-slot>
-                </sc-if>
-              </span>
-              <span style="display: flex; flex-direction: column; gap: 4px; padding: 11px 2px 0; text-align: center;">
-                <span style="font-size: 12.5px; font-weight: 700; color: #4E4E4E;">{{ p.title }}</span>
-                <span style="font-size: 11.5px; font-weight: 700; color: #A2A2A2;">{{ p.tag }}</span>
-                <span class="lab-project__blurb">{{ p.blurb }}</span>
-              </span>
-            </a>
-          </sc-for>
-        </div>
+    <section class="lab-section" id="lab-projects" aria-label="Projects">
+      <div class="lab-section-bar"><span>laboratory</span><span>projects</span></div>
+      <div class="lab-preview-grid">
+        <sc-for list="{{ projectCards }}" as="project" hint-placeholder-count="7">
+          <a class="lab-preview-card" href="{{ project.href }}" target="{{ project.target }}" rel="{{ project.rel }}">
+            <span class="lab-preview-surface" aria-hidden="true"></span>
+            <span class="lab-preview-meta">
+              <span class="lab-preview-title">{{ project.title }}</span>
+              <span class="lab-preview-tag">{{ project.tag }}</span>
+            </span>
+          </a>
+        </sc-for>
       </div>
+    </section>
 
-      <div class="lab-section" id="lab-passion" data-sec="lab-passion" style="scroll-margin-top: 10px; width: 100%; display: flex; flex-direction: column; gap: 20px;">
-        <h2 style="margin: 0; text-align: center; font-size: 15px; font-weight: 700; letter-spacing: 0.01em; color: #6F6F6F;">Passion Projects</h2>
-        <div class="lab-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 34px 24px;">
-          <sc-for list="{{ passionProjects }}" as="p" hint-placeholder-count="2">
-            <a class="lab-project" id="{{ p.id }}" href="{{ p.href }}" style="{{ p.style }}" style-hover="opacity: 0.68;">
-              <span style="{{ p.shotStyle }}">
-                <sc-if value="{{ p.noImg }}">
-                  <image-slot id="{{ p.slotId }}" shape="rect" placeholder="{{ p.slotHint }}" style="width: 100%; height: 100%;"></image-slot>
-                </sc-if>
-              </span>
-              <span style="display: flex; flex-direction: column; gap: 4px; padding: 11px 2px 0; text-align: center;">
-                <span style="font-size: 12.5px; font-weight: 700; color: #4E4E4E;">{{ p.title }}</span>
-                <span style="font-size: 11.5px; font-weight: 700; color: #A2A2A2;">{{ p.tag }}</span>
-                <span class="lab-project__blurb">{{ p.blurb }}</span>
-              </span>
-            </a>
-          </sc-for>
-        </div>
+    <section class="lab-section" id="lab-passion" aria-label="Passion projects">
+      <div class="lab-section-bar"><span>laboratory</span><span>passion</span></div>
+      <div class="lab-preview-grid">
+        <sc-for list="{{ passionProjects }}" as="project" hint-placeholder-count="2">
+          <a class="lab-preview-card" href="{{ project.href }}" target="{{ project.target }}" rel="{{ project.rel }}">
+            <span class="lab-preview-surface" aria-hidden="true"></span>
+            <span class="lab-preview-meta">
+              <span class="lab-preview-title">{{ project.title }}</span>
+              <span class="lab-preview-tag">{{ project.tag }}</span>
+            </span>
+          </a>
+        </sc-for>
       </div>
+    </section>
 
-      <div class="lab-section" id="lab-writing" data-sec="lab-writing" style="scroll-margin-top: 10px; width: 100%; display: flex; flex-direction: column; gap: 20px;">
-        <h2 style="margin: 0; text-align: center; font-size: 15px; font-weight: 700; letter-spacing: 0.01em; color: #6F6F6F;">Writing</h2>
-        <div class="lab-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 34px 24px;">
-          <sc-for list="{{ writingProjects }}" as="p" hint-placeholder-count="2">
-            <a class="lab-project" id="{{ p.id }}" href="{{ p.href }}" style="{{ p.style }}" style-hover="opacity: 0.68;">
-              <span style="{{ p.shotStyle }}">
-                <sc-if value="{{ p.noImg }}">
-                  <image-slot id="{{ p.slotId }}" shape="rect" placeholder="{{ p.slotHint }}" style="width: 100%; height: 100%;"></image-slot>
-                </sc-if>
-              </span>
-              <span style="display: flex; flex-direction: column; gap: 4px; padding: 11px 2px 0; text-align: center;">
-                <span style="font-size: 12.5px; font-weight: 700; color: #4E4E4E;">{{ p.title }}</span>
-                <span style="font-size: 11.5px; font-weight: 700; color: #A2A2A2;">{{ p.tag }}</span>
-                <span class="lab-project__blurb">{{ p.blurb }}</span>
-              </span>
-            </a>
-          </sc-for>
-        </div>
+    <section class="lab-section" id="lab-writing" aria-label="Writing">
+      <div class="lab-section-bar"><span>laboratory</span><span>writing</span></div>
+      <div class="lab-preview-grid">
+        <sc-for list="{{ writingProjects }}" as="project" hint-placeholder-count="2">
+          <a class="lab-preview-card" href="{{ project.href }}" target="{{ project.target }}" rel="{{ project.rel }}">
+            <span class="lab-preview-surface" aria-hidden="true"></span>
+            <span class="lab-preview-meta">
+              <span class="lab-preview-title">{{ project.title }}</span>
+              <span class="lab-preview-tag">{{ project.tag }}</span>
+            </span>
+          </a>
+        </sc-for>
       </div>
-    </div>
-  </div>
+    </section>
+  </main>
   </sc-if>
 
   <sc-if value="{{ isContact }}">
@@ -420,7 +617,7 @@ const PROJECTS = [
   { cat: 'projects', title: 'MiCRo', blurb: 'Replicated an expert-router setup with MLflow tracking, faster training, and module-level routing diagnostics.', href: PLACEHOLDER, tag: 'ML systems' },
   { cat: 'projects', title: 'Monosemanticity', blurb: 'Trained sparse autoencoders on language-model activations to study interpretable features and superposition.', href: PLACEHOLDER, tag: 'interpretability' },
   { cat: 'projects', title: 'Societal Impacts Research Paper', blurb: 'Co-authored an NBEA paper using an NLP pipeline over 8K+ Reddit posts to study chatbot perception and bias.', href: PLACEHOLDER, tag: 'NLP research' },
-  { cat: 'projects', title: 'Does a growth mindset nudge boost achievement?', blurb: 'Analyzed whether a short growth-mindset intervention shifts achievement outcomes using a causal/statistical lens.', href: PLACEHOLDER, tag: 'statistics' },
+  { cat: 'projects', title: 'Does a growth mindset nudge boost achievement?', blurb: 'Analyzed whether a short growth-mindset intervention shifts achievement outcomes using a causal/statistical lens.', href: PLACEHOLDER, tag: 'statistics', image: './growth.jpg' },
   { cat: 'passion', title: 'Learning from People', blurb: 'A public interview and writing project about creative people, work, taste, and the strange ways people think.', href: 'https://publicyuzu.org/#/', tag: 'public yuzu' },
   { cat: 'passion', title: 'Harmonies', blurb: 'A small web experiment in layered sound, language, and visual rhythm.', href: 'https://ruth1445.github.io/harmonies/', tag: 'creative code' },
   { cat: 'writing', title: 'Learning from People', blurb: 'Long-form conversations and portraits hosted on Public Yuzu.', href: 'https://publicyuzu.org/#/', tag: 'interviews' },
@@ -592,7 +789,9 @@ class Component extends DCLogic {
 
     const base = this.props.bgTone || '#A9B7BE';
     const liquidBackdrop = 'radial-gradient(circle at 19% 24%,rgba(150,201,229,.42),transparent 29%),radial-gradient(circle at 78% 73%,rgba(51,255,68,.17),transparent 25%),radial-gradient(circle at 66% 16%,rgba(224,191,234,.25),transparent 23%),#F7F0E2';
-    const bgStyle = `position:fixed; inset:0; z-index:0; pointer-events:none; background:${p === 'home' || p === 'about' || p === 'lab' ? liquidBackdrop : p === 'interests' ? '#FFFFFF' : base};`;
+    const nightBackdrop = 'radial-gradient(circle at 19% 24%,rgba(54,96,116,.54),transparent 29%),radial-gradient(circle at 78% 73%,rgba(67,160,74,.20),transparent 25%),radial-gradient(circle at 66% 16%,rgba(130,64,103,.30),transparent 23%),#141713';
+    const pageBg = p === 'lab' ? nightBackdrop : p === 'home' || p === 'about' ? liquidBackdrop : p === 'interests' ? '#FFFFFF' : base;
+    const bgStyle = `position:fixed; inset:0; z-index:0; pointer-events:none; background:${pageBg}; transition:background 900ms cubic-bezier(.2,.9,.2,1), filter 900ms cubic-bezier(.2,.9,.2,1);`;
 
     const labChips = LAB_CATS.map((c) => ({
       label: c.label,
@@ -606,10 +805,13 @@ class Component extends DCLogic {
       id: cat + '-' + j,
       slotId: 'lab-' + cat + '-' + j,
       slotHint: 'screenshot for ' + p.title,
-      style: 'display:flex; flex-direction:column; text-decoration:none; transition:opacity 240ms ease;',
+      style: 'display:flex; flex-direction:column; text-decoration:none; transition:opacity 240ms ease; padding:0;',
       tag: p.tag || cat,
-      shotStyle: 'display:block; width:100%; aspect-ratio:4 / 3; background:#EFEFEF;',
-      noImg: true,
+      image: p.image || '',
+      shotStyle: 'display:block; width:100%; aspect-ratio:1.66 / 1; background:rgba(255,255,255,.34); overflow:hidden;',
+      noImg: !p.image,
+      target: p.href && /^https?:/.test(p.href) ? '_blank' : '',
+      rel: p.href && /^https?:/.test(p.href) ? 'noopener noreferrer' : '',
     }));
     const labIndex = LAB_CATS.map((c) => ({
       label: c.label.replace(' projects', ''),
@@ -645,7 +847,7 @@ class Component extends DCLogic {
         this.setState({ slide: (idx + (e.deltaX > 0 ? 1 : THEMES.length - 1)) % THEMES.length, hover: null });
       },
       isHome: p === 'home',
-      isInner: p !== 'home',
+      isInner: p !== 'home' && p !== 'lab',
       isAbout: p === 'about',
       isInterests: p === 'interests',
       goInterests: (e) => { e.preventDefault(); this.set('interests'); },
