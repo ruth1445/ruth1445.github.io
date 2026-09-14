@@ -36,11 +36,11 @@
     height: calc(100vh - 78px);
     overflow-y: auto;
     overflow-x: hidden;
-    padding: 0 clamp(16px, 3vw, 46px) 96px;
+    padding: 0 clamp(16px, 3vw, 46px) 104px;
     color: #EAF4EF;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     scroll-behavior: smooth;
-    animation: pageFloatIn 760ms cubic-bezier(.2,.9,.2,1) both;
+    animation: pageFloatIn 620ms cubic-bezier(.2,.9,.2,1) both;
   }
   .lab-night-page::before {
     content: "";
@@ -49,193 +49,100 @@
     z-index: -1;
     pointer-events: none;
     background:
-      radial-gradient(circle at 72% 17%, rgba(228, 139, 170, .16), transparent 27%),
-      radial-gradient(circle at 20% 28%, rgba(101, 168, 190, .20), transparent 30%),
-      radial-gradient(circle at 78% 82%, rgba(105, 218, 121, .12), transparent 29%);
-    mix-blend-mode: screen;
+      radial-gradient(circle at 70% 18%, rgba(228, 139, 170, .12), transparent 27%),
+      radial-gradient(circle at 20% 28%, rgba(101, 168, 190, .16), transparent 30%),
+      radial-gradient(circle at 78% 82%, rgba(105, 218, 121, .08), transparent 29%);
   }
-  .lab-hero {
+  .lab-quiet-hero {
     min-height: calc(100vh - 78px);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    width: min(100%, 1120px);
+    width: min(100%, 920px);
     margin: 0 auto;
-    padding: clamp(64px, 10vh, 120px) 0 82px;
-  }
-  .lab-kicker {
-    margin: 0 0 18px;
-    font-size: clamp(13px, 1.2vw, 16px);
-    line-height: 1;
-    font-weight: 700;
-    letter-spacing: .22em;
-    text-transform: uppercase;
-    color: rgba(234,244,239,.66);
-  }
-  .lab-title {
-    margin: 0;
-    max-width: 880px;
-    font-size: clamp(48px, 9vw, 128px);
-    line-height: .88;
-    letter-spacing: -.055em;
-    font-weight: 700;
-    color: #F6EEE8;
-    text-wrap: balance;
-  }
-  .lab-blurb {
-    max-width: 680px;
-    margin: 28px 0 0;
-    font-size: clamp(17px, 1.65vw, 24px);
-    line-height: 1.42;
-    color: rgba(234,244,239,.76);
-    text-wrap: pretty;
-  }
-  .lab-jump-row {
+    padding: clamp(70px, 14vh, 150px) 0 80px;
     display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 34px;
-  }
-  .lab-jump-row a {
-    display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-width: 128px;
-    padding: 12px 18px 13px;
-    border: 1px solid rgba(240,169,183,.52);
-    border-radius: 999px;
-    background: rgba(240,169,183,.13);
-    color: #F6D7DE;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: .16em;
-    text-transform: lowercase;
-    transition: transform 220ms ease, background 220ms ease, border-color 220ms ease;
+    text-align: center;
   }
-  .lab-jump-row a:hover {
-    transform: translateY(-2px);
-    background: rgba(240,169,183,.22);
-    border-color: rgba(240,169,183,.74);
-    color: #FFE4EA;
+  .lab-placeholder {
+    margin: 0;
+    max-width: 520px;
+    font-size: clamp(15px, 1.45vw, 20px);
+    line-height: 1.55;
+    font-weight: 400;
+    letter-spacing: .01em;
+    color: rgba(234,244,239,.72);
   }
-  .lab-section {
+  .lab-plain-grid {
     width: min(100%, 1260px);
     margin: 0 auto;
-    padding: 44px 0 78px;
-  }
-  .lab-section-bar {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 24px;
-    padding: 0 0 12px;
-    margin-bottom: clamp(24px, 4vw, 42px);
-    border-bottom: 1px solid rgba(234,244,239,.38);
-    color: rgba(234,244,239,.86);
-    font-size: clamp(13px, 1.35vw, 17px);
-    font-weight: 700;
-    letter-spacing: .18em;
-    text-transform: uppercase;
-  }
-  .lab-preview-grid {
+    padding: 12px 0 84px;
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: clamp(18px, 2.3vw, 34px);
+    gap: clamp(22px, 3vw, 46px);
   }
-  .lab-preview-card {
+  .lab-project-tile {
     display: flex;
     flex-direction: column;
     gap: 12px;
     min-width: 0;
-    color: #EAF4EF;
+    color: rgba(234,244,239,.90);
     text-decoration: none;
     animation: labCardReveal both;
     animation-timeline: view();
-    animation-range: entry 0% cover 42%;
+    animation-range: entry 0% cover 36%;
   }
-  .lab-preview-surface {
+  .lab-project-thumb {
     position: relative;
-    aspect-ratio: 1 / 1.18;
-    border: 2px solid rgba(232, 126, 153, .72);
-    border-radius: 18px;
-    overflow: hidden;
-    background:
-      radial-gradient(circle at 38% 35%, rgba(131, 238, 137, .20), transparent 22%),
-      radial-gradient(circle at 66% 58%, rgba(122, 209, 141, .18), transparent 20%),
-      linear-gradient(145deg, rgba(91,98,85,.76), rgba(38,46,39,.86));
-    box-shadow:
-      0 30px 42px -34px rgba(0,0,0,.72),
-      inset 0 1px 0 rgba(255,255,255,.07);
-    transform: perspective(900px) rotateX(5deg) rotateY(-4deg);
-    transform-origin: center center;
-    transition: transform 360ms cubic-bezier(.32,.72,0,1), border-color 260ms ease, box-shadow 260ms ease;
-  }
-  .lab-preview-card:nth-child(4n + 2) .lab-preview-surface { transform: perspective(900px) rotateX(4deg) rotateY(3deg); border-color: rgba(205, 163, 223, .70); }
-  .lab-preview-card:nth-child(4n + 3) .lab-preview-surface { transform: perspective(900px) rotateX(6deg) rotateY(-2deg); border-color: rgba(128, 203, 205, .68); }
-  .lab-preview-card:nth-child(4n) .lab-preview-surface { transform: perspective(900px) rotateX(4deg) rotateY(4deg); border-color: rgba(222, 222, 142, .62); }
-  .lab-preview-card:hover .lab-preview-surface {
-    transform: perspective(900px) rotateX(0deg) rotateY(0deg) translateY(-8px) scale(1.015);
-    box-shadow: 0 38px 56px -34px rgba(0,0,0,.82), inset 0 1px 0 rgba(255,255,255,.10);
-  }
-  .lab-preview-surface::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(circle at 26% 42%, rgba(209,235,226,.16), transparent 17%),
-      radial-gradient(circle at 72% 28%, rgba(209,235,226,.10), transparent 16%),
-      radial-gradient(circle at 64% 74%, rgba(146,234,136,.12), transparent 18%);
-    opacity: .78;
-  }
-  .lab-preview-surface::after {
-    content: "";
-    position: absolute;
-    inset: 12px;
+    display: block;
+    aspect-ratio: 1 / 1;
+    border: 1.35px solid rgba(232, 126, 153, .68);
     border-radius: 12px;
-    border: 1px solid rgba(234,244,239,.08);
-    background: rgba(234,244,239,.025);
+    background: rgba(42, 49, 42, .55);
+    box-shadow: 0 24px 34px -32px rgba(0,0,0,.72);
+    transform: perspective(900px) rotateX(4deg) rotateY(-3deg);
+    transition: transform 300ms cubic-bezier(.32,.72,0,1), border-color 240ms ease, background 240ms ease;
+    overflow: hidden;
   }
-  .lab-preview-meta {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 14px;
-    color: rgba(234,244,239,.88);
+  .lab-project-tile:nth-child(4n + 2) .lab-project-thumb {
+    border-color: rgba(204, 166, 220, .62);
+    transform: perspective(900px) rotateX(3deg) rotateY(3deg);
   }
-  .lab-preview-title {
-    min-width: 0;
-    font-size: clamp(14px, 1.25vw, 18px);
-    line-height: 1.08;
+  .lab-project-tile:nth-child(4n + 3) .lab-project-thumb {
+    border-color: rgba(128, 203, 205, .62);
+    transform: perspective(900px) rotateX(4deg) rotateY(-1deg);
+  }
+  .lab-project-tile:nth-child(4n) .lab-project-thumb {
+    border-color: rgba(222, 222, 142, .58);
+    transform: perspective(900px) rotateX(3deg) rotateY(2deg);
+  }
+  .lab-project-tile:hover .lab-project-thumb {
+    transform: perspective(900px) rotateX(0deg) rotateY(0deg) translateY(-6px);
+    background: rgba(49, 58, 49, .66);
+  }
+  .lab-project-title {
+    display: block;
+    font-size: clamp(14px, 1.18vw, 17px);
+    line-height: 1.15;
     font-weight: 700;
     letter-spacing: -.01em;
-  }
-  .lab-preview-tag {
-    flex: 0 0 auto;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-    color: rgba(246,215,222,.58);
+    color: rgba(234,244,239,.88);
   }
   @supports not (animation-timeline: view()) {
-    .lab-preview-card {
-      animation: pageFloatIn 760ms cubic-bezier(.2,.9,.2,1) both;
+    .lab-project-tile {
+      animation: pageFloatIn 620ms cubic-bezier(.2,.9,.2,1) both;
     }
-    .lab-preview-card:nth-child(2) { animation-delay: 80ms; }
-    .lab-preview-card:nth-child(3) { animation-delay: 140ms; }
-    .lab-preview-card:nth-child(4) { animation-delay: 200ms; }
+    .lab-project-tile:nth-child(2) { animation-delay: 60ms; }
+    .lab-project-tile:nth-child(3) { animation-delay: 110ms; }
+    .lab-project-tile:nth-child(4) { animation-delay: 160ms; }
   }
   @media (max-width: 980px) {
-    .lab-preview-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .lab-title { max-width: 760px; }
+    .lab-plain-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
   @media (max-width: 700px) {
     .lab-night-page { height: calc(100vh - 78px); padding: 0 18px 72px; }
-    .lab-hero { min-height: calc(100vh - 78px); padding-top: 54px; }
-    .lab-preview-grid { grid-template-columns: 1fr; gap: 28px; }
-    .lab-preview-surface { aspect-ratio: 1.35 / 1; transform: none !important; }
-    .lab-section-bar { letter-spacing: .12em; }
+    .lab-quiet-hero { min-height: calc(88vh - 78px); padding-top: 50px; }
+    .lab-plain-grid { grid-template-columns: 1fr; gap: 30px; }
+    .lab-project-thumb { transform: none !important; }
   }
   /* End Laboratory folder view */
 
@@ -355,61 +262,18 @@
   </sc-if>
 
   <sc-if value="{{ isLab }}">
-  <main class="lab-night-page" aria-label="Laboratory" data-lab-scroll>
-    <section class="lab-hero" aria-label="Laboratory introduction">
-      <p class="lab-kicker">Laboratory</p>
-      <h1 class="lab-title">projects, experiments, and open threads.</h1>
-      <p class="lab-blurb">A working archive of the things I have built, replicated, tested, written, and kept thinking about. The thumbnails are intentionally blank for now so the right images can land here next.</p>
-      <nav class="lab-jump-row" aria-label="Laboratory sections">
-        <sc-for list="{{ labIndex }}" as="cat" hint-placeholder-count="3">
-          <a href="{{ cat.href }}">{{ cat.label }}</a>
-        </sc-for>
-      </nav>
+  <main class="lab-night-page" aria-label="Laboratory">
+    <section class="lab-quiet-hero" aria-label="Laboratory placeholder">
+      <p class="lab-placeholder">Placeholder line one.<br>Placeholder line two.<br>Placeholder line three.</p>
     </section>
 
-    <section class="lab-section" id="lab-projects" aria-label="Projects">
-      <div class="lab-section-bar"><span>laboratory</span><span>projects</span></div>
-      <div class="lab-preview-grid">
-        <sc-for list="{{ projectCards }}" as="project" hint-placeholder-count="7">
-          <a class="lab-preview-card" href="{{ project.href }}" target="{{ project.target }}" rel="{{ project.rel }}">
-            <span class="lab-preview-surface" aria-hidden="true"></span>
-            <span class="lab-preview-meta">
-              <span class="lab-preview-title">{{ project.title }}</span>
-              <span class="lab-preview-tag">{{ project.tag }}</span>
-            </span>
-          </a>
-        </sc-for>
-      </div>
-    </section>
-
-    <section class="lab-section" id="lab-passion" aria-label="Passion projects">
-      <div class="lab-section-bar"><span>laboratory</span><span>passion</span></div>
-      <div class="lab-preview-grid">
-        <sc-for list="{{ passionProjects }}" as="project" hint-placeholder-count="2">
-          <a class="lab-preview-card" href="{{ project.href }}" target="{{ project.target }}" rel="{{ project.rel }}">
-            <span class="lab-preview-surface" aria-hidden="true"></span>
-            <span class="lab-preview-meta">
-              <span class="lab-preview-title">{{ project.title }}</span>
-              <span class="lab-preview-tag">{{ project.tag }}</span>
-            </span>
-          </a>
-        </sc-for>
-      </div>
-    </section>
-
-    <section class="lab-section" id="lab-writing" aria-label="Writing">
-      <div class="lab-section-bar"><span>laboratory</span><span>writing</span></div>
-      <div class="lab-preview-grid">
-        <sc-for list="{{ writingProjects }}" as="project" hint-placeholder-count="2">
-          <a class="lab-preview-card" href="{{ project.href }}" target="{{ project.target }}" rel="{{ project.rel }}">
-            <span class="lab-preview-surface" aria-hidden="true"></span>
-            <span class="lab-preview-meta">
-              <span class="lab-preview-title">{{ project.title }}</span>
-              <span class="lab-preview-tag">{{ project.tag }}</span>
-            </span>
-          </a>
-        </sc-for>
-      </div>
+    <section class="lab-plain-grid" aria-label="Projects">
+      <sc-for list="{{ allProjects }}" as="project" hint-placeholder-count="11">
+        <a class="lab-project-tile" href="{{ project.href }}" target="{{ project.target }}" rel="{{ project.rel }}">
+          <span class="lab-project-thumb" aria-hidden="true"></span>
+          <span class="lab-project-title">{{ project.title }}</span>
+        </a>
+      </sc-for>
     </section>
   </main>
   </sc-if>
@@ -821,6 +685,7 @@ class Component extends DCLogic {
     const projectCards = projList('projects');
     const passionProjects = projList('passion');
     const writingProjects = projList('writing');
+    const allProjects = projectCards.concat(passionProjects, writingProjects);
 
     return {
       bgStyle,
@@ -829,6 +694,7 @@ class Component extends DCLogic {
       projectCards,
       passionProjects,
       writingProjects,
+      allProjects,
       slides,
       barRows,
       dots,
