@@ -22,8 +22,9 @@
   @keyframes riseIn { from { opacity: 0; transform: translateY(18px) scale(0.985); filter: blur(6px); } to { opacity: 1; transform: none; filter: blur(0); } }
   @keyframes pageFloatIn { from { opacity: 0; transform: translateY(28px) scale(.985); filter: blur(10px); } to { opacity: 1; transform: none; filter: blur(0); } }
   @keyframes labCardReveal { from { opacity: .18; transform: translateY(72px) scale(.96); } to { opacity: 1; transform: none; } }
-  [data-page="lab"] .site-header a { color: #EAF4EF !important; text-shadow: 0 1px 18px rgba(179,236,209,.16); }
-  [data-page="lab"] .site-header a:hover { color: #F0A9B7 !important; }
+  [data-page="lab"] .site-shell { background: #000000 !important; }
+  [data-page="lab"] .site-header a { color: #FFFFFF !important; text-shadow: none; }
+  [data-page="lab"] .site-header a:hover { color: #FFFFFF !important; }
   .about-page { animation: pageFloatIn 720ms cubic-bezier(.2,.9,.2,1) both; }
   @media (max-width: 700px) {
     .home-card { transform: none !important; transform-origin: center !important; }
@@ -36,31 +37,33 @@
     min-height: calc(100vh - 78px);
     overflow-y: auto;
     overflow-x: hidden;
-    padding: 0 clamp(16px, 3vw, 46px) 104px;
+    padding: 0 clamp(18px, 3.4vw, 58px) 104px;
     color: #FFFFFF;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "Bricolage Grotesque", "Helvetica Neue", Helvetica, Arial, sans-serif;
     scroll-behavior: smooth;
     animation: pageFloatIn 720ms cubic-bezier(.16,.84,.22,1) both;
   }
   .lab-quiet-hero {
     min-height: calc(100vh - 78px);
-    width: min(100%, 900px);
+    width: min(100%, 1380px);
     margin: 0 auto;
-    padding: clamp(70px, 14vh, 150px) 0 80px;
+    padding: clamp(56px, 9vh, 96px) 0 clamp(54px, 9vh, 92px);
     display: flex;
     align-items: center;
-    justify-content: center;
-    text-align: center;
+    justify-content: flex-start;
+    text-align: left;
   }
   .lab-placeholder {
     margin: 0;
-    max-width: 650px;
-    font-size: clamp(15px, 1.28vw, 19px);
-    line-height: 1.62;
-    font-weight: 400;
-    letter-spacing: .01em;
+    width: 100%;
+    max-width: 1280px;
+    font-size: clamp(34px, 5.8vw, 88px);
+    line-height: .98;
+    font-weight: 700;
+    letter-spacing: -.045em;
     color: #FFFFFF;
     text-transform: lowercase;
+    text-wrap: balance;
   }
   .lab-plain-grid {
     width: min(100%, 1260px);
@@ -87,14 +90,14 @@
     aspect-ratio: 1 / 1;
     border: 3px solid var(--project-border);
     border-radius: 12px;
-    background: rgba(255,255,255,.035);
-    box-shadow: 0 22px 30px -31px rgba(0,0,0,.88);
+    background: #000000;
+    box-shadow: none;
     transition: transform 260ms cubic-bezier(.32,.72,0,1), background 220ms ease;
     overflow: hidden;
   }
   .lab-project-tile:hover .lab-project-thumb {
     transform: translateY(-6px);
-    background: rgba(255,255,255,.055);
+    background: #050505;
   }
   .lab-project-title {
     display: block;
@@ -102,7 +105,7 @@
     line-height: 1.15;
     font-weight: 700;
     letter-spacing: -.01em;
-    color: rgba(255,255,255,.92);
+    color: rgba(255,255,255,.94);
   }
   @supports not (animation-timeline: view()) {
     .lab-project-tile {
@@ -114,10 +117,12 @@
   }
   @media (max-width: 980px) {
     .lab-plain-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .lab-placeholder { font-size: clamp(32px, 8vw, 68px); }
   }
   @media (max-width: 700px) {
     .lab-night-page { min-height: calc(100vh - 78px); padding: 0 18px 72px; }
-    .lab-quiet-hero { min-height: calc(88vh - 78px); padding-top: 50px; }
+    .lab-quiet-hero { min-height: calc(88vh - 78px); padding-top: 44px; }
+    .lab-placeholder { font-size: clamp(29px, 11vw, 52px); line-height: 1.02; }
     .lab-plain-grid { grid-template-columns: 1fr; gap: 30px; }
   }
   /* End Laboratory folder view */
@@ -629,7 +634,7 @@ class Component extends DCLogic {
 
     const base = this.props.bgTone || '#A9B7BE';
     const liquidBackdrop = 'radial-gradient(circle at 19% 24%,rgba(150,201,229,.42),transparent 29%),radial-gradient(circle at 78% 73%,rgba(51,255,68,.17),transparent 25%),radial-gradient(circle at 66% 16%,rgba(224,191,234,.25),transparent 23%),#F7F0E2';
-    const nightBackdrop = 'radial-gradient(circle at 50% 14%,rgba(255,255,255,.12),transparent 28%),radial-gradient(circle at 18% 24%,rgba(255,255,255,.06),transparent 28%),radial-gradient(circle at 82% 78%,rgba(255,255,255,.045),transparent 30%),#050505';
+    const nightBackdrop = '#000000';
     const pageBg = p === 'lab' ? nightBackdrop : p === 'home' || p === 'about' ? liquidBackdrop : p === 'interests' ? '#FFFFFF' : base;
     const bgStyle = `position:fixed; inset:0; z-index:0; pointer-events:none; background:${pageBg}; transition:background 900ms cubic-bezier(.2,.9,.2,1), filter 900ms cubic-bezier(.2,.9,.2,1);`;
 
