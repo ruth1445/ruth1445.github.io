@@ -22,9 +22,6 @@
   @keyframes riseIn { from { opacity: 0; transform: translateY(18px) scale(0.985); filter: blur(6px); } to { opacity: 1; transform: none; filter: blur(0); } }
   @keyframes pageFloatIn { from { opacity: 0; transform: translateY(28px) scale(.985); filter: blur(10px); } to { opacity: 1; transform: none; filter: blur(0); } }
   @keyframes labCardReveal { from { opacity: .18; transform: translateY(72px) scale(.96); } to { opacity: 1; transform: none; } }
-  [data-page="lab"] .site-shell { background: #000000 !important; }
-  [data-page="lab"] .site-header a { color: #FFFFFF !important; text-shadow: none; }
-  [data-page="lab"] .site-header a:hover { color: #FFFFFF !important; }
   .about-page { animation: pageFloatIn 720ms cubic-bezier(.2,.9,.2,1) both; }
   @media (max-width: 700px) {
     .home-card { transform: none !important; transform-origin: center !important; }
@@ -38,14 +35,13 @@
     overflow-y: auto;
     overflow-x: hidden;
     padding: 0 clamp(18px, 3.4vw, 58px) 104px;
-    color: #FFFFFF;
+    color: #23201A;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     scroll-behavior: smooth;
-    animation: pageFloatIn 720ms cubic-bezier(.16,.84,.22,1) both;
   }
   .lab-quiet-hero {
     min-height: calc(100vh - 78px);
-    width: min(100%, 1380px);
+    width: min(100%, 1180px);
     margin: 0 auto;
     padding: clamp(56px, 9vh, 96px) 0 clamp(54px, 9vh, 92px);
     display: flex;
@@ -56,13 +52,12 @@
   .lab-placeholder {
     margin: 0;
     width: 100%;
-    max-width: 1280px;
-    font-size: clamp(24px, 3.7vw, 56px);
+    max-width: 1040px;
+    font-size: clamp(24px, 3.4vw, 52px);
     line-height: 1.12;
     font-weight: 500;
     letter-spacing: -.018em;
-    color: #FFFFFF;
-    text-transform: lowercase;
+    color: #23201A;
     text-wrap: balance;
   }
   .lab-plain-grid {
@@ -78,7 +73,7 @@
     flex-direction: column;
     gap: 12px;
     min-width: 0;
-    color: #FFFFFF;
+    color: #23201A;
     text-decoration: none;
     animation: labCardReveal both;
     animation-timeline: view();
@@ -90,14 +85,14 @@
     aspect-ratio: 1 / 1;
     border: 3px solid var(--project-border);
     border-radius: 12px;
-    background: #000000;
+    background: rgba(255,255,255,.22);
     box-shadow: none;
     transition: transform 260ms cubic-bezier(.32,.72,0,1), background 220ms ease;
     overflow: hidden;
   }
   .lab-project-tile:hover .lab-project-thumb {
     transform: translateY(-6px);
-    background: #050505;
+    background: rgba(255,255,255,.30);
   }
   .lab-project-title {
     display: block;
@@ -105,15 +100,12 @@
     line-height: 1.15;
     font-weight: 700;
     letter-spacing: -.01em;
-    color: rgba(255,255,255,.94);
+    color: #23201A;
   }
   @supports not (animation-timeline: view()) {
     .lab-project-tile {
-      animation: pageFloatIn 620ms cubic-bezier(.2,.9,.2,1) both;
+      animation: none;
     }
-    .lab-project-tile:nth-child(2) { animation-delay: 60ms; }
-    .lab-project-tile:nth-child(3) { animation-delay: 110ms; }
-    .lab-project-tile:nth-child(4) { animation-delay: 160ms; }
   }
   @media (max-width: 980px) {
     .lab-plain-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -245,7 +237,7 @@
   <sc-if value="{{ isLab }}">
   <main class="lab-night-page" aria-label="Laboratory">
     <section class="lab-quiet-hero" aria-label="Laboratory introduction">
-      <p class="lab-placeholder">this is my attempt at learning from as many people as i can meet. i interview people i find interesting and turn it into an essay. documenting these conversations is very important to me because a) i don’t want to lose any of this info to my poor memory and b) it challenges me to keep at something i love doing.<br>everything will remain unnamed and untitled for now till i find the perfect word(s).</p>
+      <p class="lab-placeholder">I love experimenting and building new things. Below are some of my projects, experiments, and writing. As always, everything is a work in progress!</p>
     </section>
 
     <section class="lab-plain-grid" aria-label="Projects">
@@ -634,8 +626,7 @@ class Component extends DCLogic {
 
     const base = this.props.bgTone || '#A9B7BE';
     const liquidBackdrop = 'radial-gradient(circle at 19% 24%,rgba(150,201,229,.42),transparent 29%),radial-gradient(circle at 78% 73%,rgba(51,255,68,.17),transparent 25%),radial-gradient(circle at 66% 16%,rgba(224,191,234,.25),transparent 23%),#F7F0E2';
-    const nightBackdrop = '#000000';
-    const pageBg = p === 'lab' ? nightBackdrop : p === 'home' || p === 'about' ? liquidBackdrop : p === 'interests' ? '#FFFFFF' : base;
+    const pageBg = p === 'home' || p === 'about' || p === 'lab' ? liquidBackdrop : p === 'interests' ? '#FFFFFF' : base;
     const bgStyle = `position:fixed; inset:0; z-index:0; pointer-events:none; background:${pageBg}; transition:background 900ms cubic-bezier(.2,.9,.2,1), filter 900ms cubic-bezier(.2,.9,.2,1);`;
 
     const labChips = LAB_CATS.map((c) => ({
