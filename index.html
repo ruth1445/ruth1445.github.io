@@ -40,10 +40,10 @@
     scroll-behavior: smooth;
   }
   .lab-quiet-hero {
-    min-height: calc(100vh - 78px);
+    min-height: clamp(300px, 46vh, 500px);
     width: min(100%, 1180px);
     margin: 0 auto;
-    padding: clamp(56px, 9vh, 96px) 0 clamp(54px, 9vh, 92px);
+    padding: clamp(48px, 8vh, 82px) 0 clamp(34px, 6vh, 58px);
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -52,21 +52,21 @@
   .lab-placeholder {
     margin: 0;
     width: 100%;
-    max-width: 1040px;
-    font-size: clamp(24px, 3.4vw, 52px);
-    line-height: 1.12;
+    max-width: 760px;
+    font-size: clamp(16px, 1.35vw, 23px);
+    line-height: 1.42;
     font-weight: 500;
-    letter-spacing: -.018em;
+    letter-spacing: 0;
     color: #23201A;
-    text-wrap: balance;
+    text-wrap: pretty;
   }
   .lab-plain-grid {
-    width: min(100%, 1260px);
+    width: min(100%, 1380px);
     margin: 0 auto;
-    padding: 12px 0 84px;
+    padding: 8px 0 92px;
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: clamp(22px, 3vw, 46px);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(28px, 3.8vw, 58px);
   }
   .lab-project-tile {
     display: flex;
@@ -85,14 +85,18 @@
     aspect-ratio: 1 / 1;
     border: 3px solid var(--project-border);
     border-radius: 12px;
-    background: rgba(255,255,255,.22);
+    background-color: rgba(255,255,255,.22);
+    background-image: var(--project-image, none);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     box-shadow: none;
-    transition: transform 260ms cubic-bezier(.32,.72,0,1), background 220ms ease;
+    transition: transform 260ms cubic-bezier(.32,.72,0,1), background-color 220ms ease;
     overflow: hidden;
   }
   .lab-project-tile:hover .lab-project-thumb {
     transform: translateY(-6px);
-    background: rgba(255,255,255,.30);
+    background-color: rgba(255,255,255,.30);
   }
   .lab-project-title {
     display: block;
@@ -109,12 +113,12 @@
   }
   @media (max-width: 980px) {
     .lab-plain-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .lab-placeholder { font-size: clamp(24px, 6vw, 46px); }
+    .lab-placeholder { font-size: clamp(16px, 2.6vw, 22px); }
   }
   @media (max-width: 700px) {
     .lab-night-page { min-height: calc(100vh - 78px); padding: 0 18px 72px; }
-    .lab-quiet-hero { min-height: calc(88vh - 78px); padding-top: 44px; }
-    .lab-placeholder { font-size: clamp(22px, 8vw, 38px); line-height: 1.16; }
+    .lab-quiet-hero { min-height: clamp(260px, 48vh, 420px); padding-top: 42px; }
+    .lab-placeholder { font-size: clamp(15px, 4.6vw, 20px); line-height: 1.42; }
     .lab-plain-grid { grid-template-columns: 1fr; gap: 30px; }
   }
   /* End Laboratory folder view */
@@ -243,7 +247,7 @@
     <section class="lab-plain-grid" aria-label="Projects">
       <sc-for list="{{ allProjects }}" as="project" hint-placeholder-count="11">
         <a class="lab-project-tile" href="{{ project.href }}" target="{{ project.target }}" rel="{{ project.rel }}">
-          <span class="lab-project-thumb" style="{{ project.borderStyle }}" aria-hidden="true"></span>
+          <span class="lab-project-thumb" style="{{ project.borderStyle }} {{ project.thumbStyle }}" aria-hidden="true"></span>
           <span class="lab-project-title">{{ project.title }}</span>
         </a>
       </sc-for>
@@ -448,12 +452,12 @@ const LAB_CATS = [
 ];
 const PLACEHOLDER = '#lab-projects';
 const PROJECTS = [
-  { cat: 'projects', title: 'ETA estimator', blurb: 'Quantified transit prediction error across routes, time periods, and weather to surface 6+ minute failure cases.', href: PLACEHOLDER, tag: 'data science' },
-  { cat: 'projects', title: 'LangPal 11Labs pipeline', blurb: 'Built an end-to-end voice loop with ElevenLabs STT/TTS, Gemini, Supabase, FastAPI, and a Flutter app.', href: PLACEHOLDER, tag: 'AI engineering' },
-  { cat: 'projects', title: 'Rational Metareasoning', blurb: 'Replicated value-of-computation style reasoning to decide when extra deliberation is worth the cost.', href: PLACEHOLDER, tag: 'research' },
-  { cat: 'projects', title: 'MiCRo', blurb: 'Replicated an expert-router setup with MLflow tracking, faster training, and module-level routing diagnostics.', href: PLACEHOLDER, tag: 'ML systems' },
-  { cat: 'projects', title: 'Monosemanticity', blurb: 'Trained sparse autoencoders on language-model activations to study interpretable features and superposition.', href: PLACEHOLDER, tag: 'interpretability' },
-  { cat: 'projects', title: 'Societal Impacts Research Paper', blurb: 'Co-authored an NBEA paper using an NLP pipeline over 8K+ Reddit posts to study chatbot perception and bias.', href: PLACEHOLDER, tag: 'NLP research' },
+  { cat: 'projects', title: 'ETA estimator', blurb: 'Quantified transit prediction error across routes, time periods, and weather to surface 6+ minute failure cases.', href: PLACEHOLDER, tag: 'data science', image: './1.jpg' },
+  { cat: 'projects', title: 'LangPal 11Labs pipeline', blurb: 'Built an end-to-end voice loop with ElevenLabs STT/TTS, Gemini, Supabase, FastAPI, and a Flutter app.', href: PLACEHOLDER, tag: 'AI engineering', image: './2.jpg' },
+  { cat: 'projects', title: 'Rational Metareasoning', blurb: 'Replicated value-of-computation style reasoning to decide when extra deliberation is worth the cost.', href: PLACEHOLDER, tag: 'research', image: './3.jpg' },
+  { cat: 'projects', title: 'MiCRo', blurb: 'Replicated an expert-router setup with MLflow tracking, faster training, and module-level routing diagnostics.', href: PLACEHOLDER, tag: 'ML systems', image: './4.jpg' },
+  { cat: 'projects', title: 'Monosemanticity', blurb: 'Trained sparse autoencoders on language-model activations to study interpretable features and superposition.', href: PLACEHOLDER, tag: 'interpretability', image: './5.jpg' },
+  { cat: 'projects', title: 'Societal Impacts Research Paper', blurb: 'Co-authored an NBEA paper using an NLP pipeline over 8K+ Reddit posts to study chatbot perception and bias.', href: PLACEHOLDER, tag: 'NLP research', image: './6.jpg' },
   { cat: 'projects', title: 'Does a growth mindset nudge boost achievement?', blurb: 'Analyzed whether a short growth-mindset intervention shifts achievement outcomes using a causal/statistical lens.', href: PLACEHOLDER, tag: 'statistics', image: './growth.jpg' },
   { cat: 'passion', title: 'Learning from People', blurb: 'A public interview and writing project about creative people, work, taste, and the strange ways people think.', href: 'https://publicyuzu.org/#/', tag: 'public yuzu' },
   { cat: 'passion', title: 'Harmonies', blurb: 'A small web experiment in layered sound, language, and visual rhythm.', href: 'https://ruth1445.github.io/harmonies/', tag: 'creative code' },
@@ -647,6 +651,7 @@ class Component extends DCLogic {
       shotStyle: 'display:block; width:100%; aspect-ratio:1.66 / 1; background:rgba(255,255,255,.34); overflow:hidden;',
       noImg: !p.image,
       borderStyle: 'projects' === cat ? '--project-border:#ff8fb3;' : 'passion' === cat ? '--project-border:#7db7ff;' : '--project-border:#83dd8a;',
+      thumbStyle: p.image ? '--project-image:url("' + p.image + '");' : '',
       target: p.href && /^https?:/.test(p.href) ? '_blank' : '',
       rel: p.href && /^https?:/.test(p.href) ? 'noopener noreferrer' : '',
     }));
