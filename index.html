@@ -28,6 +28,9 @@
   }
 
   /* Laboratory folder view */
+  :root {
+    --lab-font: "Neue Haas Grotesk Display Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
   .lab-night-page {
     position: relative;
     z-index: 2;
@@ -36,7 +39,7 @@
     overflow-x: hidden;
     padding: 0 clamp(18px, 3.4vw, 58px) 104px;
     color: #23201A;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: var(--lab-font);
     scroll-behavior: smooth;
   }
   .lab-quiet-hero {
@@ -55,8 +58,8 @@
     max-width: 760px;
     font-size: clamp(16px, 1.35vw, 23px);
     line-height: 1.42;
-    font-weight: 500;
-    letter-spacing: 0;
+    font-weight: 400;
+    letter-spacing: -0.025em;
     color: #23201A;
     text-wrap: pretty;
   }
@@ -102,8 +105,8 @@
     display: block;
     font-size: clamp(14px, 1.18vw, 17px);
     line-height: 1.15;
-    font-weight: 700;
-    letter-spacing: -.01em;
+    font-weight: 800;
+    letter-spacing: -0.035em;
     color: #23201A;
   }
   @supports not (animation-timeline: view()) {
