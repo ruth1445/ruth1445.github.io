@@ -654,7 +654,7 @@ class Component extends DCLogic {
       shotStyle: 'display:block; width:100%; aspect-ratio:1.66 / 1; background:rgba(255,255,255,.34); overflow:hidden;',
       noImg: !p.image,
       borderStyle: 'projects' === cat ? '--project-border:#ff8fb3;' : 'passion' === cat ? '--project-border:#7db7ff;' : '--project-border:#83dd8a;',
-      thumbStyle: p.image ? '--project-image:url("' + p.image + '");' : '',
+      thumbStyle: p.image ? '--project-image:url("' + p.image + '");' + (p.image === './8.jpg' ? 'background-size:auto 100%;background-position:center center;' : '') : '',
       target: p.href && /^https?:/.test(p.href) ? '_blank' : '',
       rel: p.href && /^https?:/.test(p.href) ? 'noopener noreferrer' : '',
     }));
