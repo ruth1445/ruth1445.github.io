@@ -70,6 +70,22 @@
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: clamp(28px, 3.8vw, 58px);
+    align-items: start;
+  }
+  .lab-project-column {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(24px, 3.4vw, 52px);
+  }
+  .lab-column-title {
+    margin: 0 0 -8px;
+    font-size: clamp(13px, 1vw, 15px);
+    line-height: 1;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: rgba(35,32,26,.62);
+    text-transform: lowercase;
   }
   .lab-project-tile {
     display: flex;
@@ -115,7 +131,8 @@
     }
   }
   @media (max-width: 980px) {
-    .lab-plain-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .lab-plain-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(18px, 3vw, 32px); }
+    .lab-project-column { gap: clamp(20px, 3vw, 34px); }
     .lab-placeholder { font-size: clamp(16px, 2.6vw, 22px); }
   }
   @media (max-width: 700px) {
@@ -247,12 +264,17 @@
       <p class="lab-placeholder">I love experimenting and building new things. Below are some of my projects, experiments, and writing. As always, everything is a work in progress!</p>
     </section>
 
-    <section class="lab-plain-grid" aria-label="Projects">
-      <sc-for list="{{ allProjects }}" as="project" hint-placeholder-count="11">
-        <a class="lab-project-tile" href="{{ project.href }}" target="{{ project.target }}" rel="{{ project.rel }}">
-          <span class="lab-project-thumb" style="{{ project.borderStyle }} {{ project.thumbStyle }}" aria-hidden="true"></span>
-          <span class="lab-project-title">{{ project.title }}</span>
-        </a>
+    <section class="lab-plain-grid" aria-label="Projects grouped by category">
+      <sc-for list="{{ labColumns }}" as="column" hint-placeholder-count="3">
+        <div class="lab-project-column">
+          <h2 class="lab-column-title">{{ column.label }}</h2>
+          <sc-for list="{{ column.items }}" as="project" hint-placeholder-count="7">
+            <a class="lab-project-tile" href="{{ project.href }}" target="{{ project.target }}" rel="{{ project.rel }}">
+              <span class="lab-project-thumb" style="{{ project.borderStyle }} {{ project.thumbStyle }}" aria-hidden="true"></span>
+              <span class="lab-project-title">{{ project.title }}</span>
+            </a>
+          </sc-for>
+        </div>
       </sc-for>
     </section>
   </main>
@@ -667,6 +689,11 @@ class Component extends DCLogic {
     const passionProjects = projList('passion');
     const writingProjects = projList('writing');
     const allProjects = projectCards.concat(passionProjects, writingProjects);
+    const labColumns = [
+      { key: 'projects', label: 'projects', items: projectCards },
+      { key: 'passion', label: 'passion', items: passionProjects },
+      { key: 'writing', label: 'writing', items: writingProjects },
+    ];
 
     return {
       bgStyle,
@@ -676,6 +703,7 @@ class Component extends DCLogic {
       passionProjects,
       writingProjects,
       allProjects,
+      labColumns,
       slides,
       barRows,
       dots,
