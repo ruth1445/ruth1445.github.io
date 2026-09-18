@@ -22,6 +22,50 @@
   @keyframes riseIn { from { opacity: 0; transform: translateY(18px) scale(0.985); filter: blur(6px); } to { opacity: 1; transform: none; filter: blur(0); } }
   @keyframes pageFloatIn { from { opacity: 0; transform: translateY(28px) scale(.985); filter: blur(10px); } to { opacity: 1; transform: none; filter: blur(0); } }
   @keyframes labCardReveal { from { opacity: .18; transform: translateY(72px) scale(.96); } to { opacity: 1; transform: none; } }
+  @keyframes moodWheel {
+    0%, 10% { transform: translateY(0); }
+    14%, 24% { transform: translateY(-14.2857%); }
+    28%, 38% { transform: translateY(-28.5714%); }
+    42%, 52% { transform: translateY(-42.8571%); }
+    56%, 66% { transform: translateY(-57.1428%); }
+    70%, 80% { transform: translateY(-71.4285%); }
+    84%, 100% { transform: translateY(-85.7142%); }
+  }
+  .home-mood-ticker {
+    position: relative;
+    z-index: 4;
+    height: 1.55em;
+    max-width: min(92vw, 980px);
+    overflow: hidden;
+    color: #23201A;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: clamp(16px, 1.65vw, 25px);
+    line-height: 1.55;
+    letter-spacing: -0.015em;
+    text-align: center;
+  }
+  .home-mood-track {
+    display: flex;
+    flex-direction: column;
+    animation: moodWheel 18s cubic-bezier(.65, 0, .35, 1) infinite;
+    will-change: transform;
+  }
+  .home-mood-line {
+    height: 1.55em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+  }
+  .home-mood-em {
+    font-weight: 800;
+    text-decoration: underline;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 0.13em;
+  }
+  @media (max-width: 700px) {
+    .home-mood-ticker { font-size: clamp(13px, 3.5vw, 17px); max-width: 94vw; }
+  }
   .about-page { animation: pageFloatIn 720ms cubic-bezier(.2,.9,.2,1) both; }
   @media (max-width: 700px) {
     .home-card { transform: none !important; transform-origin: center !important; }
@@ -185,15 +229,28 @@
         </div>
         <div style="{{ slide.artStyle }}"></div>
         <div style="position: relative; z-index: 2; height: 100%; display: flex; align-items: center; justify-content: center; padding: 120px 44px;">
-          <div class="home-card-row" style="{{ homeCardRowStyle }}">
-            <sc-for list="{{ slide.cards }}" as="card" hint-placeholder-count="2">
-              <a class="home-card" href="{{ card.href }}" aria-label="{{ card.key }}" onClick="{{ card.onClick }}" onMouseEnter="{{ card.onEnter }}" onMouseLeave="{{ card.onLeave }}" style="{{ card.style }}">
-                <span style="{{ card.captionStyle }}">{{ card.caption }}</span>
-                <sc-for list="{{ card.letters }}" as="l" hint-placeholder-count="6">
-                  <span style="{{ l.style }}">{{ l.ch }}</span>
-                </sc-for>
-              </a>
-            </sc-for>
+          <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: clamp(20px, 3vw, 34px);">
+            <div class="home-mood-ticker" aria-label="Rotating Ruth mood">
+              <div class="home-mood-track">
+                <div class="home-mood-line"><span class="home-mood-em">today</span>, ruth is feeling like a&nbsp;<span class="home-mood-em">subpar data scientist</span></div>
+                <div class="home-mood-line"><span class="home-mood-em">yesterday</span>, ruth was feeling like a&nbsp;<span class="home-mood-em">spreadsheet philosopher</span></div>
+                <div class="home-mood-line"><span class="home-mood-em">2 weeks ago</span>, ruth was feeling like a&nbsp;<span class="home-mood-em">slightly overfit model</span></div>
+                <div class="home-mood-line"><span class="home-mood-em">this morning</span>, ruth was feeling like a&nbsp;<span class="home-mood-em">half-rendered thought</span></div>
+                <div class="home-mood-line"><span class="home-mood-em">right now</span>, ruth is feeling like a&nbsp;<span class="home-mood-em">research tab left open</span></div>
+                <div class="home-mood-line"><span class="home-mood-em">tomorrow</span>, ruth will feel like a&nbsp;<span class="home-mood-em">competent little dataset</span></div>
+                <div class="home-mood-line"><span class="home-mood-em">today</span>, ruth is feeling like a&nbsp;<span class="home-mood-em">subpar data scientist</span></div>
+              </div>
+            </div>
+            <div class="home-card-row" style="{{ homeCardRowStyle }}">
+              <sc-for list="{{ slide.cards }}" as="card" hint-placeholder-count="2">
+                <a class="home-card" href="{{ card.href }}" aria-label="{{ card.key }}" onClick="{{ card.onClick }}" onMouseEnter="{{ card.onEnter }}" onMouseLeave="{{ card.onLeave }}" style="{{ card.style }}">
+                  <span style="{{ card.captionStyle }}">{{ card.caption }}</span>
+                  <sc-for list="{{ card.letters }}" as="l" hint-placeholder-count="6">
+                    <span style="{{ l.style }}">{{ l.ch }}</span>
+                  </sc-for>
+                </a>
+              </sc-for>
+            </div>
           </div>
         </div>
       </div>
