@@ -22,49 +22,65 @@
   @keyframes riseIn { from { opacity: 0; transform: translateY(18px) scale(0.985); filter: blur(6px); } to { opacity: 1; transform: none; filter: blur(0); } }
   @keyframes pageFloatIn { from { opacity: 0; transform: translateY(28px) scale(.985); filter: blur(10px); } to { opacity: 1; transform: none; filter: blur(0); } }
   @keyframes labCardReveal { from { opacity: .18; transform: translateY(72px) scale(.96); } to { opacity: 1; transform: none; } }
-  @keyframes moodWheel {
-    0%, 10% { transform: translateY(0); }
-    14%, 24% { transform: translateY(-14.2857%); }
-    28%, 38% { transform: translateY(-28.5714%); }
-    42%, 52% { transform: translateY(-42.8571%); }
-    56%, 66% { transform: translateY(-57.1428%); }
-    70%, 80% { transform: translateY(-71.4285%); }
-    84%, 100% { transform: translateY(-85.7142%); }
-  }
   .home-mood-ticker {
     position: relative;
     z-index: 4;
-    height: 1.55em;
-    max-width: min(92vw, 980px);
-    overflow: hidden;
+    max-width: min(92vw, 860px);
     color: #23201A;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: clamp(16px, 1.65vw, 25px);
-    line-height: 1.55;
-    letter-spacing: -0.015em;
+    font-size: clamp(12px, 1.05vw, 17px);
+    line-height: 1.35;
+    letter-spacing: -0.01em;
     text-align: center;
-  }
-  .home-mood-track {
-    display: flex;
-    flex-direction: column;
-    animation: moodWheel 18s cubic-bezier(.65, 0, .35, 1) infinite;
-    will-change: transform;
+    transform: translateY(-18px);
   }
   .home-mood-line {
-    height: 1.55em;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
+    gap: 0;
+    white-space: normal;
+  }
+  .home-mood-dial {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin: 0 2px;
     white-space: nowrap;
+  }
+  .home-mood-button {
+    appearance: none;
+    border: 1px solid rgba(35,32,26,.38);
+    background: rgba(255,255,255,.16);
+    color: #23201A;
+    width: 21px;
+    height: 21px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    font: 700 14px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
+    cursor: pointer;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
+  }
+  .home-mood-button:hover {
+    transform: translateY(-1px);
+    background: rgba(255,255,255,.32);
+    border-color: rgba(35,32,26,.62);
   }
   .home-mood-em {
     font-weight: 800;
     text-decoration: underline;
-    text-decoration-thickness: 1.5px;
+    text-decoration-thickness: 1.3px;
     text-underline-offset: 0.13em;
   }
   @media (max-width: 700px) {
-    .home-mood-ticker { font-size: clamp(13px, 3.5vw, 17px); max-width: 94vw; }
+    .home-mood-ticker { font-size: clamp(12px, 3.2vw, 15px); max-width: 94vw; transform: translateY(-12px); }
+    .home-mood-button { width: 19px; height: 19px; font-size: 13px; }
   }
   .about-page { animation: pageFloatIn 720ms cubic-bezier(.2,.9,.2,1) both; }
   @media (max-width: 700px) {
@@ -229,16 +245,14 @@
         </div>
         <div style="{{ slide.artStyle }}"></div>
         <div style="position: relative; z-index: 2; height: 100%; display: flex; align-items: center; justify-content: center; padding: 120px 44px;">
-          <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: clamp(20px, 3vw, 34px);">
-            <div class="home-mood-ticker" aria-label="Rotating Ruth mood">
-              <div class="home-mood-track">
-                <div class="home-mood-line"><span class="home-mood-em">today</span>, ruth is feeling like a&nbsp;<span class="home-mood-em">subpar data scientist</span></div>
-                <div class="home-mood-line"><span class="home-mood-em">yesterday</span>, ruth was feeling like a&nbsp;<span class="home-mood-em">spreadsheet philosopher</span></div>
-                <div class="home-mood-line"><span class="home-mood-em">2 weeks ago</span>, ruth was feeling like a&nbsp;<span class="home-mood-em">slightly overfit model</span></div>
-                <div class="home-mood-line"><span class="home-mood-em">this morning</span>, ruth was feeling like a&nbsp;<span class="home-mood-em">half-rendered thought</span></div>
-                <div class="home-mood-line"><span class="home-mood-em">right now</span>, ruth is feeling like a&nbsp;<span class="home-mood-em">research tab left open</span></div>
-                <div class="home-mood-line"><span class="home-mood-em">tomorrow</span>, ruth will feel like a&nbsp;<span class="home-mood-em">competent little dataset</span></div>
-                <div class="home-mood-line"><span class="home-mood-em">today</span>, ruth is feeling like a&nbsp;<span class="home-mood-em">subpar data scientist</span></div>
+          <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: clamp(28px, 4vw, 50px);">
+            <div class="home-mood-ticker" aria-label="Ruth mood selector">
+              <div class="home-mood-line">
+                <span class="home-mood-dial">
+                  <button class="home-mood-button" type="button" aria-label="Previous mood time" onClick="{{ prevMood }}">‹</button>
+                  <span class="home-mood-em">{{ mood.time }}</span>
+                  <button class="home-mood-button" type="button" aria-label="Next mood time" onClick="{{ nextMood }}">›</button>
+                </span>{{ mood.rest }}&nbsp;<span class="home-mood-em">{{ mood.phrase }}</span>
               </div>
             </div>
             <div class="home-card-row" style="{{ homeCardRowStyle }}">
@@ -539,6 +553,15 @@ const LAB_CATS = [
   { key: 'writing', label: 'writing' },
 ];
 const PLACEHOLDER = '#lab-projects';
+const MOODS = [
+  { time: 'today', rest: ', ruth is feeling like a', phrase: 'subpar data scientist' },
+  { time: 'yesterday', rest: ', ruth was feeling like a', phrase: 'spreadsheet philosopher' },
+  { time: '2 weeks ago', rest: ', ruth was feeling like a', phrase: 'slightly overfit model' },
+  { time: 'this morning', rest: ', ruth was feeling like a', phrase: 'half-rendered thought' },
+  { time: 'right now', rest: ', ruth is feeling like a', phrase: 'research tab left open' },
+  { time: 'tomorrow', rest: ', ruth will feel like a', phrase: 'competent little dataset' },
+];
+
 const PROJECTS = [
   { cat: 'projects', title: 'ETA estimator', blurb: 'Quantified transit prediction error across routes, time periods, and weather to surface 6+ minute failure cases.', href: PLACEHOLDER, tag: 'data science', image: './1.jpg' },
   { cat: 'projects', title: 'LangPal 11Labs pipeline', blurb: 'Built an end-to-end voice loop with ElevenLabs STT/TTS, Gemini, Supabase, FastAPI, and a Flutter app.', href: PLACEHOLDER, tag: 'AI engineering', image: './2.jpg' },
@@ -554,7 +577,7 @@ const PROJECTS = [
 ];
 
 class Component extends DCLogic {
-  state = { page: 'home', hover: null, slide: 0, barAR: null, listMode: false, card: null };
+  state = { page: 'home', hover: null, slide: 0, barAR: null, listMode: false, card: null, moodIndex: 0 };
 
   componentDidMount() {
     this._onChipClick = (ev) => {
@@ -599,6 +622,9 @@ class Component extends DCLogic {
   renderVals() {
     const p = this.state.page;
     const hover = this.state.hover;
+    const moodIndex = this.state.moodIndex || 0;
+    const mood = MOODS[moodIndex % MOODS.length];
+    const changeMood = (step) => this.setState({ moodIndex: (moodIndex + step + MOODS.length) % MOODS.length });
     const homeCardRowStyle = 'display:flex; align-items:center; justify-content:center; gap:calc(clamp(20px, 5vw, 68px) + 100px);';
 
     const glass = (hex, a) => {
@@ -761,6 +787,9 @@ class Component extends DCLogic {
     return {
       bgStyle,
       homeCardRowStyle,
+      mood,
+      prevMood: (e) => { e.preventDefault(); e.stopPropagation(); changeMood(-1); },
+      nextMood: (e) => { e.preventDefault(); e.stopPropagation(); changeMood(1); },
       labIndex,
       projectCards,
       passionProjects,
