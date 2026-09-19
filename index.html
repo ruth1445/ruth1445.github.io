@@ -6,6 +6,8 @@
 <title>Ruth Sharon — Portfolio</title>
 <script src="./support.js"></script>
 <link rel="stylesheet" href="./about-restored.css?v=4">
+<link rel="stylesheet" href="./about-places.css?v=1">
+<script src="./about-places.js?v=1" defer></script>
 <link rel="icon" href="data:,">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -221,27 +223,47 @@
           </section>
           <section class="about-cell about-cell--places" aria-label="Places I've called home">
             <h2>Places I've called home:</h2>
-            <div class="about-place-grid">
-              <figure class="about-place">
-                <img src="./assets/about-map-nj.png" alt="" loading="lazy">
-                <figcaption>New Brunswick, NJ</figcaption>
-              </figure>
-              <figure class="about-place">
-                <img src="./assets/about-map-hyderabad.png" alt="" loading="lazy">
-                <figcaption>Hyderabad, Telangana</figcaption>
-              </figure>
-              <figure class="about-place">
-                <img src="./assets/about-map-kerala.png" alt="" loading="lazy">
-                <figcaption>Kerala</figcaption>
-              </figure>
-              <figure class="about-place">
-                <img src="./assets/about-map-riyadh.png" alt="" loading="lazy">
-                <figcaption>Riyadh, KSA</figcaption>
-              </figure>
+            <div class="home-venn">
+              <svg class="home-venn-circles" viewBox="0 0 640 790" role="group" aria-label="Places and shared observations">
+                <g class="home-venn-rings" aria-hidden="true">
+                  <circle cx="190" cy="141" r="140" />
+                  <circle cx="430" cy="285" r="174" />
+                  <circle cx="175" cy="440" r="175" />
+                  <circle cx="420" cy="600" r="175" />
+                </g>
+                <g class="home-overlap" role="button" tabindex="0" data-finding="nj-riyadh" data-note-y="208" aria-label="Shared observations: New Brunswick and Riyadh" aria-controls="home-finding" aria-expanded="false">
+                  <path d="M 257.30 263.76 A 140 140 0 0 0 329.99 142.61 A 174 174 0 0 0 257.30 263.76 Z" />
+                </g>
+                <g class="home-overlap" role="button" tabindex="0" data-finding="nj-kerala" data-note-y="274" aria-label="Shared observations: New Brunswick and Kerala" aria-controls="home-finding" aria-expanded="false">
+                  <path d="M 134.83 269.67 A 140 140 0 0 0 232.01 274.55 A 175 175 0 0 0 134.83 269.67 Z" />
+                </g>
+                <g class="home-overlap" role="button" tabindex="0" data-finding="riyadh-kerala" data-note-y="362" aria-label="Shared observations: Riyadh and Kerala" aria-controls="home-finding" aria-expanded="false">
+                  <path d="M 256.00 284.87 A 174 174 0 0 0 350.00 439.52 A 175 175 0 0 0 256.00 284.87 Z" />
+                </g>
+                <g class="home-overlap" role="button" tabindex="0" data-finding="riyadh-hyderabad" data-note-y="444" aria-label="Shared observations: Riyadh and Hyderabad" aria-controls="home-finding" aria-expanded="false">
+                  <path d="M 350.10 439.57 A 174 174 0 0 0 499.94 444.33 A 175 175 0 0 0 350.10 439.57 Z" />
+                </g>
+                <g class="home-overlap" role="button" tabindex="0" data-finding="kerala-hyderabad" data-note-y="520" aria-label="Shared observations: Kerala and Hyderabad" aria-controls="home-finding" aria-expanded="false">
+                  <path d="M 245.00 600.39 A 175 175 0 0 0 350.00 439.61 A 175 175 0 0 0 245.00 600.39 Z" />
+                </g>
+              </svg>
+              <span class="home-map home-map--nj" role="img" aria-label="New Jersey map"></span>
+              <span class="home-place-label home-place-label--nj">New Brunswick,<br>NJ, USA</span>
+              <span class="home-map home-map--riyadh" role="img" aria-label="Riyadh map"></span>
+              <span class="home-place-label home-place-label--riyadh">Riyadh, KSA</span>
+              <span class="home-map home-map--kerala" role="img" aria-label="Kerala map"></span>
+              <span class="home-place-label home-place-label--kerala">Kerala, India</span>
+              <span class="home-map home-map--hyderabad" role="img" aria-label="Hyderabad map"></span>
+              <span class="home-place-label home-place-label--hyderabad">Hyderabad,<br>Telangana, India</span>
+              <div class="home-finding" id="home-finding" role="note" aria-hidden="true">
+                <strong class="home-finding-title"></strong>
+                <p id="home-finding-copy">Observation coming soon.</p>
+              </div>
             </div>
           </section>
           <section class="about-cell about-cell--languages" aria-label="Languages">
-            <p>Languages: English, <mark class="about-highlight">Python</mark>, Malayalam, Arabic, <mark class="about-highlight">TypeScript</mark>, Telugu, <mark class="about-highlight">SQL</mark>, Hindi</p>
+            <h2>Languages I speak:</h2>
+            <p>English, <mark class="about-highlight">Python</mark>, Malayalam, Arabic, <mark class="about-highlight">TypeScript</mark>, Telugu, <mark class="about-highlight">SQL</mark>, Hindi</p>
           </section>
         </div>
         <div class="about-right">
