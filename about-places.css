@@ -125,27 +125,38 @@ body[data-page='about'] .site-header a {
 
 .about-copy .home-place-label {
   position: absolute;
-  z-index: 1;
+  z-index: 2;
+  display: flex;
   width: 20%;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding-top: 6px;
+  border-top: 1px solid rgba(35, 32, 26, .42);
   pointer-events: none;
-  font-size: 12px;
-  line-height: 1.38;
+  font-size: 11px;
+  line-height: 1.2;
   font-weight: 400;
   letter-spacing: 0;
   text-align: center;
 }
 
-.about-copy .home-place-label em {
-  font-style: normal;
-  font-size: .89em;
-  opacity: .7;
+.about-copy .home-place-label strong {
+  font-size: 1em;
+  font-weight: 600;
 }
 
-/* Each label is deliberately placed in the non-shared outer area of its circle. */
-.about-copy .home-place-label--nj { left: 24%; top: 10%; width: 14%; }
-.about-copy .home-place-label--riyadh { left: 50.5%; top: 10%; width: 12%; }
-.about-copy .home-place-label--kerala { left: 23%; top: 48%; width: 13%; }
-.about-copy .home-place-label--hyderabad { left: 52%; top: 48%; width: 12%; }
+.about-copy .home-place-label em {
+  font-style: normal;
+  font-size: .9em;
+  opacity: .66;
+}
+
+/* Map captions live in the quiet outer area of every circle, never in an overlap. */
+.about-copy .home-place-label--nj { left: 5%; top: 30%; width: 22%; }
+.about-copy .home-place-label--riyadh { left: 64%; top: 34%; width: 22%; }
+.about-copy .home-place-label--kerala { left: 17%; top: 70%; width: 18%; }
+.about-copy .home-place-label--hyderabad { left: 58%; top: 68%; width: 20%; }
 
 .about-copy .home-finding {
   position: absolute;
@@ -191,8 +202,10 @@ body[data-page='about'] .site-header a {
 /* Preserve the original card as-is while letting it follow the long left column. */
 @media (min-width: 701px) {
   .about-right {
-    position: sticky;
-    top: clamp(20px, 4vh, 44px);
+    position: relative;
+    top: auto;
+    transform: translate3d(0, var(--about-follow-y, 0px), 0) !important;
+    transition: transform 420ms cubic-bezier(.22, 1, .36, 1);
     will-change: transform;
   }
 }
