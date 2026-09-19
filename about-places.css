@@ -199,6 +199,98 @@ body[data-page='about'] .site-header a {
 
 .about-right .about-links a:hover { color: #33ff44 !important; }
 
+/* Places are individual picture cards now — no relationship overlays. */
+.about-copy .home-venn {
+  width: 100%;
+  aspect-ratio: 640 / 700;
+  margin-top: 28px;
+  overflow: visible;
+}
+
+.about-copy .home-place-card {
+  --tilt: 0deg;
+  --counter-tilt: 0deg;
+  position: absolute;
+  width: 40%;
+  aspect-ratio: 1;
+  border: 1.5px solid rgba(35, 32, 26, .30);
+  background: transparent;
+  transform: rotate(var(--tilt));
+  transform-origin: center;
+}
+
+.about-copy .home-place-card--nj {
+  --tilt: -12deg;
+  --counter-tilt: 12deg;
+  left: 7%;
+  top: 3%;
+}
+
+.about-copy .home-place-card--riyadh {
+  --tilt: -42deg;
+  --counter-tilt: 42deg;
+  left: 49%;
+  top: 13%;
+}
+
+.about-copy .home-place-card--kerala {
+  --tilt: -13deg;
+  --counter-tilt: 13deg;
+  left: 3%;
+  top: 43%;
+  width: 48%;
+}
+
+.about-copy .home-place-card--hyderabad {
+  --tilt: -43deg;
+  --counter-tilt: 43deg;
+  left: 46%;
+  top: 51%;
+  width: 46%;
+}
+
+.about-copy .home-place-card .home-map,
+.about-copy .home-place-card .home-place-label {
+  transform: rotate(var(--counter-tilt));
+  transform-origin: center;
+}
+
+.about-copy .home-place-card .home-map {
+  position: absolute;
+  z-index: 1;
+}
+
+.about-copy .home-place-card .home-place-label {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 0;
+  border: 0;
+  color: #23201a;
+  font-size: clamp(11px, 1.1cqw, 14px);
+  font-weight: 400;
+  line-height: 1.25;
+  text-align: center;
+}
+
+.about-copy .home-place-card .home-place-label strong { font-weight: 600; }
+.about-copy .home-place-card .home-place-label em { font-size: .9em; opacity: .82; }
+
+.about-copy .home-place-card .home-map--nj { left: 17%; top: 17%; width: 38%; height: 58%; }
+.about-copy .home-place-card .home-place-label--nj { left: 53%; top: 23%; width: 44%; }
+
+.about-copy .home-place-card .home-map--riyadh { left: 26%; top: 24%; width: 52%; height: 51%; }
+.about-copy .home-place-card .home-place-label--riyadh { left: 9%; top: 16%; width: 48%; }
+
+.about-copy .home-place-card .home-map--kerala { left: 27%; top: 36%; width: 50%; height: 57%; }
+.about-copy .home-place-card .home-place-label--kerala { left: 6%; top: 18%; width: 50%; }
+
+.about-copy .home-place-card .home-map--hyderabad { left: 24%; top: 14%; width: 54%; height: 49%; }
+.about-copy .home-place-card .home-place-label--hyderabad { left: 20%; top: 68%; width: 62%; }
+
 /* Preserve the original card as-is while letting it follow the long left column. */
 @media (min-width: 701px) {
   .about-right {

@@ -6,8 +6,8 @@
 <title>Ruth Sharon — Portfolio</title>
 <script src="./support.js"></script>
 <link rel="stylesheet" href="./about-restored.css?v=4">
-<link rel="stylesheet" href="./about-places.css?v=6">
-<script src="./about-places.js?v=2" defer></script>
+<link rel="stylesheet" href="./about-places.css?v=7">
+<script src="./about-places.js?v=3" defer></script>
 <link rel="icon" href="data:,">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -223,39 +223,23 @@
           </section>
           <section class="about-cell about-cell--places" aria-label="places i've called home">
             <h2>places i've called home:</h2>
-            <div class="home-venn">
-              <svg class="home-venn-circles" viewBox="0 0 640 700" role="group" aria-label="Places and shared observations">
-                <g class="home-venn-rings" aria-hidden="true">
-                  <circle cx="145" cy="205" r="160" />
-                  <circle cx="410" cy="190" r="175" />
-                  <circle cx="165" cy="445" r="190" />
-                  <circle cx="355" cy="440" r="170" />
-                </g>
-                <g class="home-overlap" role="button" tabindex="0" data-finding="nj-riyadh" data-note-y="180" aria-label="Shared observations: New Brunswick and Riyadh" aria-controls="home-finding" aria-expanded="false">
-                  <path d="M 270 116 C 293 144 293 216 270 244 C 247 216 247 144 270 116 Z" />
-                </g>
-                <g class="home-overlap" role="button" tabindex="0" data-finding="nj-kerala" data-note-y="315" aria-label="Shared observations: New Brunswick and Kerala" aria-controls="home-finding" aria-expanded="false">
-                  <path d="M 70 315 C 100 290 185 290 220 315 C 185 340 100 340 70 315 Z" />
-                </g>
-                <g class="home-overlap" role="button" tabindex="0" data-finding="riyadh-hyderabad" data-note-y="315" aria-label="Shared observations: Riyadh and Hyderabad" aria-controls="home-finding" aria-expanded="false">
-                  <path d="M 390 270 C 418 292 418 340 390 362 C 362 340 362 292 390 270 Z" />
-                </g>
-                <g class="home-overlap" role="button" tabindex="0" data-finding="kerala-hyderabad" data-note-y="445" aria-label="Shared observations: Kerala and Hyderabad" aria-controls="home-finding" aria-expanded="false">
-                  <path d="M 275 365 C 335 410 335 490 275 530 C 215 490 215 410 275 365 Z" />
-                </g>
-              </svg>
-              <button class="home-map home-map--nj" type="button" data-interest-place="new-brunswick" aria-label="view new brunswick photos"></button>
-              <span class="home-place-label home-place-label--nj"><strong>new brunswick,<br>nj, usa</strong><em>(2.5 years)</em></span>
-              <button class="home-map home-map--riyadh" type="button" data-interest-place="riyadh" aria-label="view riyadh photos"></button>
-              <span class="home-place-label home-place-label--riyadh"><strong>riyadh, ksa</strong><em>(15 years)</em></span>
-              <button class="home-map home-map--kerala" type="button" data-interest-place="kerala" aria-label="view kerala photos"></button>
-              <span class="home-place-label home-place-label--kerala"><strong>kerala, india</strong><em>(3.5 months)</em></span>
-              <button class="home-map home-map--hyderabad" type="button" data-interest-place="hyderabad" aria-label="view hyderabad photos"></button>
-              <span class="home-place-label home-place-label--hyderabad"><strong>hyderabad,<br>telangana, india</strong><em>(6.5 years)</em></span>
-              <div class="home-finding" id="home-finding" role="note" aria-hidden="true">
-                <strong class="home-finding-title"></strong>
-                <p id="home-finding-copy">Observation coming soon.</p>
-              </div>
+            <div class="home-venn" aria-label="places i've called home">
+              <article class="home-place-card home-place-card--nj">
+                <button class="home-map home-map--nj" type="button" data-interest-place="new-brunswick" aria-label="view new brunswick photos"></button>
+                <span class="home-place-label home-place-label--nj"><strong>new brunswick,<br>nj, usa</strong><em>(2.5 years)</em></span>
+              </article>
+              <article class="home-place-card home-place-card--riyadh">
+                <button class="home-map home-map--riyadh" type="button" data-interest-place="riyadh" aria-label="view riyadh photos"></button>
+                <span class="home-place-label home-place-label--riyadh"><strong>riyadh, ksa</strong><em>(15 years)</em></span>
+              </article>
+              <article class="home-place-card home-place-card--kerala">
+                <button class="home-map home-map--kerala" type="button" data-interest-place="kerala" aria-label="view kerala photos"></button>
+                <span class="home-place-label home-place-label--kerala"><strong>kerala, india</strong><em>(3.5 months)</em></span>
+              </article>
+              <article class="home-place-card home-place-card--hyderabad">
+                <button class="home-map home-map--hyderabad" type="button" data-interest-place="hyderabad" aria-label="view hyderabad photos"></button>
+                <span class="home-place-label home-place-label--hyderabad"><strong>hyderabad,<br>telangana, india</strong><em>(6.5 years)</em></span>
+              </article>
             </div>
           </section>
           <section class="about-cell about-cell--languages" aria-label="my languages">
