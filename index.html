@@ -29,7 +29,7 @@
     align-items: center;
     justify-content: center;
     gap: 7px;
-    max-width: min(94vw, 820px);
+    max-width: min(94vw, 850px);
     color: #23201A;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: clamp(12px, .96vw, 15px);
@@ -39,10 +39,20 @@
     transform: translateY(-26px);
     white-space: nowrap;
   }
+  .home-mood-machine {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+  }
   .home-mood-static {
     display: inline-flex;
     align-items: center;
     min-width: max-content;
+    transition: opacity 220ms ease, transform 220ms cubic-bezier(.16,1,.3,1);
+  }
+  .home-mood-ticker.is-spinning .home-mood-static {
+    opacity: .72;
+    transform: translateY(.5px);
   }
   .home-mood-slot {
     position: relative;
@@ -51,6 +61,26 @@
     overflow: hidden;
     vertical-align: bottom;
     flex: 0 0 auto;
+    -webkit-mask-image: linear-gradient(180deg, transparent, #000 18%, #000 82%, transparent);
+    mask-image: linear-gradient(180deg, transparent, #000 18%, #000 82%, transparent);
+  }
+  .home-mood-slot::before,
+  .home-mood-slot::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: .28em;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .home-mood-slot::before {
+    top: 0;
+    background: linear-gradient(180deg, rgba(247,240,226,.9), rgba(247,240,226,0));
+  }
+  .home-mood-slot::after {
+    bottom: 0;
+    background: linear-gradient(0deg, rgba(247,240,226,.9), rgba(247,240,226,0));
   }
   .home-mood-slot--time {
     width: 7.6em;
@@ -63,13 +93,13 @@
   .home-mood-track {
     display: flex;
     flex-direction: column;
-    transition: transform 680ms cubic-bezier(.16, 1, .3, 1);
-    will-change: transform;
+    will-change: transform, filter;
   }
   .home-mood-option {
     height: 1.35em;
     display: flex;
     align-items: center;
+    backface-visibility: hidden;
   }
   .home-mood-slot--time .home-mood-option {
     justify-content: flex-end;
@@ -79,60 +109,92 @@
     justify-content: flex-start;
     width: 13.8em;
   }
-  .home-mood-crown {
+  .home-slot-lever {
     appearance: none;
     position: relative;
     flex: 0 0 auto;
-    width: 27px;
-    height: 34px;
-    margin: 0 4px 0 1px;
-    border-radius: 999px;
-    border: 1.4px solid rgba(35,32,26,.58);
-    background:
-      linear-gradient(90deg, rgba(255,255,255,.62), rgba(255,255,255,.18) 46%, rgba(35,32,26,.10)),
-      linear-gradient(180deg, rgba(255,255,255,.50), rgba(255,255,255,.08));
-    box-shadow:
-      inset 1px 0 0 rgba(255,255,255,.86),
-      inset -3px 0 6px rgba(35,32,26,.10),
-      0 12px 26px rgba(35,32,26,.14);
-    backdrop-filter: blur(15px) saturate(1.25);
-    -webkit-backdrop-filter: blur(15px) saturate(1.25);
-    cursor: ns-resize;
+    width: 34px;
+    height: 48px;
+    margin: -12px 1px -8px 0;
+    border: 0;
+    background: transparent;
+    cursor: grab;
     padding: 0;
     touch-action: none;
     user-select: none;
-    transition: transform 240ms cubic-bezier(.16,1,.3,1), border-color 220ms ease, box-shadow 240ms ease, background 220ms ease;
+    --pull-px: 0px;
+    --lever-angle: -25deg;
   }
-  .home-mood-crown::before {
+  .home-slot-lever:active,
+  .home-slot-lever.is-pulling {
+    cursor: grabbing;
+  }
+  .home-slot-lever-plate {
+    position: absolute;
+    left: 7px;
+    top: 10px;
+    width: 12px;
+    height: 31px;
+    border-radius: 999px;
+    border: 1.2px solid rgba(35,32,26,.48);
+    background: linear-gradient(180deg, rgba(255,255,255,.48), rgba(255,255,255,.12));
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.82), 0 10px 20px rgba(35,32,26,.12);
+    backdrop-filter: blur(14px) saturate(1.2);
+    -webkit-backdrop-filter: blur(14px) saturate(1.2);
+  }
+  .home-slot-lever-plate::after {
     content: "";
     position: absolute;
-    inset: 6px 8px;
+    left: 50%;
+    top: 5px;
+    width: 2px;
+    height: 20px;
     border-radius: 999px;
-    background: repeating-linear-gradient(180deg, rgba(35,32,26,.72) 0 1px, transparent 1px 4px);
-    opacity: .72;
+    background: rgba(35,32,26,.28);
+    transform: translateX(-50%);
   }
-  .home-mood-crown::after {
-    content: "";
+  .home-slot-lever-arm {
     position: absolute;
-    left: 6px;
-    top: 6px;
-    width: 6px;
-    height: 12px;
+    left: 13px;
+    top: 14px;
+    width: 3px;
+    height: 27px;
     border-radius: 999px;
-    background: rgba(255,255,255,.62);
-    filter: blur(.2px);
+    background: linear-gradient(180deg, rgba(35,32,26,.86), rgba(35,32,26,.56));
+    transform-origin: 50% 3px;
+    transform: rotate(var(--lever-angle));
+    transition: transform 420ms cubic-bezier(.18,1.35,.25,1);
+    box-shadow: 0 1px 0 rgba(255,255,255,.6);
   }
-  .home-mood-crown:hover {
-    transform: translateY(-1px) scale(1.05);
-    border-color: rgba(35,32,26,.78);
-    box-shadow:
-      inset 1px 0 0 rgba(255,255,255,.9),
-      inset -3px 0 7px rgba(35,32,26,.12),
-      0 16px 30px rgba(35,32,26,.18);
+  .home-slot-lever-knob {
+    position: absolute;
+    left: 13px;
+    top: 5px;
+    width: 16px;
+    height: 16px;
+    border-radius: 999px;
+    background:
+      radial-gradient(circle at 32% 28%, rgba(255,255,255,.9) 0 18%, transparent 22%),
+      linear-gradient(135deg, #F5F0E4, #B8C8CF 48%, #92A171);
+    border: 1.2px solid rgba(35,32,26,.58);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 8px 18px rgba(35,32,26,.16);
+    transform: translate(-50%, var(--pull-px));
+    transition: transform 420ms cubic-bezier(.18,1.35,.25,1), box-shadow 220ms ease;
   }
-  .home-mood-crown:active,
-  .home-mood-crown.is-dragging {
-    transform: translateY(0) scale(.96);
+  .home-slot-lever:hover .home-slot-lever-knob {
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.95), 0 11px 22px rgba(35,32,26,.22);
+  }
+  .home-slot-lever.is-pulling .home-slot-lever-arm,
+  .home-slot-lever.is-pulling .home-slot-lever-knob {
+    transition-duration: 42ms;
+    transition-timing-function: linear;
+  }
+  .home-slot-lever.is-firing .home-slot-lever-arm,
+  .home-slot-lever.is-firing .home-slot-lever-knob {
+    transition-duration: 520ms;
+  }
+  .home-mood-ticker.is-spinning .home-mood-slot {
+    filter: drop-shadow(0 6px 12px rgba(35,32,26,.08));
   }
   .home-mood-em {
     font-weight: 800;
@@ -142,9 +204,10 @@
   }
   @media (max-width: 700px) {
     .home-mood-ticker { flex-wrap: wrap; font-size: clamp(11px, 3vw, 14px); max-width: 94vw; transform: translateY(-16px); gap: 6px; }
+    .home-mood-machine { gap: 5px; }
     .home-mood-slot--time, .home-mood-slot--time .home-mood-option { width: 7.3em; }
     .home-mood-slot--phrase, .home-mood-slot--phrase .home-mood-option { width: 13.4em; }
-    .home-mood-crown { width: 24px; height: 30px; }
+    .home-slot-lever { width: 31px; height: 44px; margin-top: -10px; }
   }
   .about-page { animation: pageFloatIn 720ms cubic-bezier(.2,.9,.2,1) both; }
   @media (max-width: 700px) {
@@ -310,15 +373,21 @@
         <div style="{{ slide.artStyle }}"></div>
         <div style="position: relative; z-index: 2; height: 100%; display: flex; align-items: center; justify-content: center; padding: 120px 44px;">
           <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: clamp(28px, 4vw, 50px);">
-            <div class="home-mood-ticker" aria-label="Ruth mood selector">
-              <span class="home-mood-slot home-mood-slot--time" aria-live="polite">
-                <span class="home-mood-track" style="{{ moodReelStyle }}">
-                  <sc-for list="{{ moods }}" as="moodOption" hint-placeholder-count="4">
-                    <span class="home-mood-option home-mood-em">{{ moodOption.time }}</span>
-                  </sc-for>
+            <div class="home-mood-ticker {{ moodSpinClass }}" aria-label="Ruth mood selector">
+              <span class="home-mood-machine">
+                <button class="home-slot-lever" type="button" aria-label="Pull the lever to change Ruth mood" onClick="{{ nextMood }}" onPointerDown="{{ moodLeverDown }}" onPointerMove="{{ moodLeverMove }}" onPointerUp="{{ moodLeverUp }}" onPointerCancel="{{ moodLeverCancel }}">
+                  <span class="home-slot-lever-plate" aria-hidden="true"></span>
+                  <span class="home-slot-lever-arm" aria-hidden="true"></span>
+                  <span class="home-slot-lever-knob" aria-hidden="true"></span>
+                </button>
+                <span class="home-mood-slot home-mood-slot--time" aria-live="polite">
+                  <span class="home-mood-track" style="{{ moodReelStyle }}">
+                    <sc-for list="{{ moods }}" as="moodOption" hint-placeholder-count="4">
+                      <span class="home-mood-option home-mood-em">{{ moodOption.time }}</span>
+                    </sc-for>
+                  </span>
                 </span>
               </span>
-              <button class="home-mood-crown" type="button" aria-label="Drag up or down to change Ruth mood" onClick="{{ nextMood }}" onPointerDown="{{ moodDialDown }}" onPointerMove="{{ moodDialMove }}" onPointerUp="{{ moodDialUp }}" onPointerCancel="{{ moodDialUp }}" onWheel="{{ moodDialWheel }}"></button>
               <span class="home-mood-static">{{ mood.rest }}&nbsp;</span>
               <span class="home-mood-slot home-mood-slot--phrase" aria-live="polite">
                 <span class="home-mood-track" style="{{ moodReelStyle }}">
@@ -694,26 +763,86 @@ class Component extends DCLogic {
     const p = this.state.page;
     const hover = this.state.hover;
     const moodIndex = this.state.moodIndex || 0;
-    const moodSlot = ((moodIndex % MOODS.length) + MOODS.length) % MOODS.length;
+    const moodDisplayIndex = this.state.moodDisplayIndex == null ? moodIndex : this.state.moodDisplayIndex;
+    const moodSlot = ((moodDisplayIndex % MOODS.length) + MOODS.length) % MOODS.length;
     const mood = MOODS[moodSlot];
-    const moodReelStyle = 'transform:translateY(-' + moodSlot * 1.35 + 'em);';
-    const changeMood = (step) => {
-      const current = this.state.moodIndex || 0;
-      this.setState({ moodIndex: (current + step + MOODS.length) % MOODS.length });
+    const moodSpinMs = this.state.moodSpinMs || 680;
+    const moodSpinClass = this.state.moodSpinning ? 'is-spinning' : '';
+    const moodReelStyle = 'transform:translateY(-' + moodSlot * 1.35 + 'em); transition:transform ' + moodSpinMs + 'ms cubic-bezier(.16,1,.3,1); filter:' + (this.state.moodSpinning ? 'blur(.25px)' : 'blur(0)') + ';';
+    const setLeverPull = (el, pull) => {
+      if (!el) return;
+      const p = Math.max(0, Math.min(34, pull));
+      el.style.setProperty('--pull-px', p.toFixed(1) + 'px');
+      el.style.setProperty('--lever-angle', (-25 + p * 1.52).toFixed(1) + 'deg');
     };
-    const endMoodDrag = (e) => {
+    const resetLever = (el) => {
+      if (!el) return;
+      el.classList.remove('is-pulling');
+      el.classList.add('is-firing');
+      setLeverPull(el, 0);
+      setTimeout(() => { el.classList.remove('is-firing'); }, 540);
+    };
+    const clearMoodTimers = () => {
+      (this._moodSpinTimers || []).forEach((timer) => clearTimeout(timer));
+      this._moodSpinTimers = [];
+    };
+    const spinMoodSlots = () => {
+      if (this.state.moodSpinning) return;
+      clearMoodTimers();
+      const total = MOODS.length;
+      const start = ((this.state.moodDisplayIndex == null ? this.state.moodIndex || 0 : this.state.moodDisplayIndex) % total + total) % total;
+      let target = Math.floor(Math.random() * total);
+      if (target === start) target = (target + 1 + Math.floor(Math.random() * (total - 1))) % total;
+      const delta = (target - start + total) % total;
+      const steps = 14 + delta;
+      let elapsed = 0;
+      this.setState({ moodSpinning: true, moodSpinMs: 38 });
+      for (let i = 1; i <= steps; i += 1) {
+        const t = i / steps;
+        const wait = 34 + Math.pow(t, 2.55) * 168;
+        elapsed += wait;
+        const display = (start + i) % total;
+        const isLast = i === steps;
+        const timer = setTimeout(() => {
+          this.setState({
+            moodDisplayIndex: isLast ? target : display,
+            moodIndex: isLast ? target : this.state.moodIndex,
+            moodSpinMs: Math.max(34, Math.min(240, wait * (isLast ? 1.18 : .72))),
+            moodSpinning: !isLast,
+          });
+          if (isLast) {
+            const settle = setTimeout(() => this.setState({ moodSpinning: false, moodSpinMs: 680, moodDisplayIndex: target }), 300);
+            this._moodSpinTimers.push(settle);
+          }
+        }, elapsed);
+        this._moodSpinTimers.push(timer);
+      }
+    };
+    const clickPullMoodLever = (el) => {
+      if (this.state.moodSpinning) return;
+      if (el) {
+        el.classList.add('is-firing');
+        setLeverPull(el, 33);
+        setTimeout(() => resetLever(el), 185);
+      }
+      setTimeout(spinMoodSlots, 120);
+    };
+    const endMoodLever = (e, cancelled) => {
       if (e) {
         e.preventDefault();
         e.stopPropagation();
       }
-      if (this._moodDidDrag) {
+      const el = this._moodLeverEl || (e && e.currentTarget);
+      const pulled = (this._moodLeverPull || 0) > 18;
+      if (pulled) {
         this._moodSuppressClick = true;
-        setTimeout(() => { this._moodSuppressClick = false; }, 40);
+        setTimeout(() => { this._moodSuppressClick = false; }, 360);
       }
-      this._moodDragY = null;
-      this._moodDidDrag = false;
-      if (this._moodDialEl) this._moodDialEl.classList.remove('is-dragging');
-      this._moodDialEl = null;
+      resetLever(el);
+      this._moodLeverStart = null;
+      this._moodLeverPull = 0;
+      this._moodLeverEl = null;
+      if (pulled && !cancelled) setTimeout(spinMoodSlots, 95);
     };
     const homeCardRowStyle = 'display:flex; align-items:center; justify-content:center; gap:calc(clamp(20px, 5vw, 68px) + 100px);';
 
@@ -879,44 +1008,35 @@ class Component extends DCLogic {
       homeCardRowStyle,
       mood,
       moods: MOODS,
+      moodSpinClass,
       moodReelStyle,
       nextMood: (e) => {
         e.preventDefault();
         e.stopPropagation();
         if (this._moodSuppressClick) return;
-        changeMood(1);
+        clickPullMoodLever(e.currentTarget);
       },
-      moodDialDown: (e) => {
+      moodLeverDown: (e) => {
         e.preventDefault();
         e.stopPropagation();
-        this._moodDragY = e.clientY;
-        this._moodDidDrag = false;
-        this._moodDialEl = e.currentTarget;
-        if (this._moodDialEl) {
-          this._moodDialEl.classList.add('is-dragging');
-          if (this._moodDialEl.setPointerCapture && e.pointerId != null) this._moodDialEl.setPointerCapture(e.pointerId);
-        }
+        if (this.state.moodSpinning) return;
+        this._moodLeverStart = e.clientY;
+        this._moodLeverPull = 0;
+        this._moodLeverEl = e.currentTarget;
+        this._moodLeverEl.classList.add('is-pulling');
+        setLeverPull(this._moodLeverEl, 0);
+        if (this._moodLeverEl.setPointerCapture && e.pointerId != null) this._moodLeverEl.setPointerCapture(e.pointerId);
       },
-      moodDialMove: (e) => {
-        if (this._moodDragY == null) return;
+      moodLeverMove: (e) => {
+        if (this._moodLeverStart == null || this.state.moodSpinning) return;
         e.preventDefault();
         e.stopPropagation();
-        const dy = e.clientY - this._moodDragY;
-        if (Math.abs(dy) >= 18) {
-          this._moodDragY = e.clientY;
-          this._moodDidDrag = true;
-          changeMood(dy > 0 ? 1 : -1);
-        }
+        const pull = Math.max(0, e.clientY - this._moodLeverStart);
+        this._moodLeverPull = pull;
+        setLeverPull(this._moodLeverEl || e.currentTarget, pull);
       },
-      moodDialUp: endMoodDrag,
-      moodDialWheel: (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        if (this._moodWheelLock || Math.abs(e.deltaY) < 8) return;
-        this._moodWheelLock = true;
-        setTimeout(() => { this._moodWheelLock = false; }, 260);
-        changeMood(e.deltaY > 0 ? 1 : -1);
-      },
+      moodLeverUp: (e) => endMoodLever(e, false),
+      moodLeverCancel: (e) => endMoodLever(e, true),
       labIndex,
       projectCards,
       passionProjects,
