@@ -44,7 +44,7 @@
     active = region;
     title.textContent = finding.title;
     copy.textContent = finding.text;
-    note.style.setProperty('--note-top', `${Number(region.dataset.noteY) / 790 * 100}%`);
+    note.style.setProperty('--note-top', `${Number(region.dataset.noteY) / 700 * 100}%`);
     note.setAttribute('aria-hidden', 'false');
     region.setAttribute('data-active', '');
     region.setAttribute('aria-expanded', 'true');

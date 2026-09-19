@@ -22,7 +22,7 @@ body[data-page='about'] .site-header a {
   position: relative;
   isolation: isolate;
   width: 100%;
-  aspect-ratio: 640 / 790;
+  aspect-ratio: 640 / 700;
   margin: 26px auto 0;
   color: #23201a;
 }
@@ -93,34 +93,34 @@ body[data-page='about'] .site-header a {
 
 .about-copy .home-map--nj {
   --map-image: url('./assets/about-map-nj.png');
-  left: 5%;
-  top: 5%;
-  width: 19%;
+  left: 6%;
+  top: 12%;
+  width: 20%;
   height: 23%;
 }
 
 .about-copy .home-map--riyadh {
   --map-image: url('./assets/about-map-riyadh.png');
-  left: 63%;
-  top: 7%;
-  width: 21%;
-  height: 25%;
+  left: 54%;
+  top: 8%;
+  width: 29%;
+  height: 30%;
 }
 
 .about-copy .home-map--kerala {
   --map-image: url('./assets/about-map-kerala.png');
-  left: 4%;
-  top: 48%;
-  width: 17%;
-  height: 24%;
+  left: 15%;
+  top: 50%;
+  width: 25%;
+  height: 33%;
 }
 
 .about-copy .home-map--hyderabad {
   --map-image: url('./assets/about-map-hyderabad.png');
-  left: 67%;
-  top: 48%;
-  width: 22%;
-  height: 18%;
+  left: 53%;
+  top: 54%;
+  width: 25%;
+  height: 20%;
 }
 
 .about-copy .home-place-label {
@@ -152,11 +152,11 @@ body[data-page='about'] .site-header a {
   opacity: .66;
 }
 
-/* Map captions live in the quiet outer area of every circle, never in an overlap. */
-.about-copy .home-place-label--nj { left: 5%; top: 30%; width: 22%; }
-.about-copy .home-place-label--riyadh { left: 64%; top: 34%; width: 22%; }
-.about-copy .home-place-label--kerala { left: 17%; top: 70%; width: 18%; }
-.about-copy .home-place-label--hyderabad { left: 58%; top: 68%; width: 20%; }
+/* Captions inhabit the deliberately open outer quadrants of their circles. */
+.about-copy .home-place-label--nj { left: 28%; top: 19%; width: 18%; }
+.about-copy .home-place-label--riyadh { left: 45%; top: 11%; width: 17%; }
+.about-copy .home-place-label--kerala { left: 4%; top: 64%; width: 22%; }
+.about-copy .home-place-label--hyderabad { left: 57%; top: 75%; width: 16%; }
 
 .about-copy .home-finding {
   position: absolute;
