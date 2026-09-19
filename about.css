@@ -3,7 +3,7 @@ x-dc, sc-if, sc-for { display: contents; }
 [hidden] { display: none !important; }
 x-dc[data-loading] { visibility: hidden; }
 a:focus-visible { outline: 3px solid #228c31; outline-offset: 6px; }
-body[data-page="about"], body[data-page="about"] .site-shell { background: #f7f0e2 !important; }
+body, .site-shell, body[data-page="about"], body[data-page="about"] .site-shell { background: #F7E9C1 !important; }
 .about-page {
   position: relative;
   z-index: 2;
