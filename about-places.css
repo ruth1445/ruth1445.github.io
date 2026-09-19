@@ -126,11 +126,13 @@ body[data-page='about'] .site-header a {
 .about-copy .home-place-label {
   position: absolute;
   z-index: 1;
+  width: 20%;
   pointer-events: none;
   font-size: 12px;
   line-height: 1.38;
   font-weight: 400;
   letter-spacing: 0;
+  text-align: center;
 }
 
 .about-copy .home-place-label em {
@@ -139,10 +141,11 @@ body[data-page='about'] .site-header a {
   opacity: .7;
 }
 
-.about-copy .home-place-label--nj { left: 34%; top: 12%; }
-.about-copy .home-place-label--riyadh { left: 55%; top: 12%; }
-.about-copy .home-place-label--kerala { left: 5%; top: 69%; }
-.about-copy .home-place-label--hyderabad { left: 53%; top: 68%; }
+/* Each label is deliberately placed in the non-shared outer area of its circle. */
+.about-copy .home-place-label--nj { left: 8%; top: 31%; }
+.about-copy .home-place-label--riyadh { left: 63%; top: 33%; }
+.about-copy .home-place-label--kerala { left: 17%; top: 71%; }
+.about-copy .home-place-label--hyderabad { left: 57%; top: 70%; }
 
 .about-copy .home-finding {
   position: absolute;
@@ -184,6 +187,15 @@ body[data-page='about'] .site-header a {
 .about-copy .about-cell + .about-cell { border-top: 0 !important; }
 
 .about-right .about-links a:hover { color: #33ff44 !important; }
+
+/* Preserve the original card as-is while letting it follow the long left column. */
+@media (min-width: 701px) {
+  .about-right {
+    position: sticky;
+    top: clamp(20px, 4vh, 44px);
+    will-change: transform;
+  }
+}
 
 @media (min-width: 701px) and (max-width: 1000px), (max-width: 380px) {
   .about-copy .home-place-label { font-size: 10px; }
