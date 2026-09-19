@@ -25,8 +25,27 @@
   @keyframes pageFloatIn { from { opacity: 0; transform: translateY(28px) scale(.985); filter: blur(10px); } to { opacity: 1; transform: none; filter: blur(0); } }
   @keyframes labCardReveal { from { opacity: .18; transform: translateY(72px) scale(.96); } to { opacity: 1; transform: none; } }
   .about-page { animation: pageFloatIn 720ms cubic-bezier(.2,.9,.2,1) both; }
+  .site-brand {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .site-logo-link {
+    display: inline-flex;
+    align-items: center;
+    line-height: 0;
+  }
+  .site-logo-img {
+    display: block;
+    width: clamp(158px, 17vw, 242px);
+    height: auto;
+    object-fit: contain;
+  }
   @media (max-width: 700px) {
     .home-card { transform: none !important; transform-origin: center !important; }
+    .site-header { padding: 22px 24px 0 !important; }
+    .site-brand { gap: 12px; }
+    .site-logo-img { width: clamp(142px, 48vw, 190px); }
   }
 
   /* Laboratory folder view */
@@ -164,13 +183,15 @@
 
 
   <div class="site-header" style="position: relative; z-index: 2; display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; padding: 30px 44px 0;">
-    <div style="display: flex; align-items: baseline; gap: 18px;">
+    <div class="site-brand">
       <sc-if value="{{ isInner }}">
-      <a href="#top" onClick="{{ goHome }}" aria-label="Back" style="display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; position: relative; top: 3px;">
+      <a href="#top" onClick="{{ goHome }}" aria-label="Back" style="display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; position: relative;">
         <span style="display: block; width: 16px; height: 16px; border-left: 2.5px solid #23201A; border-bottom: 2.5px solid #23201A; transform: rotate(45deg);"></span>
       </a>
       </sc-if>
-      <a href="#top" onClick="{{ goHome }}" style="font-size: 21px; letter-spacing: 0.16em; font-weight: 500; text-transform: uppercase; line-height: 1;">Ruth Sharon</a>
+      <a class="site-logo-link" href="#top" onClick="{{ goHome }}" aria-label="ruth sharon home">
+        <img class="site-logo-img" src="./assets/ruth-sharon-logo.png" alt="ruth sharon">
+      </a>
     </div>
   </div>
 
