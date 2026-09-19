@@ -25,52 +25,66 @@
   .home-mood-ticker {
     position: relative;
     z-index: 4;
-    max-width: min(92vw, 860px);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    max-width: min(92vw, 760px);
     color: #23201A;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: clamp(12px, 1.05vw, 17px);
+    font-size: clamp(12px, .96vw, 15px);
     line-height: 1.35;
     letter-spacing: -0.01em;
     text-align: center;
-    transform: translateY(-18px);
+    transform: translateY(-22px);
+  }
+  .home-mood-window {
+    height: 1.35em;
+    overflow: hidden;
+  }
+  .home-mood-track {
+    display: flex;
+    flex-direction: column;
+    transition: transform 560ms cubic-bezier(.22, 1, .36, 1);
+    will-change: transform;
   }
   .home-mood-line {
+    height: 1.35em;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
-    gap: 0;
-    white-space: normal;
-  }
-  .home-mood-dial {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    margin: 0 2px;
     white-space: nowrap;
   }
-  .home-mood-button {
+  .home-mood-crown {
     appearance: none;
-    border: 1px solid rgba(35,32,26,.38);
-    background: rgba(255,255,255,.16);
-    color: #23201A;
-    width: 21px;
-    height: 21px;
+    position: relative;
+    width: 18px;
+    height: 27px;
     border-radius: 999px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    font: 700 14px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
+    border: 1px solid rgba(35,32,26,.36);
+    background: linear-gradient(180deg, rgba(255,255,255,.42), rgba(255,255,255,.10));
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.8), 0 8px 22px rgba(35,32,26,.10);
+    backdrop-filter: blur(14px) saturate(1.2);
+    -webkit-backdrop-filter: blur(14px) saturate(1.2);
     cursor: pointer;
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
+    padding: 0;
+    transition: transform 220ms cubic-bezier(.22, 1, .36, 1), border-color 220ms ease, background 220ms ease;
   }
-  .home-mood-button:hover {
-    transform: translateY(-1px);
-    background: rgba(255,255,255,.32);
-    border-color: rgba(35,32,26,.62);
+  .home-mood-crown::before {
+    content: "";
+    position: absolute;
+    inset: 5px 6px;
+    border-radius: 999px;
+    background: repeating-linear-gradient(180deg, rgba(35,32,26,.55) 0 1px, transparent 1px 4px);
+    opacity: .62;
+  }
+  .home-mood-crown:hover {
+    transform: translateY(-1px) scale(1.03);
+    border-color: rgba(35,32,26,.58);
+    background: linear-gradient(180deg, rgba(255,255,255,.62), rgba(255,255,255,.18));
+  }
+  .home-mood-crown:active {
+    transform: translateY(0) scale(.97);
   }
   .home-mood-em {
     font-weight: 800;
@@ -79,8 +93,8 @@
     text-underline-offset: 0.13em;
   }
   @media (max-width: 700px) {
-    .home-mood-ticker { font-size: clamp(12px, 3.2vw, 15px); max-width: 94vw; transform: translateY(-12px); }
-    .home-mood-button { width: 19px; height: 19px; font-size: 13px; }
+    .home-mood-ticker { font-size: clamp(11px, 3vw, 14px); max-width: 94vw; transform: translateY(-14px); gap: 8px; }
+    .home-mood-crown { width: 16px; height: 24px; }
   }
   .about-page { animation: pageFloatIn 720ms cubic-bezier(.2,.9,.2,1) both; }
   @media (max-width: 700px) {
@@ -247,13 +261,14 @@
         <div style="position: relative; z-index: 2; height: 100%; display: flex; align-items: center; justify-content: center; padding: 120px 44px;">
           <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: clamp(28px, 4vw, 50px);">
             <div class="home-mood-ticker" aria-label="Ruth mood selector">
-              <div class="home-mood-line">
-                <span class="home-mood-dial">
-                  <button class="home-mood-button" type="button" aria-label="Previous mood time" onClick="{{ prevMood }}">‹</button>
-                  <span class="home-mood-em">{{ mood.time }}</span>
-                  <button class="home-mood-button" type="button" aria-label="Next mood time" onClick="{{ nextMood }}">›</button>
-                </span>{{ mood.rest }}&nbsp;<span class="home-mood-em">{{ mood.phrase }}</span>
+              <div class="home-mood-window">
+                <div class="home-mood-track" style="{{ moodReelStyle }}">
+                  <sc-for list="{{ moods }}" as="moodOption" hint-placeholder-count="4">
+                    <div class="home-mood-line"><span class="home-mood-em">{{ moodOption.time }}</span>{{ moodOption.rest }}&nbsp;<span class="home-mood-em">{{ moodOption.phrase }}</span></div>
+                  </sc-for>
+                </div>
               </div>
+              <button class="home-mood-crown" type="button" aria-label="Change Ruth mood" onClick="{{ nextMood }}"></button>
             </div>
             <div class="home-card-row" style="{{ homeCardRowStyle }}">
               <sc-for list="{{ slide.cards }}" as="card" hint-placeholder-count="2">
@@ -555,11 +570,9 @@ const LAB_CATS = [
 const PLACEHOLDER = '#lab-projects';
 const MOODS = [
   { time: 'today', rest: ', ruth is feeling like a', phrase: 'subpar data scientist' },
-  { time: 'yesterday', rest: ', ruth was feeling like a', phrase: 'spreadsheet philosopher' },
-  { time: '2 weeks ago', rest: ', ruth was feeling like a', phrase: 'slightly overfit model' },
-  { time: 'this morning', rest: ', ruth was feeling like a', phrase: 'half-rendered thought' },
-  { time: 'right now', rest: ', ruth is feeling like a', phrase: 'research tab left open' },
-  { time: 'tomorrow', rest: ', ruth will feel like a', phrase: 'competent little dataset' },
+  { time: 'yesterday', rest: ', ruth was feeling like a', phrase: 'hungry student' },
+  { time: '2 weeks ago', rest: ', ruth was feeling like a', phrase: 'tasteful engineer' },
+  { time: 'tomorrow', rest: ', ruth will feel like a', phrase: 'coffee connoisseur' },
 ];
 
 const PROJECTS = [
@@ -624,6 +637,7 @@ class Component extends DCLogic {
     const hover = this.state.hover;
     const moodIndex = this.state.moodIndex || 0;
     const mood = MOODS[moodIndex % MOODS.length];
+    const moodReelStyle = 'transform:translateY(-' + (moodIndex % MOODS.length) * 1.35 + 'em);';
     const changeMood = (step) => this.setState({ moodIndex: (moodIndex + step + MOODS.length) % MOODS.length });
     const homeCardRowStyle = 'display:flex; align-items:center; justify-content:center; gap:calc(clamp(20px, 5vw, 68px) + 100px);';
 
@@ -788,7 +802,8 @@ class Component extends DCLogic {
       bgStyle,
       homeCardRowStyle,
       mood,
-      prevMood: (e) => { e.preventDefault(); e.stopPropagation(); changeMood(-1); },
+      moods: MOODS,
+      moodReelStyle,
       nextMood: (e) => { e.preventDefault(); e.stopPropagation(); changeMood(1); },
       labIndex,
       projectCards,
