@@ -3,11 +3,12 @@
 
   // Replace the placeholder text here when Ruth's observations are ready.
   const findings = {
-    'nj-riyadh': { title: 'New Brunswick + Riyadh', text: 'Observation coming soon.' },
-    'nj-kerala': { title: 'New Brunswick + Kerala', text: 'Observation coming soon.' },
-    'riyadh-kerala': { title: 'Riyadh + Kerala', text: 'Observation coming soon.' },
-    'riyadh-hyderabad': { title: 'Riyadh + Hyderabad', text: 'Observation coming soon.' },
-    'kerala-hyderabad': { title: 'Kerala + Hyderabad', text: 'Observation coming soon.' },
+    'nj-riyadh': { title: 'new brunswick + riyadh', text: 'observation coming soon.' },
+    'nj-kerala': { title: 'new brunswick + kerala', text: 'observation coming soon.' },
+    'nj-hyderabad': { title: 'new brunswick + hyderabad', text: 'observation coming soon.' },
+    'riyadh-kerala': { title: 'riyadh + kerala', text: 'observation coming soon.' },
+    'riyadh-hyderabad': { title: 'riyadh + hyderabad', text: 'observation coming soon.' },
+    'kerala-hyderabad': { title: 'kerala + hyderabad', text: 'observation coming soon.' },
   };
 
   const diagram = document.querySelector('.about-copy .home-venn');
@@ -16,6 +17,7 @@
   const title = note.querySelector('.home-finding-title');
   const copy = note.querySelector('p');
   const regions = diagram.querySelectorAll('.home-overlap');
+  const mapButtons = diagram.querySelectorAll('.home-map[data-interest-place]');
   let active = null;
   let pinned = false;
   let hideTimer;
@@ -80,6 +82,13 @@
         event.preventDefault();
         toggle(region);
       }
+    });
+  });
+
+  mapButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      // The place-photo gallery will live inside the interests route once its images are added.
+      location.hash = 'interests';
     });
   });
 
