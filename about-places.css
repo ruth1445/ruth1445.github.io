@@ -93,7 +93,7 @@ body[data-page='about'] .site-header a {
 
 .about-copy .home-map--nj {
   --map-image: url('./assets/about-map-nj.png');
-  left: 8%;
+  left: 5%;
   top: 5%;
   width: 19%;
   height: 23%;
@@ -109,7 +109,7 @@ body[data-page='about'] .site-header a {
 
 .about-copy .home-map--kerala {
   --map-image: url('./assets/about-map-kerala.png');
-  left: 11%;
+  left: 4%;
   top: 48%;
   width: 17%;
   height: 24%;
@@ -117,9 +117,9 @@ body[data-page='about'] .site-header a {
 
 .about-copy .home-map--hyderabad {
   --map-image: url('./assets/about-map-hyderabad.png');
-  left: 57%;
+  left: 67%;
   top: 48%;
-  width: 25%;
+  width: 22%;
   height: 18%;
 }
 
@@ -142,10 +142,10 @@ body[data-page='about'] .site-header a {
 }
 
 /* Each label is deliberately placed in the non-shared outer area of its circle. */
-.about-copy .home-place-label--nj { left: 8%; top: 31%; }
-.about-copy .home-place-label--riyadh { left: 63%; top: 33%; }
-.about-copy .home-place-label--kerala { left: 17%; top: 71%; }
-.about-copy .home-place-label--hyderabad { left: 57%; top: 70%; }
+.about-copy .home-place-label--nj { left: 24%; top: 10%; width: 14%; }
+.about-copy .home-place-label--riyadh { left: 50.5%; top: 10%; width: 12%; }
+.about-copy .home-place-label--kerala { left: 23%; top: 48%; width: 13%; }
+.about-copy .home-place-label--hyderabad { left: 52%; top: 48%; width: 12%; }
 
 .about-copy .home-finding {
   position: absolute;
