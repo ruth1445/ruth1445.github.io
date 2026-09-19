@@ -213,3 +213,116 @@ image-slot::after { content: attr(placeholder); }
   html { scroll-behavior: auto !important; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+/* About left-side biography refresh: keep .about-right untouched. */
+.about-copy {
+  gap: 0;
+  font-size: clamp(15px, 1.34cqw, 20px);
+  line-height: 1.42;
+  color: #545454;
+}
+
+.about-copy .about-cell {
+  padding: clamp(22px, 2.7cqw, 34px) 0;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  box-shadow: none !important;
+}
+
+.about-copy .about-cell + .about-cell {
+  border-top: 1.25px solid rgba(35, 32, 26, .32) !important;
+}
+
+.about-copy h2 {
+  margin: 0 0 .82em;
+  font-size: 1em;
+  line-height: 1.05;
+  font-weight: 800;
+  color: #545454;
+}
+
+.about-title-list {
+  display: grid;
+  gap: .46em;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.about-title-list li {
+  display: grid;
+  grid-template-columns: 1.55em minmax(0, 1fr);
+  gap: .36em;
+  align-items: baseline;
+}
+
+.about-list-mark {
+  color: rgba(84, 84, 84, .74);
+}
+
+.about-title-list strong {
+  font-weight: 800;
+}
+
+.about-place-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(8px, 1.05cqw, 14px);
+  align-items: end;
+  margin-top: .7em;
+}
+
+.about-place {
+  min-width: 0;
+  margin: 0;
+  display: grid;
+  justify-items: center;
+  align-items: end;
+  gap: .42em;
+}
+
+.about-place img {
+  display: block;
+  width: auto;
+  max-width: min(100%, 5.6cqw);
+  height: clamp(42px, 5.8cqw, 70px);
+  object-fit: contain;
+  opacity: .88;
+  filter: drop-shadow(0 4px 7px rgba(35, 32, 26, .10));
+}
+
+.about-place figcaption {
+  max-width: 100%;
+  font-size: .56em;
+  line-height: 1.12;
+  font-weight: 700;
+  text-align: center;
+  color: rgba(84, 84, 84, .82);
+}
+
+@media (max-width: 700px) {
+  .about-copy {
+    font-size: clamp(16px, 4.6cqw, 22px);
+  }
+
+  .about-copy .about-cell {
+    padding: 18px 0;
+  }
+
+  .about-place-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px 12px;
+  }
+
+  .about-place img {
+    max-width: 64px;
+    height: 64px;
+  }
+
+  .about-place figcaption {
+    font-size: .62em;
+  }
+}
