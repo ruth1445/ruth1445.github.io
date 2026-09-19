@@ -28,63 +28,111 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    max-width: min(92vw, 760px);
+    gap: 7px;
+    max-width: min(94vw, 820px);
     color: #23201A;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: clamp(12px, .96vw, 15px);
     line-height: 1.35;
     letter-spacing: -0.01em;
     text-align: center;
-    transform: translateY(-22px);
+    transform: translateY(-26px);
+    white-space: nowrap;
   }
-  .home-mood-window {
+  .home-mood-static {
+    display: inline-flex;
+    align-items: center;
+    min-width: max-content;
+  }
+  .home-mood-slot {
+    position: relative;
+    display: inline-flex;
     height: 1.35em;
     overflow: hidden;
+    vertical-align: bottom;
+    flex: 0 0 auto;
+  }
+  .home-mood-slot--time {
+    width: 7.6em;
+    justify-content: flex-end;
+  }
+  .home-mood-slot--phrase {
+    width: 13.8em;
+    justify-content: flex-start;
   }
   .home-mood-track {
     display: flex;
     flex-direction: column;
-    transition: transform 560ms cubic-bezier(.22, 1, .36, 1);
+    transition: transform 680ms cubic-bezier(.16, 1, .3, 1);
     will-change: transform;
   }
-  .home-mood-line {
+  .home-mood-option {
     height: 1.35em;
     display: flex;
     align-items: center;
-    justify-content: center;
-    white-space: nowrap;
+  }
+  .home-mood-slot--time .home-mood-option {
+    justify-content: flex-end;
+    width: 7.6em;
+  }
+  .home-mood-slot--phrase .home-mood-option {
+    justify-content: flex-start;
+    width: 13.8em;
   }
   .home-mood-crown {
     appearance: none;
     position: relative;
-    width: 18px;
-    height: 27px;
+    flex: 0 0 auto;
+    width: 27px;
+    height: 34px;
+    margin: 0 4px 0 1px;
     border-radius: 999px;
-    border: 1px solid rgba(35,32,26,.36);
-    background: linear-gradient(180deg, rgba(255,255,255,.42), rgba(255,255,255,.10));
-    box-shadow: inset 0 1px 0 rgba(255,255,255,.8), 0 8px 22px rgba(35,32,26,.10);
-    backdrop-filter: blur(14px) saturate(1.2);
-    -webkit-backdrop-filter: blur(14px) saturate(1.2);
-    cursor: pointer;
+    border: 1.4px solid rgba(35,32,26,.58);
+    background:
+      linear-gradient(90deg, rgba(255,255,255,.62), rgba(255,255,255,.18) 46%, rgba(35,32,26,.10)),
+      linear-gradient(180deg, rgba(255,255,255,.50), rgba(255,255,255,.08));
+    box-shadow:
+      inset 1px 0 0 rgba(255,255,255,.86),
+      inset -3px 0 6px rgba(35,32,26,.10),
+      0 12px 26px rgba(35,32,26,.14);
+    backdrop-filter: blur(15px) saturate(1.25);
+    -webkit-backdrop-filter: blur(15px) saturate(1.25);
+    cursor: ns-resize;
     padding: 0;
-    transition: transform 220ms cubic-bezier(.22, 1, .36, 1), border-color 220ms ease, background 220ms ease;
+    touch-action: none;
+    user-select: none;
+    transition: transform 240ms cubic-bezier(.16,1,.3,1), border-color 220ms ease, box-shadow 240ms ease, background 220ms ease;
   }
   .home-mood-crown::before {
     content: "";
     position: absolute;
-    inset: 5px 6px;
+    inset: 6px 8px;
     border-radius: 999px;
-    background: repeating-linear-gradient(180deg, rgba(35,32,26,.55) 0 1px, transparent 1px 4px);
-    opacity: .62;
+    background: repeating-linear-gradient(180deg, rgba(35,32,26,.72) 0 1px, transparent 1px 4px);
+    opacity: .72;
+  }
+  .home-mood-crown::after {
+    content: "";
+    position: absolute;
+    left: 6px;
+    top: 6px;
+    width: 6px;
+    height: 12px;
+    border-radius: 999px;
+    background: rgba(255,255,255,.62);
+    filter: blur(.2px);
   }
   .home-mood-crown:hover {
-    transform: translateY(-1px) scale(1.03);
-    border-color: rgba(35,32,26,.58);
-    background: linear-gradient(180deg, rgba(255,255,255,.62), rgba(255,255,255,.18));
+    transform: translateY(-1px) scale(1.05);
+    border-color: rgba(35,32,26,.78);
+    box-shadow:
+      inset 1px 0 0 rgba(255,255,255,.9),
+      inset -3px 0 7px rgba(35,32,26,.12),
+      0 16px 30px rgba(35,32,26,.18);
   }
-  .home-mood-crown:active {
-    transform: translateY(0) scale(.97);
+  .home-mood-crown:active,
+  .home-mood-crown.is-dragging {
+    transform: translateY(0) scale(.96);
   }
   .home-mood-em {
     font-weight: 800;
@@ -93,8 +141,10 @@
     text-underline-offset: 0.13em;
   }
   @media (max-width: 700px) {
-    .home-mood-ticker { font-size: clamp(11px, 3vw, 14px); max-width: 94vw; transform: translateY(-14px); gap: 8px; }
-    .home-mood-crown { width: 16px; height: 24px; }
+    .home-mood-ticker { flex-wrap: wrap; font-size: clamp(11px, 3vw, 14px); max-width: 94vw; transform: translateY(-16px); gap: 6px; }
+    .home-mood-slot--time, .home-mood-slot--time .home-mood-option { width: 7.3em; }
+    .home-mood-slot--phrase, .home-mood-slot--phrase .home-mood-option { width: 13.4em; }
+    .home-mood-crown { width: 24px; height: 30px; }
   }
   .about-page { animation: pageFloatIn 720ms cubic-bezier(.2,.9,.2,1) both; }
   @media (max-width: 700px) {
@@ -261,14 +311,22 @@
         <div style="position: relative; z-index: 2; height: 100%; display: flex; align-items: center; justify-content: center; padding: 120px 44px;">
           <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: clamp(28px, 4vw, 50px);">
             <div class="home-mood-ticker" aria-label="Ruth mood selector">
-              <div class="home-mood-window">
-                <div class="home-mood-track" style="{{ moodReelStyle }}">
+              <span class="home-mood-slot home-mood-slot--time" aria-live="polite">
+                <span class="home-mood-track" style="{{ moodReelStyle }}">
                   <sc-for list="{{ moods }}" as="moodOption" hint-placeholder-count="4">
-                    <div class="home-mood-line"><span class="home-mood-em">{{ moodOption.time }}</span>{{ moodOption.rest }}&nbsp;<span class="home-mood-em">{{ moodOption.phrase }}</span></div>
+                    <span class="home-mood-option home-mood-em">{{ moodOption.time }}</span>
                   </sc-for>
-                </div>
-              </div>
-              <button class="home-mood-crown" type="button" aria-label="Change Ruth mood" onClick="{{ nextMood }}"></button>
+                </span>
+              </span>
+              <button class="home-mood-crown" type="button" aria-label="Drag up or down to change Ruth mood" onClick="{{ nextMood }}" onPointerDown="{{ moodDialDown }}" onPointerMove="{{ moodDialMove }}" onPointerUp="{{ moodDialUp }}" onPointerCancel="{{ moodDialUp }}" onWheel="{{ moodDialWheel }}"></button>
+              <span class="home-mood-static">{{ mood.rest }}&nbsp;</span>
+              <span class="home-mood-slot home-mood-slot--phrase" aria-live="polite">
+                <span class="home-mood-track" style="{{ moodReelStyle }}">
+                  <sc-for list="{{ moods }}" as="moodOption" hint-placeholder-count="4">
+                    <span class="home-mood-option home-mood-em">{{ moodOption.phrase }}</span>
+                  </sc-for>
+                </span>
+              </span>
             </div>
             <div class="home-card-row" style="{{ homeCardRowStyle }}">
               <sc-for list="{{ slide.cards }}" as="card" hint-placeholder-count="2">
@@ -636,9 +694,27 @@ class Component extends DCLogic {
     const p = this.state.page;
     const hover = this.state.hover;
     const moodIndex = this.state.moodIndex || 0;
-    const mood = MOODS[moodIndex % MOODS.length];
-    const moodReelStyle = 'transform:translateY(-' + (moodIndex % MOODS.length) * 1.35 + 'em);';
-    const changeMood = (step) => this.setState({ moodIndex: (moodIndex + step + MOODS.length) % MOODS.length });
+    const moodSlot = ((moodIndex % MOODS.length) + MOODS.length) % MOODS.length;
+    const mood = MOODS[moodSlot];
+    const moodReelStyle = 'transform:translateY(-' + moodSlot * 1.35 + 'em);';
+    const changeMood = (step) => {
+      const current = this.state.moodIndex || 0;
+      this.setState({ moodIndex: (current + step + MOODS.length) % MOODS.length });
+    };
+    const endMoodDrag = (e) => {
+      if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+      if (this._moodDidDrag) {
+        this._moodSuppressClick = true;
+        setTimeout(() => { this._moodSuppressClick = false; }, 40);
+      }
+      this._moodDragY = null;
+      this._moodDidDrag = false;
+      if (this._moodDialEl) this._moodDialEl.classList.remove('is-dragging');
+      this._moodDialEl = null;
+    };
     const homeCardRowStyle = 'display:flex; align-items:center; justify-content:center; gap:calc(clamp(20px, 5vw, 68px) + 100px);';
 
     const glass = (hex, a) => {
@@ -804,7 +880,43 @@ class Component extends DCLogic {
       mood,
       moods: MOODS,
       moodReelStyle,
-      nextMood: (e) => { e.preventDefault(); e.stopPropagation(); changeMood(1); },
+      nextMood: (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        if (this._moodSuppressClick) return;
+        changeMood(1);
+      },
+      moodDialDown: (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        this._moodDragY = e.clientY;
+        this._moodDidDrag = false;
+        this._moodDialEl = e.currentTarget;
+        if (this._moodDialEl) {
+          this._moodDialEl.classList.add('is-dragging');
+          if (this._moodDialEl.setPointerCapture && e.pointerId != null) this._moodDialEl.setPointerCapture(e.pointerId);
+        }
+      },
+      moodDialMove: (e) => {
+        if (this._moodDragY == null) return;
+        e.preventDefault();
+        e.stopPropagation();
+        const dy = e.clientY - this._moodDragY;
+        if (Math.abs(dy) >= 18) {
+          this._moodDragY = e.clientY;
+          this._moodDidDrag = true;
+          changeMood(dy > 0 ? 1 : -1);
+        }
+      },
+      moodDialUp: endMoodDrag,
+      moodDialWheel: (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        if (this._moodWheelLock || Math.abs(e.deltaY) < 8) return;
+        this._moodWheelLock = true;
+        setTimeout(() => { this._moodWheelLock = false; }, 260);
+        changeMood(e.deltaY > 0 ? 1 : -1);
+      },
       labIndex,
       projectCards,
       passionProjects,
