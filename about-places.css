@@ -130,12 +130,12 @@ body[data-page='about'] .site-header a {
   width: 20%;
   flex-direction: column;
   align-items: center;
-  gap: 3px;
-  padding-top: 6px;
-  border-top: 1px solid rgba(35, 32, 26, .42);
+  gap: 1px;
+  padding: 0;
+  border: 0;
   pointer-events: none;
-  font-size: 11px;
-  line-height: 1.2;
+  font-size: 13px;
+  line-height: 1.28;
   font-weight: 400;
   letter-spacing: 0;
   text-align: center;
@@ -143,20 +143,20 @@ body[data-page='about'] .site-header a {
 
 .about-copy .home-place-label strong {
   font-size: 1em;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .about-copy .home-place-label em {
   font-style: normal;
-  font-size: .9em;
-  opacity: .66;
+  font-size: .92em;
+  opacity: .78;
 }
 
 /* Captions inhabit the deliberately open outer quadrants of their circles. */
-.about-copy .home-place-label--nj { left: 28%; top: 19%; width: 18%; }
-.about-copy .home-place-label--riyadh { left: 45%; top: 11%; width: 17%; }
-.about-copy .home-place-label--kerala { left: 4%; top: 64%; width: 22%; }
-.about-copy .home-place-label--hyderabad { left: 57%; top: 75%; width: 16%; }
+.about-copy .home-place-label--nj { left: 27%; top: 23%; width: 19%; }
+.about-copy .home-place-label--riyadh { left: 44%; top: 20%; width: 18%; }
+.about-copy .home-place-label--kerala { left: 4%; top: 66%; width: 23%; }
+.about-copy .home-place-label--hyderabad { left: 56%; top: 78%; width: 19%; }
 
 .about-copy .home-finding {
   position: absolute;
