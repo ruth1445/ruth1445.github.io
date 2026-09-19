@@ -285,9 +285,20 @@ image-slot::after { content: attr(placeholder); }
   }
   .about-wrap { width: calc(100% - 32px); }
   .about-board { grid-template-columns: 1fr; gap: 16px; aspect-ratio: auto; font-size: clamp(17px, 4.9cqw, 25px); line-height: 1.45; }
-  .about-copy { grid-template-rows: auto; transform: none; }
+  .about-copy {
+    order: 2;
+    gap: 16px;
+    transform: none;
+  }
   .about-cell { padding: 16px 18px; }
-  .about-right { grid-template-rows: auto auto; transform: none; }
+  .about-right {
+    order: 1;
+    position: relative;
+    top: auto;
+    grid-template-rows: auto auto;
+    aspect-ratio: auto;
+    transform: none;
+  }
   .about-gallery { padding: 28px 18px 24px; }
   .about-interests { margin-bottom: 22px; text-align: center; font-size: .93em; }
   .about-photos { gap: 12px; }
