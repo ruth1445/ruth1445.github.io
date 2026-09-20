@@ -1,12 +1,12 @@
 /* This stylesheet is deliberately scoped to the About page. */
 .about-page,
 .about-page * {
-  font-family: 'Google Sans', 'Google Sans Text', Arial, sans-serif !important;
+  font-family: 'Poppins', Arial, sans-serif !important;
 }
 
 body[data-page='about'] .site-header,
 body[data-page='about'] .site-header * {
-  font-family: 'Google Sans', 'Google Sans Text', Arial, sans-serif !important;
+  font-family: 'Poppins', Arial, sans-serif !important;
 }
 
 body[data-page='about'] .site-header a {
@@ -133,9 +133,16 @@ body[data-page='about'] .site-header a {
   --getby: #a8f2b3;
   --map-muted: #e6d7a5;
   position: relative;
-  max-width: 840px;
+  max-width: none;
   margin: 0 auto;
   color: #353538;
+}
+
+.about-copy .about-cell--languages {
+  width: min(720px, calc(100vw - 96px));
+  max-width: none;
+  margin-left: 0;
+  transform: none;
 }
 
 .about-copy .language-map-artifact h2 {
@@ -146,13 +153,17 @@ body[data-page='about'] .site-header a {
 .about-copy .language-map-wrap {
   position: relative;
   width: 100%;
-  margin: 0 auto 18px;
+  margin: 0 0 18px;
+  overflow: visible;
 }
 
 .about-copy .language-world {
   display: block;
   width: 100%;
   height: auto;
+  aspect-ratio: 960 / 510;
+  object-fit: contain;
+  object-position: center;
   overflow: visible;
 }
 
@@ -196,15 +207,6 @@ body[data-page='about'] .site-header a {
   line-height: 1.05;
   text-decoration: underline dotted rgba(30,30,30,.36);
   text-underline-offset: 4px;
-  white-space: nowrap;
-}
-
-.about-copy .language-hint {
-  align-self: flex-end;
-  margin-top: -22px;
-  font-size: clamp(10px, 1.2vw, 13px);
-  letter-spacing: .08em;
-  color: rgba(52, 52, 52, .7);
   white-space: nowrap;
 }
 
