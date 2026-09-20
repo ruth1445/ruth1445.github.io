@@ -140,7 +140,7 @@ body[data-page='about'] .site-header a {
 }
 
 .about-copy .about-cell--languages {
-  width: min(560px, calc(100vw - 96px));
+  width: min(760px, calc(100vw - 96px));
   max-width: none;
   margin-left: 0;
   transform: none;
@@ -527,8 +527,8 @@ body[data-page='about'] .site-header a {
   .about-right {
     position: relative;
     top: auto;
-    transform: translate3d(0, var(--about-follow-y, 0px), 0) !important;
-    transform-origin: center center;
+    transform: translate3d(0, var(--about-follow-y, 0px), 0) scale(var(--about-side-scale, 1)) !important;
+    transform-origin: top right;
     transition: transform 420ms cubic-bezier(.22, 1, .36, 1);
     will-change: transform;
   }
