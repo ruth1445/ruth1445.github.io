@@ -30,17 +30,18 @@ body[data-page='about'] .site-header a {
 
 .about-copy .workline {
   --line-ink: #3b3b3d;
-  max-width: 430px;
-  margin: 0 auto;
-  padding: 10px 0 6px;
+  max-width: 100%;
+  margin: 0;
+  padding: 4px 0 4px;
   color: #3b3b3d;
 }
 
 .about-copy .workline-heading {
   display: flex;
   align-items: center;
-  gap: 18px;
-  margin: 0 0 24px;
+  justify-content: center;
+  gap: 14px;
+  margin: 0 0 18px;
 }
 
 .about-copy .workline-heading h2 {
@@ -68,9 +69,9 @@ body[data-page='about'] .site-header a {
 .about-copy .workline-list {
   position: relative;
   display: grid;
-  gap: 18px;
+  gap: 14px;
   margin: 0;
-  padding: 0 0 0 54px;
+  padding: 0 0 0 48px;
   list-style: none;
 }
 
@@ -114,7 +115,7 @@ body[data-page='about'] .site-header a {
 
 .about-copy .workline-item strong {
   display: block;
-  font-size: clamp(19px, 2.5vw, 25px);
+  font-size: clamp(16px, 1.55vw, 21px);
   font-weight: 700;
   line-height: 1.05;
   letter-spacing: -.02em;
@@ -123,7 +124,7 @@ body[data-page='about'] .site-header a {
 .about-copy .workline-item span:not(.workline-node) {
   display: block;
   margin-top: 3px;
-  font-size: clamp(14px, 1.65vw, 17px);
+  font-size: clamp(12px, 1.1vw, 15px);
   line-height: 1.2;
   color: rgba(59, 59, 61, .82);
 }
@@ -140,10 +141,12 @@ body[data-page='about'] .site-header a {
 }
 
 .about-copy .about-cell--languages {
-  width: min(860px, calc(100vw - 96px));
+  width: min(920px, calc(100vw - 96px));
   max-width: none;
-  margin-left: 0;
+  margin-left: clamp(0px, 12cqw, 150px);
   transform: none;
+  position: relative;
+  z-index: 4;
 }
 
 .about-copy .language-map-artifact h2 {
@@ -432,9 +435,9 @@ body[data-page='about'] .site-header a {
 
 /* Places are individual picture cards now — no relationship overlays. */
 .about-copy .home-venn {
-  width: 100%;
-  aspect-ratio: 640 / 700;
-  margin-top: 28px;
+  width: min(100%, 430px);
+  aspect-ratio: 640 / 610;
+  margin: 18px auto 0;
   overflow: visible;
 }
 
@@ -442,7 +445,7 @@ body[data-page='about'] .site-header a {
   --tilt: 0deg;
   --counter-tilt: 0deg;
   position: absolute;
-  width: 40%;
+  width: 36%;
   aspect-ratio: 1;
   border: 1.5px solid rgba(35, 32, 26, .30);
   background: transparent;
@@ -453,31 +456,31 @@ body[data-page='about'] .site-header a {
 .about-copy .home-place-card--nj {
   --tilt: -12deg;
   --counter-tilt: 12deg;
-  left: 7%;
-  top: 3%;
+  left: 9%;
+  top: 4%;
 }
 
 .about-copy .home-place-card--riyadh {
   --tilt: -42deg;
   --counter-tilt: 42deg;
-  left: 49%;
-  top: 13%;
+  left: 50%;
+  top: 12%;
 }
 
 .about-copy .home-place-card--kerala {
   --tilt: -13deg;
   --counter-tilt: 13deg;
-  left: 3%;
-  top: 43%;
-  width: 48%;
+  left: 5%;
+  top: 42%;
+  width: 42%;
 }
 
 .about-copy .home-place-card--hyderabad {
   --tilt: -43deg;
   --counter-tilt: 43deg;
-  left: 46%;
-  top: 51%;
-  width: 46%;
+  left: 48%;
+  top: 50%;
+  width: 41%;
 }
 
 .about-copy .home-place-card .home-map,

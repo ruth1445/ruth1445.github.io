@@ -30,7 +30,7 @@ body, .site-shell, body[data-page="about"], body[data-page="about"] .site-shell 
   width: 100%;
   aspect-ratio: auto;
   display: grid;
-  grid-template-columns: minmax(280px, 46.05fr) minmax(0, 53.95fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: clamp(48px, 6.4cqw, 64px);
   align-items: start;
   font-size: 2cqw;

@@ -25,23 +25,18 @@
       return;
     }
 
-    const languageBounds = languageSection?.getBoundingClientRect();
-    if (!languageBounds || languageBounds.top > window.innerHeight * 0.72) {
-      sideCard.style.setProperty('--about-follow-y', '0px');
-      sideCard.style.setProperty('--about-side-scale', '1');
-      return;
-    }
-
     const boardBounds = board.getBoundingClientRect();
     const targetTop = (window.innerHeight - sideCard.offsetHeight) / 2;
     const maxOffset = Math.max(0, board.offsetHeight - sideCard.offsetHeight);
-    const naturalOffset = Math.min(maxOffset, Math.max(0, targetTop - boardBounds.top));
-    const activation = Math.max(0, Math.min(1, (window.innerHeight * 0.72 - languageBounds.top) / (window.innerHeight * 0.28)));
-    const offset = naturalOffset * activation;
+    const offset = Math.min(maxOffset, Math.max(0, targetTop - boardBounds.top));
+    const languageBounds = languageSection?.getBoundingClientRect();
+    const mapActivation = languageBounds
+      ? Math.max(0, Math.min(1, (window.innerHeight * 0.88 - languageBounds.top) / (window.innerHeight * 0.62)))
+      : 0;
     const focus = languageBounds
       ? Math.max(0, Math.min(1, 1 - Math.abs((languageBounds.top + languageBounds.height * 0.46) - window.innerHeight * 0.5) / (window.innerHeight * 0.74)))
       : 0;
-    const scale = 1 - focus * 0.5;
+    const scale = 1 - Math.max(mapActivation, focus) * 0.62;
     sideCard.style.setProperty('--about-follow-y', `${Math.round(offset * 100) / 100}px`);
     sideCard.style.setProperty('--about-side-scale', `${Math.round(scale * 1000) / 1000}`);
   }
