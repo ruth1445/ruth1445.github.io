@@ -13,7 +13,6 @@
   // the About page being read. Its contents and dimensions remain untouched.
   const board = document.querySelector('.about-board');
   const sideCard = document.querySelector('.about-right');
-  const languageSection = document.querySelector('.about-cell--languages');
   const desktop = window.matchMedia('(min-width: 701px)');
   let followFrame = 0;
 
@@ -21,7 +20,6 @@
     followFrame = 0;
     if (!board || !sideCard || !desktop.matches) {
       sideCard?.style.removeProperty('--about-follow-y');
-      sideCard?.style.removeProperty('--about-side-scale');
       return;
     }
 
@@ -29,13 +27,7 @@
     const targetTop = (window.innerHeight - sideCard.offsetHeight) / 2;
     const maxOffset = Math.max(0, board.offsetHeight - sideCard.offsetHeight);
     const offset = Math.min(maxOffset, Math.max(0, targetTop - boardBounds.top));
-    const languageBounds = languageSection?.getBoundingClientRect();
-    const focus = languageBounds
-      ? Math.max(0, Math.min(1, 1 - Math.abs((languageBounds.top + languageBounds.height * 0.5) - window.innerHeight * 0.5) / (window.innerHeight * 0.62)))
-      : 0;
-    const scale = 1 - focus * 0.32;
     sideCard.style.setProperty('--about-follow-y', `${Math.round(offset * 100) / 100}px`);
-    sideCard.style.setProperty('--about-side-scale', `${Math.round(scale * 1000) / 1000}`);
   }
 
   function scheduleSideCardPosition() {
