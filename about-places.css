@@ -140,7 +140,7 @@ body[data-page='about'] .site-header a {
 }
 
 .about-copy .about-cell--languages {
-  width: min(760px, calc(100vw - 96px));
+  width: min(860px, calc(100vw - 96px));
   max-width: none;
   margin-left: 0;
   transform: none;

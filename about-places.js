@@ -33,7 +33,7 @@
     const focus = languageBounds
       ? Math.max(0, Math.min(1, 1 - Math.abs((languageBounds.top + languageBounds.height * 0.46) - window.innerHeight * 0.5) / (window.innerHeight * 0.74)))
       : 0;
-    const scale = 1 - focus * 0.34;
+    const scale = 1 - focus * 0.5;
     sideCard.style.setProperty('--about-follow-y', `${Math.round(offset * 100) / 100}px`);
     sideCard.style.setProperty('--about-side-scale', `${Math.round(scale * 1000) / 1000}`);
   }
