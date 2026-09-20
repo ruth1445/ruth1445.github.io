@@ -17,6 +17,19 @@ body[data-page='about'] .site-header a {
   line-height: 1.3;
 }
 
+.about-copy .about-cell > h2,
+.about-copy .workline-heading h2,
+.about-copy .language-map-artifact h2 {
+  margin: 0;
+  color: #3b3b3d;
+  font-size: clamp(18px, 2.2vw, 24px);
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.15;
+  text-align: center;
+  text-decoration: none;
+}
+
 .about-copy .workline {
   --line-ink: #3b3b3d;
   max-width: 430px;
@@ -28,16 +41,13 @@ body[data-page='about'] .site-header a {
 .about-copy .workline-heading {
   display: flex;
   align-items: center;
-  gap: 18px;
+  justify-content: center;
+  gap: 0;
   margin: 0 0 24px;
 }
 
 .about-copy .workline-heading h2 {
-  margin: 0;
-  text-align: left;
-  font-size: clamp(18px, 2.2vw, 24px);
-  font-weight: 700;
-  line-height: 1.1;
+  text-align: center;
 }
 
 .about-copy .workline-badge {
@@ -123,28 +133,20 @@ body[data-page='about'] .site-header a {
   --getby: #a8f2b3;
   --map-muted: #e6d7a5;
   position: relative;
-  max-width: 760px;
+  max-width: 840px;
   margin: 0 auto;
   color: #353538;
 }
 
 .about-copy .language-map-artifact h2 {
-  display: inline-block;
-  margin: 0 0 22px;
-  text-align: left;
-  font-size: clamp(23px, 3.1vw, 34px);
-  font-style: italic;
-  font-weight: 700;
-  line-height: 1.05;
-  text-decoration: underline;
-  text-underline-offset: 7px;
-  text-decoration-thickness: 2px;
+  display: block;
+  margin-bottom: 18px;
 }
 
 .about-copy .language-map-wrap {
   position: relative;
   width: 100%;
-  margin: 0 auto 22px;
+  margin: 0 auto 18px;
 }
 
 .about-copy .language-world {
@@ -154,29 +156,12 @@ body[data-page='about'] .site-header a {
   overflow: visible;
 }
 
-.about-copy .land {
-  stroke: rgba(255, 248, 220, .55);
-  stroke-width: .8;
-  vector-effect: non-scaling-stroke;
-}
-
-.about-copy .land-muted { fill: var(--map-muted); opacity: .72; }
-.about-copy .land-local { fill: var(--local); }
-.about-copy .land-easy { fill: var(--easy); }
-.about-copy .land-getby { fill: var(--getby); }
-
-.about-copy .language-islands circle {
-  fill: var(--easy);
-  stroke: #1c5c22;
-  stroke-width: 1.1px;
-}
-
 .about-copy .language-key {
   position: relative;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, max-content)) 1fr;
-  gap: 26px;
-  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
   padding-top: 20px;
   border-top: 2px solid #343434;
 }
@@ -215,7 +200,8 @@ body[data-page='about'] .site-header a {
 }
 
 .about-copy .language-hint {
-  justify-self: end;
+  align-self: flex-end;
+  margin-top: -22px;
   font-size: clamp(10px, 1.2vw, 13px);
   letter-spacing: .08em;
   color: rgba(52, 52, 52, .7);
@@ -242,28 +228,11 @@ body[data-page='about'] .site-header a {
   pointer-events: none;
 }
 
-.about-copy .language-key-item--easy .language-tooltip {
-  left: 50%;
-  transform-origin: center bottom;
-  transform: translate(-50%, 10px) scale(.985);
-}
-
-.about-copy .language-key-item--getby .language-tooltip {
-  right: 0;
-  left: auto;
-  transform-origin: right bottom;
-}
-
 .about-copy .language-key-item:hover .language-tooltip,
 .about-copy .language-key-item:focus-visible .language-tooltip {
   opacity: 1;
   visibility: visible;
   transform: translateY(0) scale(1);
-}
-
-.about-copy .language-key-item--easy:hover .language-tooltip,
-.about-copy .language-key-item--easy:focus-visible .language-tooltip {
-  transform: translate(-50%, 0) scale(1);
 }
 
 .about-copy .language-tooltip p {
@@ -555,7 +524,8 @@ body[data-page='about'] .site-header a {
   .about-right {
     position: relative;
     top: auto;
-    transform: translate3d(0, var(--about-follow-y, 0px), 0) !important;
+    transform: translate3d(0, var(--about-follow-y, 0px), 0) scale(var(--about-side-scale, 1)) !important;
+    transform-origin: top center;
     transition: transform 420ms cubic-bezier(.22, 1, .36, 1);
     will-change: transform;
   }
