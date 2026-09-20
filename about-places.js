@@ -25,11 +25,19 @@
       return;
     }
 
+    const languageBounds = languageSection?.getBoundingClientRect();
+    if (!languageBounds || languageBounds.top > window.innerHeight * 0.72) {
+      sideCard.style.setProperty('--about-follow-y', '0px');
+      sideCard.style.setProperty('--about-side-scale', '1');
+      return;
+    }
+
     const boardBounds = board.getBoundingClientRect();
     const targetTop = (window.innerHeight - sideCard.offsetHeight) / 2;
     const maxOffset = Math.max(0, board.offsetHeight - sideCard.offsetHeight);
-    const offset = Math.min(maxOffset, Math.max(0, targetTop - boardBounds.top));
-    const languageBounds = languageSection?.getBoundingClientRect();
+    const naturalOffset = Math.min(maxOffset, Math.max(0, targetTop - boardBounds.top));
+    const activation = Math.max(0, Math.min(1, (window.innerHeight * 0.72 - languageBounds.top) / (window.innerHeight * 0.28)));
+    const offset = naturalOffset * activation;
     const focus = languageBounds
       ? Math.max(0, Math.min(1, 1 - Math.abs((languageBounds.top + languageBounds.height * 0.46) - window.innerHeight * 0.5) / (window.innerHeight * 0.74)))
       : 0;

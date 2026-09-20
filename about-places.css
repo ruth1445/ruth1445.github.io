@@ -162,7 +162,7 @@ body[data-page='about'] .site-header a {
   display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 960 / 510;
+  aspect-ratio: 960 / 545;
   object-fit: contain;
   object-position: center;
   overflow: visible;
