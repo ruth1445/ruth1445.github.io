@@ -124,17 +124,17 @@ body, .site-shell, body[data-page="about"], body[data-page="about"] .site-shell 
 .about-interests:hover { color: inherit; opacity: .7; }
 .about-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 1.3cqw; }
 .about-photo { display: block; width: 100%; height: auto; aspect-ratio: 315 / 364; overflow: hidden; border-radius: clamp(5px, .55cqw, 9px); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .62), 0 8px 20px rgba(44, 52, 54, .09); }
-.about-footer { display: grid; grid-template-columns: 45% 55%; border-top: var(--rule) solid rgba(21, 24, 23, .88); min-width: 0; background: rgba(255, 255, 255, .08); }
+.about-footer { display: grid; grid-template-columns: 45% 55%; border-top: var(--rule) solid rgba(21, 24, 23, .88); min-width: 0; overflow: hidden; background: rgba(255, 255, 255, .08); }
 .about-socials { display: flex; align-items: center; justify-content: space-between; padding: .8cqw 1.15cqw .8cqw 1.84cqw; gap: .6cqw; }
 .about-socials a { display: flex; flex: 0 1 3.67cqw; align-items: center; justify-content: center; }
 .about-socials svg { display: block; width: 100%; height: 3.67cqw; }
 .about-socials a { transition: opacity 180ms ease, transform 180ms ease; }
 .about-socials a:hover { opacity: .65; transform: translateY(-1px); }
-.about-links { min-width: 0; display: flex; align-items: center; justify-content: space-between; gap: 1.2cqw; border-left: var(--rule) solid rgba(21, 24, 23, .88); padding: .45cqw 1.22cqw .45cqw 1.76cqw; }
+.about-links { min-width: 0; display: flex; align-items: center; justify-content: space-between; gap: .72cqw; border-left: var(--rule) solid rgba(21, 24, 23, .88); padding: .45cqw .95cqw .45cqw 1.36cqw; overflow: hidden; }
 .about-links a { color: inherit; }
 .about-links a:hover { text-decoration: underline; }
-.about-stars { display: flex; gap: .75cqw; flex: none; }
-.about-stars svg { width: 4.82cqw; height: 4.82cqw; fill: #33ff44; }
+.about-stars { display: flex; gap: .32cqw; flex: none; align-items: center; }
+.about-stars svg { width: clamp(26px, 3.25cqw, 42px); height: clamp(26px, 3.25cqw, 42px); fill: #33ff44; }
 image-slot { display: flex; align-items: center; justify-content: center; color: #666; font: 14px/1.4 Arial, sans-serif; text-align: center; padding: 12px; }
 image-slot::after { content: attr(placeholder); }
 .lab-nav,
